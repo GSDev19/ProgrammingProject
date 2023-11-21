@@ -1,0 +1,62 @@
+using JetBrains.Annotations;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AreaDamage : MonoBehaviour
+{
+    public Element currentElement;
+    [SerializeField] private List<GameObject> enemiesInside = new List<GameObject>();
+    [SerializeField] private float initalSize = 5f;
+    [SerializeField] private float hitXSecond = 1f;
+    [SerializeField] private float duration= 1f;
+    [SerializeField] private int damage = 0;
+
+    public void SetAreaDamage(Element element, float size, float totalDuration, float rate, int dmg)
+    {
+        currentElement = element;
+        transform.localScale = Vector3.one * (initalSize + initalSize * size);
+        duration = totalDuration;
+        hitXSecond = 1 / rate;
+        damage = dmg;
+        StartCoroutine(DestoryAreaDamage());
+        InvokeRepeating(nameof(HandleDamage), 0f, hitXSecond);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if(!enemiesInside.Contains(collision.gameObject))
+            {
+                enemiesInside.Add(collision.gameObject);
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (enemiesInside.Contains(collision.gameObject))
+            {
+                enemiesInside.Remove(collision.gameObject);
+            }
+        }
+    }
+    private void HandleDamage()
+    {
+        foreach (GameObject obj in enemiesInside)
+        {
+            LifeComponent life = obj.GetComponentInChildren<LifeComponent>();
+            if (life != null)
+            {
+                life.HandleDamage(damage);
+            }
+        }
+    }
+    private IEnumerator DestoryAreaDamage()
+    {
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
+    }
+}
