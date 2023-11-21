@@ -21,7 +21,7 @@ public class LifeComponent : CoreComponent
         Debug.Log(currentHealth);
         if(currentHealth <= 0)
         {
-            Debug.Log("DEAD");
+            GetComponentInParent<Entity>().gameObject.SetActive(false);
         }
     }
 }

@@ -23,11 +23,11 @@ public class AreaDamage : MonoBehaviour
         InvokeRepeating(nameof(HandleDamage), 0f, hitXSecond);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if(!enemiesInside.Contains(collision.gameObject))
+            if (!enemiesInside.Contains(collision.gameObject))
             {
                 enemiesInside.Add(collision.gameObject);
             }
@@ -43,19 +43,34 @@ public class AreaDamage : MonoBehaviour
             }
         }
     }
+    private List<GameObject> GetEnemies()
+    {
+        return enemiesInside;
+    }
+    IEnumerator Damage()
+    {
+        HandleDamage();
+        yield return new WaitForSeconds(hitXSecond);
+        StartCoroutine(Damage());
+    }
     private void HandleDamage()
     {
-        foreach (GameObject obj in enemiesInside)
+        foreach (GameObject obj in GetEnemies())
         {
-            LifeComponent life = obj.GetComponentInChildren<LifeComponent>();
-            if (life != null)
+            if(obj != null)
             {
-                life.HandleDamage(damage);
+                LifeComponent life = obj.GetComponentInChildren<LifeComponent>(true);
+                if (life != null)
+                {
+                    life.HandleDamage(damage);
+                }
             }
+
         }
     }
     private IEnumerator DestoryAreaDamage()
     {
+        StopCoroutine(Damage());
         yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }

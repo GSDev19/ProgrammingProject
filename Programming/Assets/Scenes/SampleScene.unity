@@ -569,6 +569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1300929059148048063, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
+      propertyPath: EntityData
+      value: 
+      objectReference: {fileID: 11400000, guid: ea3790072f20af24fa798bd7cba1bd2e, type: 2}
     - target: {fileID: 4353088296410004787, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
       propertyPath: m_Name
       value: PlayerCore
@@ -706,11 +710,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 281878248078715964, guid: a69f99548c25e1a4ab025464b896726c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.19
+      value: 18.4
       objectReference: {fileID: 0}
     - target: {fileID: 281878248078715964, guid: a69f99548c25e1a4ab025464b896726c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.81
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 281878248078715964, guid: a69f99548c25e1a4ab025464b896726c, type: 3}
       propertyPath: m_LocalPosition.z

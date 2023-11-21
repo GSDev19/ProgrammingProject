@@ -16,5 +16,5 @@ MonoBehaviour:
   prefab: {fileID: 2974109457776455093, guid: cca069b6cd03dfa4998c2b2df985b681, type: 3}
   damage: 20
   speed: 50
-  enemyHits: 1
-  projectileAmount: 2
+  enemyHits: 2
+  projectileAmount: 1
