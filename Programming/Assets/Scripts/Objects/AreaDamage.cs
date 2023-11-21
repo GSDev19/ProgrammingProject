@@ -19,8 +19,9 @@ public class AreaDamage : MonoBehaviour
         duration = totalDuration;
         hitXSecond = 1 / rate;
         damage = dmg;
+        StartCoroutine(Damage());
         StartCoroutine(DestoryAreaDamage());
-        InvokeRepeating(nameof(HandleDamage), 0f, hitXSecond);
+        //InvokeRepeating(nameof(HandleDamage), 0f, hitXSecond);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -55,9 +56,11 @@ public class AreaDamage : MonoBehaviour
     }
     private void HandleDamage()
     {
-        foreach (GameObject obj in GetEnemies())
+        List<GameObject> enemiesCopy = new List<GameObject>(GetEnemies());
+
+        foreach (GameObject obj in enemiesCopy)
         {
-            if(obj != null)
+            if (obj != null)
             {
                 LifeComponent life = obj.GetComponentInChildren<LifeComponent>(true);
                 if (life != null)
@@ -65,13 +68,13 @@ public class AreaDamage : MonoBehaviour
                     life.HandleDamage(damage);
                 }
             }
-
         }
     }
     private IEnumerator DestoryAreaDamage()
     {
-        StopCoroutine(Damage());
+
         yield return new WaitForSeconds(duration);
+        StopCoroutine(Damage());
         Destroy(gameObject);
     }
 }
