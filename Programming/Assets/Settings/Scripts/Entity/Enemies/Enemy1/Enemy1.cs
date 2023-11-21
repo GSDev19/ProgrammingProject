@@ -5,18 +5,14 @@ using UnityEngine;
 
 public class Enemy1 : Entity
 {
-    [SerializeField] public string stateName;
-    [field: SerializeField] protected Enemy1Data entityData;
-    public override void Awake()
-    {
-        base.Awake();
+    public string stateName;
+    public Enemy1Data entityData;
 
-        StateMachine = new StateMachine();
-        moveState = new Enemy1MoveState(this, entityData, StateMachine, Core, stateName);
-        idleState = new Enemy1IdleState(this, entityData, StateMachine, Core, stateName);
-    }
     private void Start()
     {
+        moveState = new Enemy1MoveState(this, entityData, StateMachine, Core, stateName);
+        idleState = new Enemy1IdleState(this, entityData, StateMachine, Core, stateName);
+
         StateMachine.Initialize(idleState);
     }
     private void Update()

@@ -13,5 +13,7 @@ public class Entity : MonoBehaviour
     public virtual void Awake()
     {
         Core = GetComponentInChildren<Core>();
+
+        StateMachine = new StateMachine();
     }
 }

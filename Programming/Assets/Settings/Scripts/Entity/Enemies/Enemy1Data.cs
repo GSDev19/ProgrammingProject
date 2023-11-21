@@ -8,4 +8,5 @@ public class Enemy1Data : EntityData
     [Header("SPECIFIC")]
     [Header("BEHAVIOUR")]
     public float minDistanceToPlayer = 10f;
+    public float rotationSpeed = 50f;
 }

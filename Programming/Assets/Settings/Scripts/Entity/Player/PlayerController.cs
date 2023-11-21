@@ -6,9 +6,9 @@ public class PlayerController : Entity
 {
     public static PlayerController Instance { get; private set; }
 
-    [field: SerializeField] protected EntityData entityData;
+    public EntityData entityData;
 
-    [SerializeField] public string stateName;
+    public string stateName;
     public override void Awake()
     {
         base.Awake();
@@ -22,12 +22,12 @@ public class PlayerController : Entity
             Destroy(this.gameObject);
         }
 
-        StateMachine = new StateMachine();
-        moveState = new PlayerMoveState(this, entityData, StateMachine, Core, stateName);
-        idleState = new PlayerIdleState(this, entityData, StateMachine, Core, stateName);
     }
     private void Start()
     {
+        moveState = new PlayerMoveState(this, entityData, StateMachine, Core, stateName);
+        idleState = new PlayerIdleState(this, entityData, StateMachine, Core, stateName);
+
         StateMachine.Initialize(idleState);
     }
     private void Update()
