@@ -5,6 +5,13 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     protected StateMachine StateMachine;
+    public Core Core { get; private set; }
+
     public MoveState moveState;
     public IdleState idleState;
+
+    public virtual void Awake()
+    {
+        Core = GetComponentInChildren<Core>();
+    }
 }

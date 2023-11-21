@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IdleState : State
 {
-    public IdleState(Entity entity, EntityData data, StateMachine stateMachine, Core core, MovementController movementController, string stateName, bool isPlayer) : base(entity, data, stateMachine, core, movementController, stateName, isPlayer)
+    public IdleState(Entity entity, EntityData data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
     {
     }
 

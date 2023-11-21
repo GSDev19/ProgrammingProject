@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerIdleState : IdleState
 {
-    public PlayerIdleState(Entity entity, EntityData data, StateMachine stateMachine, Core core, MovementController movementController, string stateName, bool isPlayer) : base(entity, data, stateMachine, core, movementController, stateName, isPlayer)
+    public PlayerIdleState(Entity entity, EntityData data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
     {
     }
 
@@ -29,9 +29,8 @@ public class PlayerIdleState : IdleState
     {
         base.LogicUpdate();
 
-        if(movementController.NormY != 0 ||  movementController.NormX != 0)
+        if (InputHandler.Instance.NormY != 0 || InputHandler.Instance.NormX != 0)
         {
-            Debug.Log("ToMove");
             stateMachine.ChangeState(entity.moveState);
         }
     }

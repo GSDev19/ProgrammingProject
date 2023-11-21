@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Core : MonoBehaviour
 {
-    public Rigidbody2D RB;
-    public MovementComponent Movement;
+    public PlayerController player { get; private set; }
+    public Rigidbody2D RB { get; private set; }
+    public MovementComponent Movement { get; private set; }
+    public CollisionComponent Collision { get; private set; }
 
     private void Awake()
     {
         RB = GetComponentInParent<Rigidbody2D>();
 
         Movement = GetComponentInChildren<MovementComponent>();
+        Collision = GetComponentInChildren<CollisionComponent>();
+    }
+    private void Start()
+    {
+        player = PlayerController.Instance;
     }
 }

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveState : MoveState
+public class Enemy1MoveState : MoveState
 {
-    public PlayerMoveState(Entity entity, EntityData data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
+    Enemy1Data enemyData;
+    public Enemy1MoveState(Entity entity, Enemy1Data data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
     {
+        this.enemyData = data;
     }
 
     public override void DoChecks()
@@ -27,13 +29,14 @@ public class PlayerMoveState : MoveState
     {
         base.LogicUpdate();
 
-        core.Movement.SetInputVelocity(InputHandler.Instance.NormX, InputHandler.Instance.NormY, data.movementSpeed);
-
-        if (InputHandler.Instance.NormY == 0 && InputHandler.Instance.NormX == 0)
+        if (core.Collision.CheckDistanceToPlayer(core.player.transform, entity.transform, enemyData.minDistanceToPlayer))
+        {
+            core.Movement.GoToPlayer(core.player.transform, entity.transform, enemyData.movementSpeed);
+        }
+        else
         {
             stateMachine.ChangeState(entity.idleState);
         }
-
     }
 
     public override void PhysicsUpdate()

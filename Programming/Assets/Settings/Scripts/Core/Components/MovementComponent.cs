@@ -28,4 +28,20 @@ public class MovementComponent : CoreComponent
         workspace = Vector2.zero;
         Core.RB.velocity = workspace;
     }
+    public void GoToPlayer(Transform playerTransform, Transform enemyTransform, float speed)
+    {
+        Vector3 direction = (playerTransform.position - enemyTransform.position).normalized;
+
+        // Calculate the angle in degrees
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Create a rotation to face the player
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
+
+        // Rotate the enemy towards the player
+        enemyTransform.rotation = Quaternion.Slerp(enemyTransform.rotation, targetRotation, speed * Time.deltaTime);
+
+        // Move the enemy towards the player
+        enemyTransform.Translate(Vector3.up * speed * Time.deltaTime);
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EntityData", menuName = "Data/Entity Base Data/ New Player Data")]
+[CreateAssetMenu(fileName = "PlayerData", menuName = "Data/Entity Base Data/ New Player Data")]
 public class PlayerData : EntityData
 {
     [Header("SPECIFIC")]

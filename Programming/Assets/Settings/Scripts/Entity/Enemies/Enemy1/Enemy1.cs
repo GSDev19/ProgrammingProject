@@ -1,30 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : Entity
+public class Enemy1 : Entity
 {
-    public static PlayerController Instance { get; private set; }
-
-    [field: SerializeField] protected EntityData entityData;
-
     [SerializeField] public string stateName;
+    [field: SerializeField] protected Enemy1Data entityData;
     public override void Awake()
     {
         base.Awake();
 
-        if (!Instance)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-
         StateMachine = new StateMachine();
-        moveState = new PlayerMoveState(this, entityData, StateMachine, Core, stateName);
-        idleState = new PlayerIdleState(this, entityData, StateMachine, Core, stateName);
+        moveState = new Enemy1MoveState(this, entityData, StateMachine, Core, stateName);
+        idleState = new Enemy1IdleState(this, entityData, StateMachine, Core, stateName);
     }
     private void Start()
     {
@@ -40,5 +29,9 @@ public class PlayerController : Entity
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, entityData.minDistanceToPlayer);
+    }
 }

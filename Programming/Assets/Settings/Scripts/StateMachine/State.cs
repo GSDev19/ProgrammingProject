@@ -8,19 +8,15 @@ public class State
     protected EntityData data;
     protected StateMachine stateMachine;
     protected Core core;
-    protected MovementController movementController;
     protected string stateName;
-    protected bool isPlayer;
 
-    public State(Entity entity, EntityData data, StateMachine stateMachine,Core core, MovementController movementController, string stateName, bool isPlayer)
+    public State(Entity entity, EntityData data, StateMachine stateMachine,Core core, string stateName)
     {
         this.entity = entity;
         this.data = data;
         this.stateMachine = stateMachine;
         this.core = core;
-        this.movementController = movementController;
         this.stateName = stateName;
-        this.isPlayer = isPlayer;
     }
     public virtual void Enter()
     {
