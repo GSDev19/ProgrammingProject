@@ -9,6 +9,8 @@ public class PlayerController : Entity
     public EntityData entityData;
 
     public string stateName;
+    public AttackData primaryAttackData;
+    public AttackData secondaryAttackData;
     public override void Awake()
     {
         base.Awake();
@@ -27,6 +29,8 @@ public class PlayerController : Entity
     {
         moveState = new PlayerMoveState(this, entityData, StateMachine, Core, stateName);
         idleState = new PlayerIdleState(this, entityData, StateMachine, Core, stateName);
+        primaryAttackState = new PlayerPrimaryAttackState(this, entityData, StateMachine, Core, stateName, primaryAttackData);
+        secondaryAttackState = new PlayerSecondaryAttackState(this, entityData, StateMachine, Core, stateName, primaryAttackData);
 
         StateMachine.Initialize(idleState);
     }

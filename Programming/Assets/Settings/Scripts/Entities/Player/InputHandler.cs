@@ -10,6 +10,9 @@ public class InputHandler : MonoBehaviour
     public int NormX { get; private set; }
     public int NormY { get; private set; }
 
+    public bool PrimaryAttackInput { get; private set; }
+    public bool SecondaryAttackInput { get; private set; }
+
     private void Awake()
     {
         if (!Instance)
@@ -26,6 +29,28 @@ public class InputHandler : MonoBehaviour
         MovementInput = context.ReadValue<Vector2>();
         NormX = (int)(MovementInput * Vector2.right).normalized.x;
         NormY = (int)(MovementInput * Vector2.up).normalized.y;
+    }
 
+    public void OnPrimaryAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            PrimaryAttackInput = true;
+        }
+        if (context.canceled)
+        {
+            PrimaryAttackInput = false;
+        }
+    }
+    public void OnSecondaryAttackInput(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            SecondaryAttackInput = true;
+        }
+        if(context.canceled)
+        {
+            SecondaryAttackInput = false;
+        }
     }
 }

@@ -9,6 +9,8 @@ public class Entity : MonoBehaviour
 
     public MoveState moveState;
     public IdleState idleState;
+    public AttackState primaryAttackState;
+    public AttackState secondaryAttackState;
 
     public virtual void Awake()
     {

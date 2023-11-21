@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 122989686}
   - component: {fileID: 122989685}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,6 +898,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityData: {fileID: 11400000, guid: ea3790072f20af24fa798bd7cba1bd2e, type: 2}
   stateName: 
+  primaryAttackData: {fileID: 11400000, guid: 89d5be99929e8a142aa03204a343b9d3, type: 2}
+  secondaryAttackData: {fileID: 11400000, guid: 6f303c164850e6e429b69bd2cd1ce105, type: 2}
 --- !u!50 &868183481
 Rigidbody2D:
   serializedVersion: 4
@@ -967,7 +969,19 @@ MonoBehaviour:
     m_ActionId: f276c51e-20fa-489d-88af-b2139f624efd
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 868183483}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnPrimaryAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ad43defc-01f8-4570-832f-184d143955fd
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -1010,6 +1024,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fcfc3c7a-f6aa-46e2-bc41-6e8066eacd3c
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 868183483}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnSecondaryAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c77ef8df-1160-4672-b73e-49e9dbf091d4
+    m_ActionName: Player/SecondaryAttack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1027,6 +1057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c073cbd856f8a734aa3bc4efe3f20174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrimaryAttackInput: 0
+  SecondaryAttackInput: 0
 --- !u!58 &868183484
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1472,9 +1504,9 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 868183479}
+  - {fileID: 122989688}
+  - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1700429906}
   - {fileID: 716929411}
-  - {fileID: 122989688}

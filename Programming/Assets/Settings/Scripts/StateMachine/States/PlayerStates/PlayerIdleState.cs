@@ -29,7 +29,15 @@ public class PlayerIdleState : IdleState
     {
         base.LogicUpdate();
 
-        if (InputHandler.Instance.NormY != 0 || InputHandler.Instance.NormX != 0)
+        if (InputHandler.Instance.PrimaryAttackInput)
+        {
+            stateMachine.ChangeState(entity.primaryAttackState);
+        }
+        else if (InputHandler.Instance.SecondaryAttackInput)
+        {
+            stateMachine.ChangeState(entity.secondaryAttackState);
+        }
+        else if (InputHandler.Instance.NormY != 0 || InputHandler.Instance.NormX != 0)
         {
             stateMachine.ChangeState(entity.moveState);
         }
@@ -42,6 +50,6 @@ public class PlayerIdleState : IdleState
 
     public override string StateName()
     {
-        return base.StateName();
+        return "Idle";
     }
 }

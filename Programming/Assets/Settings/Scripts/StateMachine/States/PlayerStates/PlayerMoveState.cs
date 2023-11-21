@@ -27,9 +27,18 @@ public class PlayerMoveState : MoveState
     {
         base.LogicUpdate();
 
+
         core.Movement.SetInputVelocity(InputHandler.Instance.NormX, InputHandler.Instance.NormY, data.movementSpeed);
 
-        if (InputHandler.Instance.NormY == 0 && InputHandler.Instance.NormX == 0)
+        if(InputHandler.Instance.PrimaryAttackInput)
+        {
+            stateMachine.ChangeState(entity.primaryAttackState);
+        }
+        else if(InputHandler.Instance.SecondaryAttackInput)
+        {
+            stateMachine.ChangeState(entity.secondaryAttackState);
+        }
+        else if (InputHandler.Instance.NormY == 0 && InputHandler.Instance.NormX == 0)
         {
             stateMachine.ChangeState(entity.idleState);
         }
@@ -43,6 +52,6 @@ public class PlayerMoveState : MoveState
 
     public override string StateName()
     {
-        return base.StateName();
+        return "Move";
     }
 }
