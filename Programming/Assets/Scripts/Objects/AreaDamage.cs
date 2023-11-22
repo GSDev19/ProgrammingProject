@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AreaDamage : MonoBehaviour
 {
-    public Element currentElement;
+    public Element areaElement;
     [SerializeField] private List<GameObject> enemiesInside = new List<GameObject>();
     [SerializeField] private float initalSize = 5f;
     [SerializeField] private float hitXSecond = 1f;
@@ -14,14 +14,13 @@ public class AreaDamage : MonoBehaviour
 
     public void SetAreaDamage(Element element, float size, float totalDuration, float rate, int dmg)
     {
-        currentElement = element;
+        areaElement = element;
         transform.localScale = Vector3.one * (initalSize + initalSize * size);
         duration = totalDuration;
         hitXSecond = 1 / rate;
         damage = dmg;
         StartCoroutine(Damage());
         StartCoroutine(DestoryAreaDamage());
-        //InvokeRepeating(nameof(HandleDamage), 0f, hitXSecond);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -62,10 +61,16 @@ public class AreaDamage : MonoBehaviour
         {
             if (obj != null)
             {
-                LifeComponent life = obj.GetComponentInChildren<LifeComponent>(true);
-                if (life != null)
+                Entity entity = obj.GetComponent<Entity>();
+
+                if (entity.currentElement != areaElement)
                 {
-                    life.HandleDamage(damage);
+                    LifeComponent life = entity.Core.Life;
+
+                    if (life != null)
+                    {
+                        life.HandleDamage(damage);
+                    }
                 }
             }
         }

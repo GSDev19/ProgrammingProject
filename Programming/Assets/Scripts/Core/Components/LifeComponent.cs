@@ -21,7 +21,12 @@ public class LifeComponent : CoreComponent
         Debug.Log(currentHealth);
         if(currentHealth <= 0)
         {
-            GetComponentInParent<Entity>().gameObject.SetActive(false);
+            Entity entity  = GetComponentInParent<Entity>();
+            if(entity != null)
+            {
+                entity.gameObject.SetActive(false);
+            }
+
         }
     }
 }

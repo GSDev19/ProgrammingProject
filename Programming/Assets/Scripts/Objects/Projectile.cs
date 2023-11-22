@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Element currentElement;
+    public Element projectileElement;
     [SerializeField] private List<GameObject> hitted;
     [SerializeField] private Rigidbody2D RB;
     [SerializeField] private int damage = 0;
@@ -20,20 +20,26 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            Entity entity = collision.gameObject.GetComponent<Entity>();
 
-            LifeComponent life = collision.gameObject.GetComponentInChildren<LifeComponent>();
-            if(life != null && !hitted.Contains(collision.gameObject))
+            if(entity.currentElement != projectileElement)
             {
-                hitted.Add(collision.gameObject);
-                currentHits++;
-                HandleHit(life);
+                LifeComponent life = entity.Core.Life;
+
+                if (life != null && !hitted.Contains(collision.gameObject))
+                {
+                    hitted.Add(collision.gameObject);
+                    currentHits++;
+                    HandleHit(life);
+                }
             }
+
 
         }
     }
     public void SetProjectile(Element element, Vector3 direction, float projectileSpeed, int dmg, int hits)
     {
-        currentElement = element;
+        projectileElement = element;
         RB.velocity = direction * projectileSpeed;
         damage = dmg;
         currentHits = 0;

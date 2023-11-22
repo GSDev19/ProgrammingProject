@@ -7,15 +7,49 @@ public class AttackComponent : CoreComponent
     public PrimaryData primaryAttackData;
     public SecondaryData secondaryAttackData;
 
-    public float primaryTimer = 1f;
-    public float secondaryTimer = 2f;
+    public float currentPrimaryReloadTime = 0f;
+    public float currentSecondaryReloadTime = 0f;
+
+    public bool canPrimaryAttack;
+    public bool canSecondaryAttack;
+
+    private void Start()
+    {
+        canPrimaryAttack = true;
+        canSecondaryAttack = true;
+
+        SetPrimarySprite();
+        SetSecondarySprite();
+    }
+
+    private void SetPrimarySprite()
+    {
+        Debug.Log("1 =" + primaryAttackData.element);
+        UIController.Instance.ChangePrimarySprite(GameData.Instance.GetElementSprite(primaryAttackData.element));
+    }
+    private void SetSecondarySprite()
+    {
+        Debug.Log("2 =" + secondaryAttackData.element);
+        UIController.Instance.ChangeSecondarySprite(GameData.Instance.GetElementSprite(secondaryAttackData.element));
+
+    }
     public void HandlePrimaryAttack()
     {
-        FireProjetiles(primaryAttackData);
+        if(canPrimaryAttack)
+        {
+            canPrimaryAttack = false;
+            FireProjetiles(primaryAttackData);
+            StartCoroutine(PrimaryCooldown(primaryAttackData.cooldown));
+        }
     }
     public void HandleSecondaryAttack()
     {
-        CreateAttackArea(secondaryAttackData);
+        if(canSecondaryAttack)
+        {
+            canSecondaryAttack = false;
+            CreateAttackArea(secondaryAttackData);
+            StartCoroutine(SecondaryCooldown(secondaryAttackData.cooldown));
+        }
     }
 
     private void FireProjetiles(PrimaryData data)
@@ -37,10 +71,38 @@ public class AttackComponent : CoreComponent
             projectile.GetComponent<Projectile>().SetProjectile(data.element, direction, data.speed, data.damage, data.enemyHits);
         }
     }
-
     private void CreateAttackArea(SecondaryData data)
     {
         GameObject areaDamage = Instantiate(data.prefab, transform.position, Quaternion.identity);
         areaDamage.GetComponent<AreaDamage>().SetAreaDamage(data.element,data.areaSize, data.duration, data.hitsXSecond, data.damage);
+    }
+    private IEnumerator PrimaryCooldown(float cooldown)
+    {
+        currentPrimaryReloadTime = 0f;
+
+        while (currentPrimaryReloadTime < cooldown)
+        {
+            currentPrimaryReloadTime += Time.deltaTime;
+            UIController.Instance.SetPrimaryBlockerValue(currentPrimaryReloadTime, cooldown);
+            yield return null;
+        }
+        currentPrimaryReloadTime = cooldown;
+        UIController.Instance.SetPrimaryBlockerValue(currentPrimaryReloadTime, cooldown);
+        canPrimaryAttack = true;
+    }
+    private IEnumerator SecondaryCooldown(float cooldown)
+    {
+        currentSecondaryReloadTime = 0f;
+
+        while (currentSecondaryReloadTime < cooldown)
+        {
+            currentSecondaryReloadTime += Time.deltaTime;
+            UIController.Instance.SetSecondaryBlockerValue(currentSecondaryReloadTime, cooldown);
+
+            yield return null;
+        }
+        currentPrimaryReloadTime = cooldown;
+        UIController.Instance.SetSecondaryBlockerValue(currentSecondaryReloadTime, cooldown);
+        canSecondaryAttack = true;
     }
 }

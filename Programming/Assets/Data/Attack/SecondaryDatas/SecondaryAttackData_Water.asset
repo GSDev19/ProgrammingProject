@@ -15,6 +15,7 @@ MonoBehaviour:
   element: 1
   prefab: {fileID: 1295922524261553595, guid: b7ff2fef4a6fd504ab54f303aab8cba5, type: 3}
   damage: 20
+  cooldown: 3
   areaSize: 1
   duration: 3
   hitsXSecond: 2

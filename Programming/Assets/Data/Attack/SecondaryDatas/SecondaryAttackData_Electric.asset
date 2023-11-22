@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad9e7ca000296f4b9f201031f89b2a6, type: 3}
-  m_Name: PrimaryAttackData_Plant
+  m_Script: {fileID: 11500000, guid: df72f9223bea2134bb5a8a51f26248e7, type: 3}
+  m_Name: SecondaryAttackData_Electric
   m_EditorClassIdentifier: 
-  element: 2
-  prefab: {fileID: 2974109457776455093, guid: cca069b6cd03dfa4998c2b2df985b681, type: 3}
+  element: 3
+  prefab: {fileID: 1295922524261553595, guid: b7ff2fef4a6fd504ab54f303aab8cba5, type: 3}
   damage: 20
-  cooldown: 1
-  speed: 50
-  enemyHits: 2
-  projectileAmount: 1
+  cooldown: 3
+  areaSize: 1
+  duration: 3
+  hitsXSecond: 2
