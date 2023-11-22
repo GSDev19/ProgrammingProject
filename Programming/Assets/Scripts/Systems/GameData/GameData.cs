@@ -8,6 +8,8 @@ public class GameData : MonoBehaviour
     public static GameData Instance { get; private set; }
 
     public UDictionary<Element, Sprite> elementSprites = new UDictionary<Element, Sprite>();
+    public UDictionary<Element, PrimaryData> primaryDatas = new UDictionary<Element, PrimaryData>();
+    public UDictionary<Element, SecondaryData> secondaryDatas = new UDictionary<Element, SecondaryData>();
 
     private void Awake()
     {
@@ -29,6 +31,30 @@ public class GameData : MonoBehaviour
             if(key == element)
             {
                 selected = elementSprites[key];
+            }
+        }
+        return selected;
+    }
+    public PrimaryData GetPrimaryData(Element element)
+    {
+        PrimaryData selected = null;
+        foreach (Element key in primaryDatas.Keys)
+        {
+            if (key == element)
+            {
+                selected = primaryDatas[key];
+            }
+        }
+        return selected;
+    }
+    public SecondaryData GetSecondaryData(Element element)
+    {
+        SecondaryData selected = null;
+        foreach (Element key in secondaryDatas.Keys)
+        {
+            if (key == element)
+            {
+                selected = secondaryDatas[key];
             }
         }
         return selected;

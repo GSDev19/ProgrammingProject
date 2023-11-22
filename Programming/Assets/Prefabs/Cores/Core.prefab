@@ -92,10 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012d6807d8ad14d4cbaba2415bae6d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAttackData: {fileID: 11400000, guid: 11332b448079f344da64223f9af480b9, type: 2}
-  secondaryAttackData: {fileID: 11400000, guid: a6608848762c5e64e806afc68bfd88ee, type: 2}
-  primaryTimer: 1
-  secondaryTimer: 2
+  currentPrimaryElement: 0
+  currentSecondaryElement: 1
 --- !u!1 &7505261525564000946
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+    [Header("Attack Selection")]
+    [SerializeField] private AttackSelectionHandler attacksHandler;
+    public CanvasGroup attackSelectionCanvasGroup;
+    public bool isAttackSelectionOpen = false;
+    [Space]
     [Header("Attack Cooldowns")]
     public Image primaryCooldownSprite;
     public Image primaryBlocker;
@@ -23,7 +28,33 @@ public class UIController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Start()
+    {
+        isAttackSelectionOpen = false;
+        ShowAttackSelectionPanel(false);
+    }
 
+    #region Attack Selection 
+
+    public void ShowAttackSelectionPanel(bool value)
+    {
+        isAttackSelectionOpen = value;
+
+        if (isAttackSelectionOpen == true)
+        {
+            attacksHandler.CreateButtons();
+            Time.timeScale = 0f;
+            
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        UIHelpers.SetCanvasGroup(attackSelectionCanvasGroup, isAttackSelectionOpen);
+    }
+    #endregion
+
+    #region Attack Icons
     public void SetPrimaryBlockerValue(float currentValue, float maxValue )
     {
         float percentaje = currentValue / maxValue;
@@ -45,6 +76,6 @@ public class UIController : MonoBehaviour
     {
         secondaryCooldownSprite.sprite = sprite;
     }
-
+    #endregion
 
 }

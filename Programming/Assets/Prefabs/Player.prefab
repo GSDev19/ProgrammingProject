@@ -422,6 +422,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c77ef8df-1160-4672-b73e-49e9dbf091d4
     m_ActionName: Player/SecondaryAttack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6204714386597115406}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnAttackSelectionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: be90b2e5-2d1b-4fae-98c3-f393c2516b8d
+    m_ActionName: Player/AttackSelectionPanel[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -477,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917106315583235750, guid: a572822e20199964899a658af6f58372, type: 3}
       propertyPath: m_Name
-      value: Core
+      value: PlayerCore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

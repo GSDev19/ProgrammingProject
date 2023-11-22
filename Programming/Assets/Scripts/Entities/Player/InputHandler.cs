@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
@@ -12,6 +13,8 @@ public class InputHandler : MonoBehaviour
 
     public bool PrimaryAttackInput { get; private set; }
     public bool SecondaryAttackInput { get; private set; }
+    public bool AttackSelectionInput { get; private set; }
+    public bool isPointerOnUi { get; private set; }
 
     private void Awake()
     {
@@ -24,6 +27,10 @@ public class InputHandler : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Update()
+    {
+        isPointerOnUi = IsPointerOverUI();
+    }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<Vector2>();
@@ -33,7 +40,7 @@ public class InputHandler : MonoBehaviour
 
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !isPointerOnUi)
         {
             PrimaryAttackInput = true;
         }
@@ -44,7 +51,7 @@ public class InputHandler : MonoBehaviour
     }
     public void OnSecondaryAttackInput(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && !isPointerOnUi)
         {
             SecondaryAttackInput = true;
         }
@@ -52,5 +59,23 @@ public class InputHandler : MonoBehaviour
         {
             SecondaryAttackInput = false;
         }
+    }
+    public void OnAttackSelectionInput(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            AttackSelectionInput = true;
+            UIController.Instance.ShowAttackSelectionPanel(true);
+        }
+
+        if(context.canceled)
+        {
+            AttackSelectionInput = false;
+            UIController.Instance.ShowAttackSelectionPanel(false);
+        }
+    }
+    private bool IsPointerOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

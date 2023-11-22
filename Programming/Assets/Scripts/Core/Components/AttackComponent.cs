@@ -4,32 +4,45 @@ using UnityEngine;
 
 public class AttackComponent : CoreComponent
 {
-    public PrimaryData primaryAttackData;
-    public SecondaryData secondaryAttackData;
+    public Element currentPrimaryElement;
+    public Element currentSecondaryElement;
 
-    public float currentPrimaryReloadTime = 0f;
-    public float currentSecondaryReloadTime = 0f;
+    private PrimaryData primaryAttackData;
+    private SecondaryData secondaryAttackData;
 
-    public bool canPrimaryAttack;
-    public bool canSecondaryAttack;
+    public float currentPrimaryReloadTime {get; private set;}
+    public float currentSecondaryReloadTime { get; private set; }
+
+    private bool canPrimaryAttack;
+    private bool canSecondaryAttack;
 
     private void Start()
     {
         canPrimaryAttack = true;
         canSecondaryAttack = true;
 
-        SetPrimarySprite();
-        SetSecondarySprite();
+        SetPrimaryData(currentPrimaryElement);
+        SetSecondaryData(currentSecondaryElement);
     }
 
+    public void SetPrimaryData(Element element)
+    {
+        currentPrimaryElement = element;
+        primaryAttackData = GameData.Instance.GetPrimaryData(element);
+        SetPrimarySprite();
+    }
+    public void SetSecondaryData(Element element)
+    {
+        currentSecondaryElement = element;
+        secondaryAttackData = GameData.Instance.GetSecondaryData(element);
+        SetSecondarySprite();
+    }
     private void SetPrimarySprite()
     {
-        Debug.Log("1 =" + primaryAttackData.element);
         UIController.Instance.ChangePrimarySprite(GameData.Instance.GetElementSprite(primaryAttackData.element));
     }
     private void SetSecondarySprite()
     {
-        Debug.Log("2 =" + secondaryAttackData.element);
         UIController.Instance.ChangeSecondarySprite(GameData.Instance.GetElementSprite(secondaryAttackData.element));
 
     }
