@@ -29,22 +29,27 @@ public class AttackComponent : CoreComponent
     {
         currentPrimaryElement = element;
         primaryAttackData = GameData.Instance.GetPrimaryData(element);
-        SetPrimarySprite();
+        UIController.Instance.ChangePrimarySprite(GameData.Instance.GetElementSprite(element));
+        CheckIfSameElement();
     }
     public void SetSecondaryData(Element element)
     {
         currentSecondaryElement = element;
         secondaryAttackData = GameData.Instance.GetSecondaryData(element);
-        SetSecondarySprite();
+        UIController.Instance.ChangeSecondarySprite(GameData.Instance.GetElementSprite(element));
+        CheckIfSameElement();
     }
-    private void SetPrimarySprite()
-    {
-        UIController.Instance.ChangePrimarySprite(GameData.Instance.GetElementSprite(primaryAttackData.element));
-    }
-    private void SetSecondarySprite()
-    {
-        UIController.Instance.ChangeSecondarySprite(GameData.Instance.GetElementSprite(secondaryAttackData.element));
 
+    private void CheckIfSameElement()
+    {
+        if(currentPrimaryElement == currentSecondaryElement)
+        {
+            PlayerController.Instance.ChangeElement(currentPrimaryElement);
+        }
+        else
+        {
+            PlayerController.Instance.ChangeElement(Element.None);
+        }
     }
     public void HandlePrimaryAttack()
     {

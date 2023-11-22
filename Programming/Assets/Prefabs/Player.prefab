@@ -232,8 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e6d72fba52a2842bddbb72270f777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentElement: 0
+  currentElement: 5
   spriteRenderer: {fileID: 773871067183660985}
+  EntityData: {fileID: 0}
   data: {fileID: 11400000, guid: ea3790072f20af24fa798bd7cba1bd2e, type: 2}
   stateName: 
 --- !u!58 &13253682404264451

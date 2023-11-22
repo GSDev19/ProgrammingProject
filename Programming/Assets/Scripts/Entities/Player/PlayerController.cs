@@ -43,4 +43,9 @@ public class PlayerController : Entity
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
+    public void ChangeElement(Element element)
+    {
+        currentElement = element;
+        spriteRenderer.color = GameData.Instance.GetColor(element);
+    }
 }

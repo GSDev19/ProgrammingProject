@@ -108,5 +108,6 @@ public enum Element
     Water,
     Plant,
     Electric,
-    Earth
+    Earth,
+    None
 }
