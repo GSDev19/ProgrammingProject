@@ -6,8 +6,9 @@ public class Entity : MonoBehaviour
 {
     protected StateMachine StateMachine;
     public Element currentElement;
+    public SpriteRenderer spriteRenderer;
     public Core Core { get; private set; }
-    public EntityData EntityData { get; private set; }
+    [HideInInspector] public EntityData EntityData;
 
     public MoveState moveState;
     public IdleState idleState;
@@ -21,14 +22,11 @@ public class Entity : MonoBehaviour
         StateMachine = new StateMachine();
     }
 
-    public void ChangeElement(Element element)
+    public void SetEntity(Element element, EntityData data)
     {
-        currentElement = element;
-    }
-
-    public virtual void SetData(EntityData entityData)
-    {
-        this.EntityData = entityData;
+        this.currentElement = element;
+        this.EntityData = data;
+        this.spriteRenderer.color = GameData.Instance.GetColor(element);
     }
 
 }

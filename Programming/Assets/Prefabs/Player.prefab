@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentElement: 0
+  spriteRenderer: {fileID: 773871067183660985}
   data: {fileID: 11400000, guid: ea3790072f20af24fa798bd7cba1bd2e, type: 2}
   stateName: 
 --- !u!58 &13253682404264451

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,18 @@ using Utilities;
 public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
+    [Header("GENERAL")]
+    public UDictionary<Element, Color> elementColors = new UDictionary<Element, Color>();
 
+    [Space]
+    [Header("ATTACKS")]
     public UDictionary<Element, Sprite> elementSprites = new UDictionary<Element, Sprite>();
     public UDictionary<Element, PrimaryData> primaryDatas = new UDictionary<Element, PrimaryData>();
     public UDictionary<Element, SecondaryData> secondaryDatas = new UDictionary<Element, SecondaryData>();
-    public UDictionary<Element, Color> elementColors = new UDictionary<Element, Color>();
+
+    [Space]
+    [Header("ENEMIES")]
+    public UDictionary<Element, EntityData> enemy1Datas = new UDictionary<Element, EntityData>();
 
     private void Awake()
     {
@@ -72,4 +80,33 @@ public class GameData : MonoBehaviour
         }
         return selected;
     }    
+
+    public EntityData GetEnemy1Data(Element element)
+    {
+        EntityData selected = null;
+        foreach (Element key in enemy1Datas.Keys)
+        {
+            if (key == element)
+            {
+                selected = enemy1Datas[key];
+            }
+        }
+        return selected;
+    }
+    public Element GetRandomElement()
+    {
+        Element[] elements = (Element[])Enum.GetValues(typeof(Element));
+
+        int randomIndex = UnityEngine.Random.Range(0, elements.Length);
+
+        return elements[randomIndex];
+    }
+}
+public enum Element
+{
+    Fire,
+    Water,
+    Plant,
+    Electric,
+    Earth
 }

@@ -12,11 +12,4 @@ public class AttackData : ScriptableObject
 
     public float cooldown = 1f;
 }
-public enum Element
-{
-    Fire,
-    Water,
-    Plant,
-    Electric,
-    Earth
-}
+

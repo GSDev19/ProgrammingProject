@@ -23,7 +23,7 @@ public class PlayerController : Entity
             Destroy(this.gameObject);
         }
 
-        SetData(data);
+        EntityData = data;
     }
     private void Start()
     {
@@ -42,10 +42,5 @@ public class PlayerController : Entity
     private void FixedUpdate()
     {
         StateMachine.CurrentState.PhysicsUpdate();
-    }
-
-    public override void SetData(EntityData entityData)
-    {
-        base.SetData(entityData);
     }
 }

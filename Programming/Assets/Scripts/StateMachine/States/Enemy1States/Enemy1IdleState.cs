@@ -31,7 +31,7 @@ public class Enemy1IdleState : IdleState
     {
         base.LogicUpdate();
 
-        if (core.Collision.CheckDistanceToPlayer(core.player.transform, entity.transform, enemyData.minDistanceToPlayer))
+        if (!core.Collision.CheckDistanceToPlayer(core.player.transform, entity.transform, enemyData.minDistanceToPlayer))
         {
             stateMachine.ChangeState(entity.moveState);
         }

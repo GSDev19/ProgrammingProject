@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LifeComponent : CoreComponent
 {
     [SerializeField] private int currentHealth;
-
+    [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private float displayTime = 0.2f;
     public int GetInitialEntityHealth()
     {
         return GetComponentInParent<Entity>().EntityData.entityHealth;
@@ -13,20 +15,39 @@ public class LifeComponent : CoreComponent
     private void Start()
     {
         currentHealth = GetInitialEntityHealth();
+        damageText.gameObject.SetActive(false);
     }
     public void HandleDamage(int damage)
     {
         currentHealth -= damage;
 
-        Debug.Log(currentHealth);
-        if(currentHealth <= 0)
-        {
-            Entity entity  = GetComponentInParent<Entity>();
-            if(entity != null)
-            {
-                entity.gameObject.SetActive(false);
-            }
+        Entity entity = GetComponentInParent<Entity>();
 
+        if(entity != null)
+        {
+            if (entity.gameObject.activeSelf)
+            {                
+                DisplayDamage(damage);
+
+                if (currentHealth <= 0)
+                {
+                    StopAllCoroutines();
+                    entity.gameObject.SetActive(false);
+                }
+            }
         }
+
+
+    }
+    private void DisplayDamage(int damage)
+    {
+        damageText.text = damage.ToString();
+        StartCoroutine(ShowDamage());
+    }
+    private IEnumerator ShowDamage()
+    {
+        damageText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(displayTime);
+        damageText.gameObject.SetActive(false);
     }
 }

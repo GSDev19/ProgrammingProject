@@ -11,12 +11,12 @@ public class Enemy1 : Entity
     public override void Awake()
     {
         base.Awake();
-        SetData(data);
+
     }
 
     private void Start()
     {
-        moveState = new Enemy1MoveState(this, data, StateMachine, Core, stateName);
+        moveState = new Enemy1MoveState(this, data, StateMachine, Core, stateName, spriteRenderer);
         idleState = new Enemy1IdleState(this, data, StateMachine, Core, stateName);
 
         StateMachine.Initialize(idleState);
@@ -36,11 +36,4 @@ public class Enemy1 : Entity
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, data.minDistanceToPlayer);
     }
-
-    public override void SetData(EntityData entityData)
-    {
-        base.SetData(entityData);
-    }
-
-
 }

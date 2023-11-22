@@ -5,9 +5,11 @@ using UnityEngine;
 public class Enemy1MoveState : MoveState
 {
     Enemy1Data enemyData;
-    public Enemy1MoveState(Entity entity, Enemy1Data data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
+    SpriteRenderer spriteRenderer;
+    public Enemy1MoveState(Entity entity, Enemy1Data data, StateMachine stateMachine, Core core, string stateName, SpriteRenderer spriteRenderer) : base(entity, data, stateMachine, core, stateName)
     {
         this.enemyData = data;
+        this.spriteRenderer = spriteRenderer;
     }
 
     public override void DoChecks()
@@ -29,11 +31,9 @@ public class Enemy1MoveState : MoveState
     {
         base.LogicUpdate();
 
+        core.Movement.GoToPlayer(core.player.transform, entity.transform, enemyData.movementSpeed, enemyData.rotationSpeed, spriteRenderer);
+
         if (core.Collision.CheckDistanceToPlayer(core.player.transform, entity.transform, enemyData.minDistanceToPlayer))
-        {
-            core.Movement.GoToPlayer(core.player.transform, entity.transform, enemyData.movementSpeed, enemyData.rotationSpeed);
-        }
-        else
         {
             stateMachine.ChangeState(entity.idleState);
         }
