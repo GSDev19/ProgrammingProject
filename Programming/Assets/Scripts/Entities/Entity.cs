@@ -27,6 +27,11 @@ public class Entity : MonoBehaviour
         this.currentElement = element;
         this.EntityData = data;
         this.spriteRenderer.color = GameData.Instance.GetColor(element);
+        Debug.Log(this.Core);
+        Debug.Log(this.Core.Life);
+        Debug.Log(EntityData.entityHealth);
+
+        this.Core.Life.SetInitialEntityHealth(EntityData.entityHealth);
     }
 
 }

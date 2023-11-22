@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Utilities;
 
@@ -95,7 +96,10 @@ public class GameData : MonoBehaviour
     }
     public Element GetRandomElement()
     {
-        Element[] elements = (Element[])Enum.GetValues(typeof(Element));
+        Element[] elements = Enum.GetValues(typeof(Element))
+                                 .Cast<Element>()
+                                 .Where(e => e != Element.None)
+                                 .ToArray();
 
         int randomIndex = UnityEngine.Random.Range(0, elements.Length);
 

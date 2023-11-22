@@ -8,14 +8,14 @@ public class LifeComponent : CoreComponent
     [SerializeField] private int currentHealth;
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private float displayTime = 0.2f;
-    public int GetInitialEntityHealth()
-    {
-        return GetComponentInParent<Entity>().EntityData.entityHealth;
-    }
+
     private void Start()
     {
-        currentHealth = GetInitialEntityHealth();
         damageText.gameObject.SetActive(false);
+    }
+    public void SetInitialEntityHealth(int health)
+    {
+        currentHealth = health;
     }
     public void HandleDamage(int damage)
     {

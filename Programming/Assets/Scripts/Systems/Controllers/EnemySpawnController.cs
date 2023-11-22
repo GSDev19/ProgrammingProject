@@ -6,7 +6,7 @@ public class EnemySpawnController : MonoBehaviour
 {
     public static EnemySpawnController Instance;
 
-    public GameObject enemy1Prefab;
+    public Entity enemy1Prefab;
     public bool shouldCreateEnemy = false;
     private void Awake()
     {
@@ -19,10 +19,10 @@ public class EnemySpawnController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void Start()
-    {
-        CreateMultipleEnemies(10);
-    }
+    //private void Start()
+    //{
+    //    CreateMultipleEnemies(10);
+    //}
 
     private void Update()
     {
@@ -39,7 +39,7 @@ public class EnemySpawnController : MonoBehaviour
             CreateEnemy1(enemy1Prefab);
         }
     }
-    public void CreateEnemy1(GameObject enemy)
+    public void CreateEnemy1(Entity enemy)
     {
         Entity newEntity = GameObject.Instantiate(enemy, null, true).GetComponent<Entity>();
         Element randomElement = GameData.Instance.GetRandomElement();
