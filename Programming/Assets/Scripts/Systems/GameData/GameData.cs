@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
     public UDictionary<Element, Sprite> elementSprites = new UDictionary<Element, Sprite>();
     public UDictionary<Element, PrimaryData> primaryDatas = new UDictionary<Element, PrimaryData>();
     public UDictionary<Element, SecondaryData> secondaryDatas = new UDictionary<Element, SecondaryData>();
+    public UDictionary<Element, Color> elementColors = new UDictionary<Element, Color>();
 
     private void Awake()
     {
@@ -59,4 +60,16 @@ public class GameData : MonoBehaviour
         }
         return selected;
     }
+    public Color GetColor(Element element)
+    {
+        Color selected = Color.white;
+        foreach (Element key in elementColors.Keys)
+        {
+            if (key == element)
+            {
+                selected = elementColors[key];
+            }
+        }
+        return selected;
+    }    
 }

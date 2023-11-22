@@ -6,6 +6,7 @@ using UnityEngine;
 public class AreaDamage : MonoBehaviour
 {
     public Element areaElement;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<GameObject> enemiesInside = new List<GameObject>();
     [SerializeField] private float initalSize = 5f;
     [SerializeField] private float hitXSecond = 1f;
@@ -14,6 +15,7 @@ public class AreaDamage : MonoBehaviour
 
     public void SetAreaDamage(Element element, float size, float totalDuration, float rate, int dmg)
     {
+        spriteRenderer.color = GameData.Instance.GetColor(element);
         areaElement = element;
         transform.localScale = Vector3.one * (initalSize + initalSize * size);
         duration = totalDuration;

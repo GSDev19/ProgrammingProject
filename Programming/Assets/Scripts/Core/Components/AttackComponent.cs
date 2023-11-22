@@ -10,8 +10,8 @@ public class AttackComponent : CoreComponent
     private PrimaryData primaryAttackData;
     private SecondaryData secondaryAttackData;
 
-    public float currentPrimaryReloadTime {get; private set;}
-    public float currentSecondaryReloadTime { get; private set; }
+    private float currentPrimaryReloadTime;
+    private float currentSecondaryReloadTime;
 
     private bool canPrimaryAttack;
     private bool canSecondaryAttack;

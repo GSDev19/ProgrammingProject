@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public Element projectileElement;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<GameObject> hitted;
     [SerializeField] private Rigidbody2D RB;
     [SerializeField] private int damage = 0;
@@ -39,6 +40,7 @@ public class Projectile : MonoBehaviour
     }
     public void SetProjectile(Element element, Vector3 direction, float projectileSpeed, int dmg, int hits)
     {
+        spriteRenderer.color = GameData.Instance.GetColor(element);
         projectileElement = element;
         RB.velocity = direction * projectileSpeed;
         damage = dmg;
