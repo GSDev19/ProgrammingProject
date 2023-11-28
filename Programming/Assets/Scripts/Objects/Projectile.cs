@@ -13,10 +13,21 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int maxHits = 0;
     private void Awake()
     {
-        RB = GetComponent<Rigidbody2D>();
-        hitted = new List<GameObject>();
+        RB = GetComponent<Rigidbody2D>();        
     }
 
+    private void Update()
+    {
+        if (IsOutsideScreen())
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    private bool IsOutsideScreen()
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        return screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
@@ -46,6 +57,7 @@ public class Projectile : MonoBehaviour
         damage = dmg;
         currentHits = 0;
         maxHits = hits;
+        hitted = new List<GameObject>();
     }
 
     private void HandleHit(LifeComponent life)

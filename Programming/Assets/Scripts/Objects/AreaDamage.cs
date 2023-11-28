@@ -79,9 +79,8 @@ public class AreaDamage : MonoBehaviour
     }
     private IEnumerator DestoryAreaDamage()
     {
-
         yield return new WaitForSeconds(duration);
         StopCoroutine(Damage());
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

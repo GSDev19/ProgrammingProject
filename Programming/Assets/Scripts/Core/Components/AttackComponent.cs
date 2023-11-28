@@ -77,6 +77,8 @@ public class AttackComponent : CoreComponent
         // Calculate the direction from the player to the mouse position
         Vector3 direction = (mousePosition - transform.position).normalized;
 
+        Vector3 perpendicularVector = new Vector3(-direction.y, direction.x, 0f).normalized;
+
         // Calculate the angle in degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -84,14 +86,18 @@ public class AttackComponent : CoreComponent
         for (int i = 0; i < data.projectileAmount; i++)
         {
             // Create a projectile
-            GameObject projectile = Instantiate(data.prefab, transform.position, Quaternion.Euler(0f, 0f, angle));
+            //GameObject projectile = Instantiate(data.prefab, transform.position, Quaternion.Euler(0f, 0f, angle));
+            Vector3 spawnPosition = transform.position + perpendicularVector * (i - (data.projectileAmount - 1) / 2f) * 0.5f;
+
+            GameObject projectile = SpawnController.Instance.projectilePool.Spawn(spawnPosition, Quaternion.Euler(0f, 0f, angle));
 
             projectile.GetComponent<Projectile>().SetProjectile(data.element, direction, data.speed, data.damage, data.enemyHits);
         }
     }
     private void CreateAttackArea(SecondaryData data)
     {
-        GameObject areaDamage = Instantiate(data.prefab, transform.position, Quaternion.identity);
+        //GameObject areaDamage = Instantiate(data.prefab, transform.position, Quaternion.identity);
+        GameObject areaDamage = SpawnController.Instance.areaDamagePool.Spawn(transform.position, Quaternion.identity);
         areaDamage.GetComponent<AreaDamage>().SetAreaDamage(data.element,data.areaSize, data.duration, data.hitsXSecond, data.damage);
     }
     private IEnumerator PrimaryCooldown(float cooldown)
