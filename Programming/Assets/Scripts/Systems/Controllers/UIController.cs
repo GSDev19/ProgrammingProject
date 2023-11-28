@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+    [Header("Experience")]
+    public Image experienceBar;
+    public TextMeshProUGUI levelText;
+    [Space]
     [Header("Attack Selection")]
     public AttackSelectionHandler attacksHandler;
     public CanvasGroup attackSelectionCanvasGroup;
@@ -39,6 +44,15 @@ public class UIController : MonoBehaviour
         ShowAttackSelectionPanel(false);
         ShowAttackUpgradePanel(false);
     }
+
+    #region Experience
+    public void SetBarFillAmount(int current, int target, int level)
+    {
+        float fill = (float)current / target;
+        experienceBar.fillAmount = fill;
+        levelText.text = level.ToString();
+    }
+    #endregion
 
     #region Attack Selection 
 

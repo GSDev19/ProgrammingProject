@@ -11,5 +11,7 @@ public class EntityData : ScriptableObject
     public float movementSpeed = 5f;
     [Header("HEALTH")]
     public int entityHealth = 100;
+    [Header("EXP")]
+    public int entityExp = 10;
 
 }

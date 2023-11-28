@@ -10,6 +10,7 @@ public class Core : MonoBehaviour
     public CollisionComponent Collision { get; private set; }
     public AttackComponent Attack { get; private set; }
     public LifeComponent Life { get; private set; }
+    public ExperienceComponent Experience { get; private set; }
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class Core : MonoBehaviour
         Collision = GetComponentInChildren<CollisionComponent>();
         Attack = GetComponentInChildren<AttackComponent>();
         Life = GetComponentInChildren<LifeComponent>();
+        Experience = GetComponentInChildren<ExperienceComponent>();
     }
     private void Start()
     {

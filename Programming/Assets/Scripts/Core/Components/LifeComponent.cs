@@ -16,6 +16,7 @@ public class LifeComponent : CoreComponent
     public void SetInitialEntityHealth(int health)
     {
         currentHealth = health;
+        damageText.gameObject.SetActive(false);
     }
     public void HandleDamage(int damage)
     {
@@ -33,10 +34,23 @@ public class LifeComponent : CoreComponent
                 {
                     StopAllCoroutines();
                     entity.gameObject.SetActive(false);
+
+                    if(entity != PlayerController.Instance)
+                    {
+                        PlayerController.Instance.Core.Experience.AddExperience(entity.EntityData.entityExp);
+                    }
+                    else
+                    {
+                        Debug.Log("DEAD PLAYER");
+                    }
                 }
             }
         }
 
+
+    }
+    public void ResetLife()
+    {
 
     }
     private void DisplayDamage(int damage)
