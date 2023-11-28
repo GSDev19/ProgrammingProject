@@ -7,9 +7,13 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
     [Header("Attack Selection")]
-    [SerializeField] private AttackSelectionHandler attacksHandler;
+    public AttackSelectionHandler attacksHandler;
     public CanvasGroup attackSelectionCanvasGroup;
     public bool isAttackSelectionOpen = false;
+    [Space]
+    [Header("Attack Upgrade")]
+    public AttackUpgradeHandler upgradeHandler;
+
     [Space]
     [Header("Attack Cooldowns")]
     public Image primaryCooldownSprite;

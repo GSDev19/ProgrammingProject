@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Rendering.FilterWindow;
 
-public class ElementButton : MonoBehaviour
+public class ReferenceButton : MonoBehaviour
 {
     private Image image;
     [SerializeField] private Element buttonElement;
     public AttackActionType actionType;
     AttackComponent AttackComponent;
+    PrimaryData primaryData;
+    SecondaryData secondaryData;
 
     private void Awake()
     {
@@ -24,21 +27,18 @@ public class ElementButton : MonoBehaviour
         this.image.sprite = GameData.Instance.GetElementSprite(element);
         this.actionType = actionType;
     }
-
     public void OnButtonClick()
     {
         if(actionType == AttackActionType.Primary)
         {
-            AttackComponent.SetPrimaryData(buttonElement);
+            primaryData = GameData.Instance.GetPrimaryData(buttonElement);
+            UIController.Instance.upgradeHandler.SetPrimaryUpgradeData(buttonElement, primaryData);
         }
         else if(actionType == AttackActionType.Secondary)
         {
-            AttackComponent.SetSecondaryData(buttonElement);
+            secondaryData = GameData.Instance.GetSecondaryData(buttonElement);
+            UIController.Instance.upgradeHandler.SetSecondaryUpgradeData(buttonElement, secondaryData);
         }
+
     }
-}
-public enum AttackActionType
-{
-    Primary,
-    Secondary
 }

@@ -12,4 +12,8 @@ public class AttackData : ScriptableObject
 
     public float cooldown = 1f;
 }
-
+public enum AttackActionType
+{
+    Primary,
+    Secondary
+}
