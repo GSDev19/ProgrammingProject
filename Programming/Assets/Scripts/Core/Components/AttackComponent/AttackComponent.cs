@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class AttackComponent : CoreComponent
 {
-    public Element currentPrimaryElement;
-    public Element currentSecondaryElement;
+    protected Element currentPrimaryElement;
+    protected Element currentSecondaryElement;
 
-    private PrimaryData primaryAttackData;
-    private SecondaryData secondaryAttackData;
+    protected PrimaryData primaryAttackData;
+    protected SecondaryData secondaryAttackData;
 
-    private float currentPrimaryReloadTime;
-    private float currentSecondaryReloadTime;
+    protected float currentPrimaryReloadTime;
+    protected float currentSecondaryReloadTime;
 
-    private bool canPrimaryAttack;
-    private bool canSecondaryAttack;
+    protected bool canPrimaryAttack;
+    protected bool canSecondaryAttack;
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class AttackComponent : CoreComponent
 
     private void CheckIfSameElement()
     {
-        if(currentPrimaryElement == currentSecondaryElement)
+        if (currentPrimaryElement == currentSecondaryElement)
         {
             PlayerController.Instance.ChangeElement(currentPrimaryElement);
         }
@@ -70,7 +70,7 @@ public class AttackComponent : CoreComponent
         }
     }
 
-    private void FireProjetiles(PrimaryData data)
+    protected void FireProjetiles(PrimaryData data)
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -94,7 +94,7 @@ public class AttackComponent : CoreComponent
             projectile.GetComponent<Projectile>().SetProjectile(data.element, direction, data.speed, data.damage, data.enemyHits);
         }
     }
-    private void CreateAttackArea(SecondaryData data)
+    protected void CreateAttackArea(SecondaryData data)
     {
         //GameObject areaDamage = Instantiate(data.prefab, transform.position, Quaternion.identity);
         GameObject areaDamage = SpawnController.Instance.areaDamagePool.Spawn(transform.position, Quaternion.identity);

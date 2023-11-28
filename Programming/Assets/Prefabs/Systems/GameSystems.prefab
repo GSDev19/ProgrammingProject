@@ -1787,10 +1787,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d70f1f6e6885074682dc7ba5a4f1eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy1Prefab: {fileID: 7853895664911391782, guid: 7de9ff907f461c246b0594d57392fdd5, type: 3}
   spawnRadius: 20
   spawnRate: 10
-  shouldCreateEnemy: 0
+  levelSpawnData: {fileID: 11400000, guid: b2063cc4279457946a379035455ba9f6, type: 2}
+  currentSpawnData:
+    amountOfEnemies: 0
+    enemydatas: []
+    elements: 
+  spawnDataIndex: 0
 --- !u!114 &7484941574392471876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5888,14 +5892,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8799f30872e4e924a980773d2e19b09e, type: 2}
     - {fileID: 11400000, guid: 3d571fcb9fe9692429d103ebbeb39fa7, type: 2}
     - {fileID: 11400000, guid: 513b6b2c26c348242a23042461ffd5f3, type: 2}
-  enemy1Datas:
-    keys: 0000000001000000020000000300000004000000
-    values:
-    - {fileID: 11400000, guid: 723129b54d5f7164793099064886e91b, type: 2}
-    - {fileID: 11400000, guid: 11fbde8cf1d4b0d4b807afe3ab06ea11, type: 2}
-    - {fileID: 11400000, guid: 9b49c8635ff4b4542a9ddb609f2fefb3, type: 2}
-    - {fileID: 11400000, guid: a8c18664e99f8db479d9b61850153d06, type: 2}
-    - {fileID: 11400000, guid: 08afc4b89f3302a4794dd426615c235c, type: 2}
 --- !u!1 &6408089036176133227
 GameObject:
   m_ObjectHideFlags: 0
@@ -8978,6 +8974,10 @@ PrefabInstance:
     - target: {fileID: 7972868128790181799, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093285312982316413, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
+      propertyPath: initialTargetExperience
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9093285312982316413, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
       propertyPath: targerIncreasePercentaje

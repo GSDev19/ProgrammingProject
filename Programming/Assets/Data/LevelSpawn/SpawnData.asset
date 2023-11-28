@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f5c0e1b7d115d4db96b7f5297e9d71, type: 3}
+  m_Name: SpawnData
+  m_EditorClassIdentifier: 
+  spawnDatas:
+  - amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: 723129b54d5f7164793099064886e91b, type: 2}
+    elements: 000000000100000002000000
+  - amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: 723129b54d5f7164793099064886e91b, type: 2}
+    - {fileID: 11400000, guid: 50ceaec5750fcea4a83adb8243c1a2cf, type: 2}
+    elements: 010000000200000003000000
+  - amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: 50ceaec5750fcea4a83adb8243c1a2cf, type: 2}
+    - {fileID: 11400000, guid: d0c40e47a8b5e3948888be4b9fc8fcd3, type: 2}
+    elements: 020000000300000004000000
+  - amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: d0c40e47a8b5e3948888be4b9fc8fcd3, type: 2}
+    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
+    elements: 030000000400000000000000
+  - amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
+    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
+    elements: 040000000000000001000000
+  - amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
+    elements: 000000000100000002000000

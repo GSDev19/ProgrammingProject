@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Core : MonoBehaviour
 {
-    public PlayerController player { get; private set; }
+    //public PlayerController player { get; private set; }
+    public Entity Entity { get; private set; }
     public Rigidbody2D RB { get; private set; }
     public MovementComponent Movement { get; private set; }
     public CollisionComponent Collision { get; private set; }
@@ -14,6 +16,8 @@ public class Core : MonoBehaviour
 
     private void Awake()
     {
+        Entity = GetComponentInParent<Entity>();
+
         RB = GetComponentInParent<Rigidbody2D>();
 
         Movement = GetComponentInChildren<MovementComponent>();
@@ -22,8 +26,8 @@ public class Core : MonoBehaviour
         Life = GetComponentInChildren<LifeComponent>();
         Experience = GetComponentInChildren<ExperienceComponent>();
     }
-    private void Start()
-    {
-        player = PlayerController.Instance;
-    }
+    //private void Start()
+    //{
+    //    player = PlayerController.Instance;
+    //}
 }

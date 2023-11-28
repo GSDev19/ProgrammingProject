@@ -17,9 +17,9 @@ public class GameData : MonoBehaviour
     public UDictionary<Element, PrimaryData> primaryDatas = new UDictionary<Element, PrimaryData>();
     public UDictionary<Element, SecondaryData> secondaryDatas = new UDictionary<Element, SecondaryData>();
 
-    [Space]
-    [Header("ENEMIES")]
-    public UDictionary<Element, EntityData> enemy1Datas = new UDictionary<Element, EntityData>();
+    //[Space]
+    //[Header("ENEMIES")]
+    //public UDictionary<Element, EntityData> enemy1Datas = new UDictionary<Element, EntityData>();
 
     private void Awake()
     {
@@ -82,28 +82,40 @@ public class GameData : MonoBehaviour
         return selected;
     }    
 
-    public EntityData GetEnemy1Data(Element element)
+    //public EntityData GetEnemy1Data(Element element)
+    //{
+    //    EntityData selected = null;
+    //    foreach (Element key in enemy1Datas.Keys)
+    //    {
+    //        if (key == element)
+    //        {
+    //            selected = enemy1Datas[key];
+    //        }
+    //    }
+    //    return selected;
+    //}
+    public Element GetRandomElement(List<Element> listedElements)
     {
-        EntityData selected = null;
-        foreach (Element key in enemy1Datas.Keys)
+        if(listedElements.Count > 0)
         {
-            if (key == element)
-            {
-                selected = enemy1Datas[key];
-            }
+            int randomIndex = UnityEngine.Random.Range(0, listedElements.Count -1);
+
+            return listedElements[randomIndex];
         }
-        return selected;
-    }
-    public Element GetRandomElement()
-    {
-        Element[] elements = Enum.GetValues(typeof(Element))
-                                 .Cast<Element>()
-                                 .Where(e => e != Element.None)
-                                 .ToArray();
+        else
+        {
+            return Element.None;
+        }
+        
+       
+        //Element[] elements = Enum.GetValues(typeof(Element))
+        //                         .Cast<Element>()
+        //                         .Where(e => e != Element.None)
+        //                         .ToArray();
 
-        int randomIndex = UnityEngine.Random.Range(0, elements.Length);
+        //int randomIndex = UnityEngine.Random.Range(0, elements.Length);
 
-        return elements[randomIndex];
+        //return elements[randomIndex];
     }
 }
 public enum Element

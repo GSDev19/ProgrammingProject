@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3424681430100897667}
-  - component: {fileID: 6793916029468300730}
+  - component: {fileID: 7224697218230460931}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -215,7 +215,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 980830192200003436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6793916029468300730
+--- !u!114 &7224697218230460931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,11 +224,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3993467991987601946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012d6807d8ad14d4cbaba2415bae6d3e, type: 3}
+  m_Script: {fileID: 11500000, guid: a5fe3f88891cbec48ac6af30dc07f37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPrimaryElement: 0
-  currentSecondaryElement: 1
 --- !u!1 &5479838081596175825
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   currentExperience: 0
-  targetExperience: 100
+  initialTargetExperience: 50
   targerIncreasePercentaje: 5
 --- !u!1 &7114436712406182677
 GameObject:

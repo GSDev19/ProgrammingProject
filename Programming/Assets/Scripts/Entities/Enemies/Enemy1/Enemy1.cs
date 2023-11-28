@@ -11,7 +11,6 @@ public class Enemy1 : Entity
     public override void Awake()
     {
         base.Awake();
-
     }
 
     private void Start()
@@ -35,5 +34,7 @@ public class Enemy1 : Entity
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, data.minDistanceToPlayer);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, data.damageRadious);
     }
 }

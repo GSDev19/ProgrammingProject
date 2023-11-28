@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7de90d14ce3189047b7af21f5763f04b, type: 3}
-  m_Name: Enemy1_Fire
+  m_Name: Enemy1_Lv 2
   m_EditorClassIdentifier: 
-  movementSpeed: 1.5
-  entityHealth: 100
-  minDistanceToPlayer: 0.7
+  enemySize: 2.3
+  movementSpeed: 2.2
+  entityHealth: 80
+  entityExp: 10
+  minDistanceToPlayer: 1.7
   rotationSpeed: 10

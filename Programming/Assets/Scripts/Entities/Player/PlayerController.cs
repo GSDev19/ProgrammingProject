@@ -33,6 +33,8 @@ public class PlayerController : Entity
         secondaryAttackState = new PlayerSecondaryAttackState(this, data, StateMachine, Core, stateName);
 
         StateMachine.Initialize(idleState);
+
+        Core.Life.SetInitialEntityHealth(data.entityHealth);
     }
     private void Update()
     {

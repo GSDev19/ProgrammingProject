@@ -6,10 +6,13 @@ public class EnemySpawnController : MonoBehaviour
 {
     public static EnemySpawnController Instance;
 
-    public Entity enemy1Prefab;
+    //public Entity enemy1Prefab;
     [SerializeField] private float spawnRadius = 20f;
     [SerializeField] private float spawnRate = 10f;
-    public bool shouldCreateEnemy = false;
+
+    public LevelSpawnData levelSpawnData;
+    public SpawnData currentSpawnData;
+    public int spawnDataIndex = 0;
     private void Awake()
     {
         if (!Instance)
@@ -23,19 +26,38 @@ public class EnemySpawnController : MonoBehaviour
     }
     private void Start()
     {
-        CreateMultipleEnemies(10);
+        spawnDataIndex = 0;
+        currentSpawnData = levelSpawnData.spawnDatas[spawnDataIndex];
+
+        CreateMultipleEnemies(currentSpawnData.amountOfEnemies);
     }
 
     public void CreateMultipleEnemies(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            CreateEnemy1(enemy1Prefab);
+            CreateEnemy();
         }
 
         StartCoroutine(HandleEnemyCreation());
+
+
     }
-    public void CreateEnemy1(Entity enemy)
+
+    public int GetNextIndex()
+    {
+        int currentIndex = spawnDataIndex;
+
+        if(currentIndex  >= levelSpawnData.spawnDatas.Count)
+        {
+            return 0;
+        }
+        else
+        {
+            return currentIndex + 1;
+        }
+    }
+    public void CreateEnemy()
     {
         float randomAngle = Random.Range(0f, 360f);
 
@@ -45,16 +67,29 @@ public class EnemySpawnController : MonoBehaviour
         // Calculate the spawn position just outside the camera view
         Vector3 spawnPosition = PlayerController.Instance.transform.position + spawnDirection * spawnRadius;
 
-
-        //Entity newEntity = GameObject.Instantiate(enemy, spawnPosition, Quaternion.identity).GetComponent<Entity>();
         Entity newEntity = SpawnController.Instance.enemy1Pool.Spawn(spawnPosition, Quaternion.identity).GetComponent<Entity>();
-        Element randomElement = GameData.Instance.GetRandomElement();
-        newEntity.SetEntity(randomElement, GameData.Instance.GetEnemy1Data(randomElement));
+        Element randomElement = GameData.Instance.GetRandomElement(currentSpawnData.elements);
+        EntityData randomEntityData = GetRandomData(currentSpawnData.enemydatas);
+        newEntity.SetEntity(randomElement, randomEntityData);
+    }
+    private EntityData GetRandomData(List<EntityData> entities)
+    {
+        if (entities.Count > 0)
+        {
+            int randomIndex = Random.Range(0, entities.Count - 1);
+
+            return entities[randomIndex];
+        }
+        else
+        {
+            return entities[0];
+        }
     }
     private IEnumerator HandleEnemyCreation()
     {
         yield return new WaitForSeconds(spawnRate);
-        CreateMultipleEnemies(10);
+        currentSpawnData = levelSpawnData.spawnDatas[GetNextIndex()];
+        CreateMultipleEnemies(currentSpawnData.amountOfEnemies);
 
     }
     private void OnDrawGizmos()
