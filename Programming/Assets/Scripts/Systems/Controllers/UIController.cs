@@ -13,7 +13,8 @@ public class UIController : MonoBehaviour
     [Space]
     [Header("Attack Upgrade")]
     public AttackUpgradeHandler upgradeHandler;
-
+    public CanvasGroup attackUpgradeCanvasGroup;
+    public bool isAttackUpgradeOpen = false;
     [Space]
     [Header("Attack Cooldowns")]
     public Image primaryCooldownSprite;
@@ -36,6 +37,7 @@ public class UIController : MonoBehaviour
     {
         isAttackSelectionOpen = false;
         ShowAttackSelectionPanel(false);
+        ShowAttackUpgradePanel(false);
     }
 
     #region Attack Selection 
@@ -55,6 +57,22 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1f;
         }
         UIHelpers.SetCanvasGroup(attackSelectionCanvasGroup, isAttackSelectionOpen);
+    }
+    public void ShowAttackUpgradePanel(bool value)
+    {
+        isAttackUpgradeOpen = value;
+
+        if (isAttackUpgradeOpen == true)
+        {
+            upgradeHandler.CreateButtons();
+            Time.timeScale = 0f;
+
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        UIHelpers.SetCanvasGroup(attackUpgradeCanvasGroup, isAttackUpgradeOpen);
     }
     #endregion
 

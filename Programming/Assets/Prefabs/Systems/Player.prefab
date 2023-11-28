@@ -440,6 +440,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: be90b2e5-2d1b-4fae-98c3-f393c2516b8d
     m_ActionName: Player/AttackSelectionPanel[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6204714386597115406}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnAttackUpgradeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 31d12857-db4d-4a15-89ea-aaaf465ebbca
+    m_ActionName: Player/AttackUpgradePanel[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour
     public bool PrimaryAttackInput { get; private set; }
     public bool SecondaryAttackInput { get; private set; }
     public bool AttackSelectionInput { get; private set; }
+    public bool AttackUpgradeInput { get; private set; }
     public bool isPointerOnUi { get; private set; }
 
     private void Awake()
@@ -72,6 +73,20 @@ public class InputHandler : MonoBehaviour
         {
             AttackSelectionInput = false;
             UIController.Instance.ShowAttackSelectionPanel(false);
+        }
+    }
+    public void OnAttackUpgradeInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            AttackUpgradeInput = true;
+            UIController.Instance.ShowAttackUpgradePanel(true);
+        }
+
+        if (context.canceled)
+        {
+            AttackUpgradeInput = false;
+            UIController.Instance.ShowAttackUpgradePanel(false);
         }
     }
     private bool IsPointerOverUI()
