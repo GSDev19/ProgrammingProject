@@ -51,7 +51,7 @@ public class EnemyAttackComponent : AttackComponent
         if(Core.Entity.currentElement != PlayerController.Instance.currentElement)
         {
             canDamage = false;
-            PlayerController.Instance.Core.Life.HandleDamage(data.damage);
+            PlayerController.Instance.Core.Life.HandleDamage(data.damage, Core.Entity.currentElement);
             StartCoroutine(DamageCooldow());
         } 
     }

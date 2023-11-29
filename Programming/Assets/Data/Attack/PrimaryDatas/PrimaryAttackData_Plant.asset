@@ -17,5 +17,5 @@ MonoBehaviour:
   damage: 20
   cooldown: 1
   speed: 50
-  enemyHits: 2
+  enemyHits: 1
   projectileAmount: 1

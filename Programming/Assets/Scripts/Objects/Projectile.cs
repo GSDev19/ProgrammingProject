@@ -33,20 +33,14 @@ public class Projectile : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Entity entity = collision.gameObject.GetComponent<Entity>();
+            LifeComponent life = entity.Core.Life;
 
-            if(entity.currentElement != projectileElement)
+            if (life != null && !hitted.Contains(collision.gameObject))
             {
-                LifeComponent life = entity.Core.Life;
-
-                if (life != null && !hitted.Contains(collision.gameObject))
-                {
-                    hitted.Add(collision.gameObject);
-                    currentHits++;
-                    HandleHit(life);
-                }
+                hitted.Add(collision.gameObject);
+                currentHits++;
+                HandleHit(life);
             }
-
-
         }
     }
     public void SetProjectile(Element element, Vector3 direction, float projectileSpeed, int dmg, int hits)
@@ -62,7 +56,7 @@ public class Projectile : MonoBehaviour
 
     private void HandleHit(LifeComponent life)
     {
-        life.HandleDamage(damage);
+        life.HandleDamage(damage, projectileElement);
 
         if(currentHits >= maxHits)
         {

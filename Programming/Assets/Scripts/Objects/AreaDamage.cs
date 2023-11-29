@@ -65,14 +65,11 @@ public class AreaDamage : MonoBehaviour
             {
                 Entity entity = obj.GetComponent<Entity>();
 
-                if (entity.currentElement != areaElement)
-                {
-                    LifeComponent life = entity.Core.Life;
+                LifeComponent life = entity.Core.Life;
 
-                    if (life != null)
-                    {
-                        life.HandleDamage(damage);
-                    }
+                if (life != null)
+                {
+                    life.HandleDamage(damage, areaElement);
                 }
             }
         }

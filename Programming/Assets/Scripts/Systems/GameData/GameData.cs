@@ -16,10 +16,15 @@ public class GameData : MonoBehaviour
     public UDictionary<Element, Sprite> elementSprites = new UDictionary<Element, Sprite>();
     public UDictionary<Element, PrimaryData> primaryDatas = new UDictionary<Element, PrimaryData>();
     public UDictionary<Element, SecondaryData> secondaryDatas = new UDictionary<Element, SecondaryData>();
+    [Space]
+    [Space]
+    [Header("ATTACKS MODIFIER")]
+    public UDictionary<Element, float> fireDamage = new UDictionary<Element, float>();
+    public UDictionary<Element, float> waterDamage = new UDictionary<Element, float>();
+    public UDictionary<Element, float> plantDamage = new UDictionary<Element, float>();
+    public UDictionary<Element, float> electricDamage = new UDictionary<Element, float>();
+    public UDictionary<Element, float> earthDamage = new UDictionary<Element, float>();
 
-    //[Space]
-    //[Header("ENEMIES")]
-    //public UDictionary<Element, EntityData> enemy1Datas = new UDictionary<Element, EntityData>();
 
     private void Awake()
     {
@@ -82,6 +87,47 @@ public class GameData : MonoBehaviour
         return selected;
     }    
 
+    public float GetDamageModifier(Element attackElement, Element targetElement)
+    {
+        float mod = 1;
+        if(attackElement == Element.Fire)
+        {
+            mod = GetModifierFromDictionary(fireDamage, targetElement);
+        }
+        else if(attackElement == Element.Water)
+        {
+            mod = GetModifierFromDictionary(waterDamage, targetElement);
+        }
+        else if(attackElement == Element.Plant)
+        {
+            mod = GetModifierFromDictionary(plantDamage, targetElement);
+        }
+        else if(attackElement == Element.Electric)
+        {
+            mod = GetModifierFromDictionary(electricDamage, targetElement);
+        }
+        else if(attackElement == Element.Earth)
+        {
+            mod = GetModifierFromDictionary(earthDamage, targetElement);
+        }
+        else
+        {
+            return mod;
+        }
+        return mod;
+    }
+    private float GetModifierFromDictionary(UDictionary<Element, float>  dictionary, Element targetElement)
+    {
+        float mod = 1f;
+        foreach(Element key in dictionary.Keys)
+        {
+            if (key == targetElement)
+            {
+                mod = dictionary[key];                
+            }
+        }
+        return mod;
+    }
     //public EntityData GetEnemy1Data(Element element)
     //{
     //    EntityData selected = null;

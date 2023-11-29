@@ -18,9 +18,14 @@ public class LifeComponent : CoreComponent
         currentHealth = health;
         damageText.gameObject.SetActive(false);
     }
-    public void HandleDamage(int damage)
+    public void HandleDamage(float damage, Element attackElement)
     {
-        currentHealth -= damage;
+        Debug.Log(attackElement);
+        Debug.Log(Core.Entity.currentElement);
+        Debug.Log((int)damage);
+        Debug.Log((int)GameData.Instance.GetDamageModifier(attackElement, Core.Entity.currentElement));
+        int dmg = (int)damage * (int)GameData.Instance.GetDamageModifier(attackElement, Core.Entity.currentElement);
+        currentHealth -= dmg;
 
         Entity entity = GetComponentInParent<Entity>();
 
@@ -28,7 +33,7 @@ public class LifeComponent : CoreComponent
         {
             if (entity.gameObject.activeSelf)
             {                
-                DisplayDamage(damage);
+                DisplayDamage(dmg);
 
                 if (currentHealth <= 0)
                 {
