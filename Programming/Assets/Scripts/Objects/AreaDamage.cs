@@ -11,9 +11,9 @@ public class AreaDamage : MonoBehaviour
     [SerializeField] private float initalSize = 5f;
     [SerializeField] private float hitXSecond = 1f;
     [SerializeField] private float duration= 1f;
-    [SerializeField] private int damage = 0;
+    [SerializeField] private float damage = 0;
 
-    public void SetAreaDamage(Element element, float size, float totalDuration, float rate, int dmg)
+    public void SetAreaDamage(Element element, float size, float totalDuration, float rate, float dmg)
     {
         spriteRenderer.color = GameData.Instance.GetColor(element);
         areaElement = element;

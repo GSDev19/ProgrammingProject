@@ -57,7 +57,7 @@ public class AttackComponent : CoreComponent
         {
             canPrimaryAttack = false;
             FireProjetiles(primaryAttackData);
-            StartCoroutine(PrimaryCooldown(primaryAttackData.cooldown));
+            StartCoroutine(PrimaryCooldown(primaryAttackData.cooldownStat.currentValue));
         }
     }
     public void HandleSecondaryAttack()
@@ -66,7 +66,7 @@ public class AttackComponent : CoreComponent
         {
             canSecondaryAttack = false;
             CreateAttackArea(secondaryAttackData);
-            StartCoroutine(SecondaryCooldown(secondaryAttackData.cooldown));
+            StartCoroutine(SecondaryCooldown(secondaryAttackData.cooldownStat.currentValue));
         }
     }
 
@@ -83,22 +83,22 @@ public class AttackComponent : CoreComponent
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Loop to instantiate and shoot multiple projectiles
-        for (int i = 0; i < data.projectileAmount; i++)
+        for (int i = 0; i < data.projectileAmountStat.currentValue; i++)
         {
             // Create a projectile
             //GameObject projectile = Instantiate(data.prefab, transform.position, Quaternion.Euler(0f, 0f, angle));
-            Vector3 spawnPosition = transform.position + perpendicularVector * (i - (data.projectileAmount - 1) / 2f) * 0.5f;
+            Vector3 spawnPosition = transform.position + perpendicularVector * (i - (data.projectileAmountStat.currentValue - 1) / 2f) * 0.5f;
 
             GameObject projectile = SpawnController.Instance.projectilePool.Spawn(spawnPosition, Quaternion.Euler(0f, 0f, angle));
 
-            projectile.GetComponent<Projectile>().SetProjectile(data.element, direction, data.speed, data.damage, data.enemyHits);
+            projectile.GetComponent<Projectile>().SetProjectile(data.element, direction, data.speedStat.currentValue, data.damageStat.currentValue, data.enemyHitsStat.currentValue);
         }
     }
     protected void CreateAttackArea(SecondaryData data)
     {
         //GameObject areaDamage = Instantiate(data.prefab, transform.position, Quaternion.identity);
         GameObject areaDamage = SpawnController.Instance.areaDamagePool.Spawn(transform.position, Quaternion.identity);
-        areaDamage.GetComponent<AreaDamage>().SetAreaDamage(data.element,data.areaSize, data.duration, data.hitsXSecond, data.damage);
+        areaDamage.GetComponent<AreaDamage>().SetAreaDamage(data.element,data.areaSizeStat.currentValue, data.durationStat.currentValue, data.hitsXSecondStat.currentValue, data.damageStat.currentValue);
     }
     private IEnumerator PrimaryCooldown(float cooldown)
     {

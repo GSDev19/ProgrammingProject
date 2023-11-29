@@ -12,12 +12,6 @@ public class SecondaryUpgradePanel : MonoBehaviour
     public TextMeshProUGUI durationText;
     public TextMeshProUGUI hitsText;
 
-    //public int damage;
-    //public float cooldown;
-    //public float areaSize;
-    //public float duration;
-    //public float hitsXSecond;
-
     public Image secondaryImage;
 
     public SecondaryData currentSecondaryData;
@@ -25,59 +19,50 @@ public class SecondaryUpgradePanel : MonoBehaviour
     public void Set(Element element, SecondaryData data)
     {
         this.currentSecondaryData = data;
-        //this.damage = data.damage;
-        //this.cooldown = data.cooldown;
-        //this.areaSize = data.areaSize;
-        //this.duration = data.duration;
-        //this.hitsXSecond = data.hitsXSecond;
 
         secondaryImage.sprite = GameData.Instance.GetElementSprite(element);
 
-        damageText.text = currentSecondaryData.damage.ToString();
-        cooldownText.text = currentSecondaryData.cooldown.ToString();
-        areaSizeText.text = currentSecondaryData.areaSize.ToString();
-        durationText.text = currentSecondaryData.duration.ToString();
-        hitsText.text = currentSecondaryData.hitsXSecond.ToString();
+        UpdateValues();
 
     }
     public void UpdateValues()
     {
-        damageText.text = currentSecondaryData.damage.ToString();
-        cooldownText.text = currentSecondaryData.cooldown.ToString();
-        areaSizeText.text = currentSecondaryData.areaSize.ToString();
-        durationText.text = currentSecondaryData.duration.ToString();
-        hitsText.text = currentSecondaryData.hitsXSecond.ToString();
+        damageText.text = currentSecondaryData.damageStat.currentValue.ToString();
+        cooldownText.text = currentSecondaryData.cooldownStat.currentValue.ToString();
+        areaSizeText.text = currentSecondaryData.areaSizeStat.currentValue.ToString();
+        durationText.text = currentSecondaryData.durationStat.currentValue.ToString();
+        hitsText.text = currentSecondaryData.hitsXSecondStat.currentValue.ToString();
     }
 
 
     public void UpgradeDamage()
     {
-        currentSecondaryData.damage += currentSecondaryData.damageUpgradeAmount;
-        currentSecondaryData.damageUpgradeAmount++;
+        currentSecondaryData.damageStat.currentValue += currentSecondaryData.damageStat.incrementAmount;
+        currentSecondaryData.damageStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeCooldown()
     {
-        currentSecondaryData.cooldown -= currentSecondaryData.cooldown * currentSecondaryData.cooldownUpgradePercent;
-        currentSecondaryData.cooldownUpgradedTimes++;
+        currentSecondaryData.cooldownStat.currentValue -= currentSecondaryData.cooldownStat.currentValue * currentSecondaryData.cooldownStat.incrementPercentaje;
+        currentSecondaryData.cooldownStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeAreaSize()
     {
-        currentSecondaryData.areaSize += currentSecondaryData.areaSize * currentSecondaryData.areaSizeUpgradePercent;
-        currentSecondaryData.areaSizeUpgradedTimes++;
+        currentSecondaryData.areaSizeStat.currentValue += currentSecondaryData.areaSizeStat.currentValue * currentSecondaryData.areaSizeStat.incrementPercentaje;
+        currentSecondaryData.areaSizeStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeDuration()
     {
-        currentSecondaryData.duration += currentSecondaryData.duration * currentSecondaryData.durationUpgradePercent;
-        currentSecondaryData.durationUpgradedTimes++;
+        currentSecondaryData.durationStat.currentValue += currentSecondaryData.durationStat.currentValue * currentSecondaryData.durationStat.incrementPercentaje;
+        currentSecondaryData.durationStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeHitsXSecond()
     {
-        currentSecondaryData.hitsXSecond += currentSecondaryData.hitsXSecondUpgradeAmount;
-        currentSecondaryData.hitsXSecondUpgradedTimes++;
+        currentSecondaryData.hitsXSecondStat.currentValue += currentSecondaryData.hitsXSecondStat.incrementAmount;
+        currentSecondaryData.hitsXSecondStat.timesIncremented++;
         UpdateValues();
     }
 }

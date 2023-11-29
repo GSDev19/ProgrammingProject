@@ -1138,7 +1138,7 @@ MonoBehaviour:
   cooldownText: {fileID: 5494376193170522063}
   speedText: {fileID: 1983101498071410656}
   hitsText: {fileID: 2613537176894795007}
-  projetileAmount: {fileID: 0}
+  projetileAmount: {fileID: 6951494791231797974}
   primaryImage: {fileID: 1350451824336327421}
   currentPrimaryData: {fileID: 0}
 --- !u!1 &1368398682384244294

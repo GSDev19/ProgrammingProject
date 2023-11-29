@@ -8,15 +8,8 @@ public class AttackData : ScriptableObject
 
     public GameObject prefab;
 
-    public int damage = 20;
-
-    public float cooldown = 1f;
-
-    public int damageUpgradeAmount = 10;
-    public int damageUpgradedTimes = 0;
-
-    public float cooldownUpgradePercent = 0.1f;
-    public int cooldownUpgradedTimes = 0;
+    public AttackStat damageStat = new AttackStat(20f);
+    public AttackStat cooldownStat = new AttackStat(1f);
 }
 public enum AttackActionType
 {

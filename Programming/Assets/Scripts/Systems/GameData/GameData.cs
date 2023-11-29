@@ -37,6 +37,31 @@ public class GameData : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Start()
+    {
+        ResetAllDatas();
+    }
+
+    private void ResetAllDatas()
+    {
+        foreach (var data in primaryDatas.Values)
+        {
+            data.damageStat.Reset();
+            data.cooldownStat.Reset();
+            data.speedStat.Reset();
+            data.enemyHitsStat.Reset();
+            data.projectileAmountStat.Reset();
+        }
+
+        foreach (var data in secondaryDatas.Values)
+        {
+            data.damageStat.Reset();
+            data.cooldownStat.Reset();
+            data.areaSizeStat.Reset();
+            data.durationStat.Reset();
+            data.hitsXSecondStat.Reset();
+        }
+    }
 
     public Sprite GetElementSprite(Element element)
     {

@@ -13,70 +13,55 @@ public class PrimaryUpgradePanel : MonoBehaviour
     public TextMeshProUGUI hitsText;
     public TextMeshProUGUI projetileAmount;
 
-    //public int damage;
-    //public float cooldown;
-    //public float speed;
-    //public int enemyHits;
-    //public int projectileAmount;
-
     public Image primaryImage;
     public PrimaryData currentPrimaryData;
     public void Set(Element element, PrimaryData data)
     {
         this.currentPrimaryData = data;
-        //this.damage = data.damage;
-        //this.cooldown = data.cooldown;
-        //this.speed = data.speed;
-        //this.enemyHits = data.enemyHits;
-        //this.projectileAmount = data.projectileAmount;
 
         primaryImage.sprite = GameData.Instance.GetElementSprite(element);
 
-        damageText.text = currentPrimaryData.damage.ToString();
-        cooldownText.text = currentPrimaryData.cooldown.ToString();
-        speedText.text = currentPrimaryData.speed.ToString();
-        hitsText.text = currentPrimaryData.enemyHits.ToString();
-        projetileAmount.text = currentPrimaryData.projectileAmount.ToString();
+        UpdateValues();
     }
 
     public void UpdateValues()
     {
-        damageText.text = currentPrimaryData.damage.ToString();
-        cooldownText.text = currentPrimaryData.cooldown.ToString();
-        speedText.text = currentPrimaryData.speed.ToString();
-        hitsText.text = currentPrimaryData.enemyHits.ToString();
-        projetileAmount.text = currentPrimaryData.projectileAmount.ToString();
+        damageText.text = currentPrimaryData.damageStat.currentValue.ToString();
+        cooldownText.text = currentPrimaryData.cooldownStat.currentValue.ToString();
+        speedText.text = currentPrimaryData.speedStat.currentValue.ToString();
+        hitsText.text = currentPrimaryData.enemyHitsStat.currentValue.ToString();
+        projetileAmount.text = currentPrimaryData.projectileAmountStat.currentValue.ToString();
     }
 
 
     public void UpgradeDamage()
     {
-        currentPrimaryData.damage += currentPrimaryData.damageUpgradeAmount;
-        currentPrimaryData.damageUpgradeAmount++;
+        currentPrimaryData.damageStat.currentValue += currentPrimaryData.damageStat.incrementAmount;
+        currentPrimaryData.damageStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeCooldown()
     {
-        currentPrimaryData.cooldown -= currentPrimaryData.cooldown * currentPrimaryData.cooldownUpgradePercent;
-        currentPrimaryData.cooldownUpgradedTimes++;
+        currentPrimaryData.cooldownStat.currentValue -= currentPrimaryData.cooldownStat.currentValue * currentPrimaryData.cooldownStat.incrementPercentaje;
+        currentPrimaryData.cooldownStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeSpeed()
     {
-        currentPrimaryData.speed += currentPrimaryData.speed * currentPrimaryData.speedUpgradePercent;
-        currentPrimaryData.speedUpgradePercent++;
+        currentPrimaryData.speedStat.currentValue += currentPrimaryData.speedStat.currentValue * currentPrimaryData.speedStat.incrementPercentaje;
+        currentPrimaryData.speedStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeEnemyHits()
     {
-        currentPrimaryData.enemyHits += currentPrimaryData.enemyHistsUpgradeAmount;
-        currentPrimaryData.enemyHitsUpgradedTimes++;
+        currentPrimaryData.enemyHitsStat.currentValue += currentPrimaryData.enemyHitsStat.incrementAmount;
+        currentPrimaryData.enemyHitsStat.timesIncremented++;
         UpdateValues();
     }
     public void UpgradeProjectileAmount()
     {
-        currentPrimaryData.projectileAmount += currentPrimaryData.projectileAmountUpgradeAmount;
-        currentPrimaryData.projectileAmountUpgradedTimes++;
+        currentPrimaryData.projectileAmountStat.currentValue += currentPrimaryData.projectileAmountStat.incrementAmount;
+        currentPrimaryData.projectileAmountStat.timesIncremented++;
         UpdateValues();
     }
 }

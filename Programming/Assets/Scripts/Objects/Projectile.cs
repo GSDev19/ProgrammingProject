@@ -8,9 +8,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<GameObject> hitted;
     [SerializeField] private Rigidbody2D RB;
-    [SerializeField] private int damage = 0;
-    [SerializeField] private int currentHits = 0;
-    [SerializeField] private int maxHits = 0;
+    [SerializeField] private float damage = 0;
+    [SerializeField] private float currentHits = 0;
+    [SerializeField] private float maxHits = 0;
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();        
@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-    public void SetProjectile(Element element, Vector3 direction, float projectileSpeed, int dmg, int hits)
+    public void SetProjectile(Element element, Vector3 direction, float projectileSpeed, float dmg, float hits)
     {
         spriteRenderer.color = GameData.Instance.GetColor(element);
         projectileElement = element;
