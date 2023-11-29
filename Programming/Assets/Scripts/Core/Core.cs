@@ -26,8 +26,4 @@ public class Core : MonoBehaviour
         Life = GetComponentInChildren<LifeComponent>();
         Experience = GetComponentInChildren<ExperienceComponent>();
     }
-    //private void Start()
-    //{
-    //    player = PlayerController.Instance;
-    //}
 }

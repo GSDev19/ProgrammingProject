@@ -20,14 +20,11 @@ public class LifeComponent : CoreComponent
     }
     public void HandleDamage(float damage, Element attackElement)
     {
-        Debug.Log(attackElement);
-        Debug.Log(Core.Entity.currentElement);
-        Debug.Log((int)damage);
-        Debug.Log((int)GameData.Instance.GetDamageModifier(attackElement, Core.Entity.currentElement));
         int dmg = (int)damage * (int)GameData.Instance.GetDamageModifier(attackElement, Core.Entity.currentElement);
         currentHealth -= dmg;
 
-        Entity entity = GetComponentInParent<Entity>();
+
+        Entity entity = Core.Entity;
 
         if(entity != null)
         {
@@ -52,10 +49,6 @@ public class LifeComponent : CoreComponent
             }
         }
 
-
-    }
-    public void ResetLife()
-    {
 
     }
     private void DisplayDamage(int damage)

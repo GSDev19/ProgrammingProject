@@ -564,6 +564,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15604537cec4941429fa5d4e818b7ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeButtons:
+  - {fileID: 8299663048533338028}
+  - {fileID: 8313915683051213726}
+  - {fileID: 8897320178700372619}
+  - {fileID: 235508811503650197}
+  - {fileID: 8808608276040721855}
   damageText: {fileID: 5111504205408956141}
   cooldownText: {fileID: 211689306129120919}
   areaSizeText: {fileID: 2311775341551570164}
@@ -1134,6 +1140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13185c6626ec8244195a493682369643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeButtons:
+  - {fileID: 3923022952131511550}
+  - {fileID: 8907783629582117531}
+  - {fileID: 1211001869474097123}
+  - {fileID: 2985359348363896202}
+  - {fileID: 2594402817046838717}
   damageText: {fileID: 6983672149113562945}
   cooldownText: {fileID: 5494376193170522063}
   speedText: {fileID: 1983101498071410656}

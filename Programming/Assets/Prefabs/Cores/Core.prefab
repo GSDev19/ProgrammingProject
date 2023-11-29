@@ -275,6 +275,8 @@ MonoBehaviour:
   currentExperience: 0
   initialTargetExperience: 50
   targerIncreasePercentaje: 5
+  currentPoints: 0
+  pointsXLevel: 2
 --- !u!1 &7114436712406182677
 GameObject:
   m_ObjectHideFlags: 0

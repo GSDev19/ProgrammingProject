@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class PrimaryUpgradePanel : MonoBehaviour
 {
+    public List<Button> upgradeButtons = new List<Button>();
+
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI cooldownText;
     public TextMeshProUGUI speedText;
@@ -31,37 +32,81 @@ public class PrimaryUpgradePanel : MonoBehaviour
         speedText.text = currentPrimaryData.speedStat.currentValue.ToString();
         hitsText.text = currentPrimaryData.enemyHitsStat.currentValue.ToString();
         projetileAmount.text = currentPrimaryData.projectileAmountStat.currentValue.ToString();
+
+        CheckIfEnoughPoints();
     }
 
 
     public void UpgradeDamage()
     {
-        currentPrimaryData.damageStat.currentValue += currentPrimaryData.damageStat.incrementAmount;
-        currentPrimaryData.damageStat.timesIncremented++;
-        UpdateValues();
+        if(PlayerController.Instance.Core.Experience)
+        {
+            currentPrimaryData.damageStat.currentValue += currentPrimaryData.damageStat.incrementAmount;
+            currentPrimaryData.damageStat.timesIncremented++;
+            PlayerController.Instance.Core.Experience.ExpendPoint();
+            UpdateValues();
+        }
     }
     public void UpgradeCooldown()
     {
-        currentPrimaryData.cooldownStat.currentValue -= currentPrimaryData.cooldownStat.currentValue * currentPrimaryData.cooldownStat.incrementPercentaje;
-        currentPrimaryData.cooldownStat.timesIncremented++;
-        UpdateValues();
+        if (PlayerController.Instance.Core.Experience)
+        {
+            currentPrimaryData.cooldownStat.currentValue -= currentPrimaryData.cooldownStat.currentValue * currentPrimaryData.cooldownStat.incrementPercentaje;
+            currentPrimaryData.cooldownStat.timesIncremented++;
+            PlayerController.Instance.Core.Experience.ExpendPoint();
+            UpdateValues();
+        }
+
     }
     public void UpgradeSpeed()
     {
-        currentPrimaryData.speedStat.currentValue += currentPrimaryData.speedStat.currentValue * currentPrimaryData.speedStat.incrementPercentaje;
-        currentPrimaryData.speedStat.timesIncremented++;
-        UpdateValues();
+        if (PlayerController.Instance.Core.Experience)
+        {
+            currentPrimaryData.speedStat.currentValue += currentPrimaryData.speedStat.currentValue * currentPrimaryData.speedStat.incrementPercentaje;
+            currentPrimaryData.speedStat.timesIncremented++;
+            PlayerController.Instance.Core.Experience.ExpendPoint();
+            UpdateValues();
+        }
+
     }
     public void UpgradeEnemyHits()
     {
-        currentPrimaryData.enemyHitsStat.currentValue += currentPrimaryData.enemyHitsStat.incrementAmount;
-        currentPrimaryData.enemyHitsStat.timesIncremented++;
-        UpdateValues();
+        if (PlayerController.Instance.Core.Experience)
+        {
+            currentPrimaryData.enemyHitsStat.currentValue += currentPrimaryData.enemyHitsStat.incrementAmount;
+            currentPrimaryData.enemyHitsStat.timesIncremented++;
+            PlayerController.Instance.Core.Experience.ExpendPoint();
+            UpdateValues();
+        }
+
     }
     public void UpgradeProjectileAmount()
     {
-        currentPrimaryData.projectileAmountStat.currentValue += currentPrimaryData.projectileAmountStat.incrementAmount;
-        currentPrimaryData.projectileAmountStat.timesIncremented++;
-        UpdateValues();
+        if (PlayerController.Instance.Core.Experience)
+        {
+            currentPrimaryData.projectileAmountStat.currentValue += currentPrimaryData.projectileAmountStat.incrementAmount;
+            currentPrimaryData.projectileAmountStat.timesIncremented++;
+            PlayerController.Instance.Core.Experience.ExpendPoint();
+            UpdateValues();
+        }
+
+    }
+
+    private void CheckIfEnoughPoints()
+    {
+        if(PlayerController.Instance.Core.Experience.currentPoints > 0)
+        {
+            foreach(Button button in upgradeButtons)
+            {
+                button.enabled = true;
+            }
+        }
+        else
+        {
+            foreach (Button button in upgradeButtons)
+            {
+                button.enabled = false;
+            }
+        }
     }
 }
