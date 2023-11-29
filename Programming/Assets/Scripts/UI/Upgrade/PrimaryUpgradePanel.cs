@@ -11,7 +11,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     public TextMeshProUGUI cooldownText;
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI hitsText;
-    public TextMeshProUGUI amountText;
+    public TextMeshProUGUI projetileAmount;
 
     //public int damage;
     //public float cooldown;
@@ -36,7 +36,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
         cooldownText.text = currentPrimaryData.cooldown.ToString();
         speedText.text = currentPrimaryData.speed.ToString();
         hitsText.text = currentPrimaryData.enemyHits.ToString();
-        amountText.text = currentPrimaryData.projectileAmount.ToString();
+        projetileAmount.text = currentPrimaryData.projectileAmount.ToString();
     }
 
     public void UpdateValues()
@@ -45,7 +45,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
         cooldownText.text = currentPrimaryData.cooldown.ToString();
         speedText.text = currentPrimaryData.speed.ToString();
         hitsText.text = currentPrimaryData.enemyHits.ToString();
-        amountText.text = currentPrimaryData.projectileAmount.ToString();
+        projetileAmount.text = currentPrimaryData.projectileAmount.ToString();
     }
 
 
@@ -63,14 +63,20 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeSpeed()
     {
-
+        currentPrimaryData.speed += currentPrimaryData.speed * currentPrimaryData.speedUpgradePercent;
+        currentPrimaryData.speedUpgradePercent++;
+        UpdateValues();
     }
     public void UpgradeEnemyHits()
     {
-
+        currentPrimaryData.enemyHits += currentPrimaryData.enemyHistsUpgradeAmount;
+        currentPrimaryData.enemyHitsUpgradedTimes++;
+        UpdateValues();
     }
     public void UpgradeProjectileAmount()
     {
-
+        currentPrimaryData.projectileAmount += currentPrimaryData.projectileAmountUpgradeAmount;
+        currentPrimaryData.projectileAmountUpgradedTimes++;
+        UpdateValues();
     }
 }

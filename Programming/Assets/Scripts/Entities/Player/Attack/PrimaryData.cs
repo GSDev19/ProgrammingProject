@@ -10,7 +10,7 @@ public class PrimaryData : AttackData
     public int projectileAmount = 1;
 
 
-    public int speedUpgradePercent = 20;
+    public float speedUpgradePercent = 0.2f;
     public int speedUpgradedTimes = 0;
 
 

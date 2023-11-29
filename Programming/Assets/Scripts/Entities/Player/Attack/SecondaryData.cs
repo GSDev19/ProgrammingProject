@@ -10,11 +10,11 @@ public class SecondaryData : AttackData
     public float hitsXSecond = 2f;
 
 
-    public int areaSizeUpgradePercent = 20;
+    public float areaSizeUpgradePercent = 0.2f;
     public int areaSizeUpgradedTimes = 0;
 
 
-    public int durationUpgradePercent = 20;
+    public float durationUpgradePercent = 0.2f;
     public int durationUpgradedTimes = 0;
 
 
