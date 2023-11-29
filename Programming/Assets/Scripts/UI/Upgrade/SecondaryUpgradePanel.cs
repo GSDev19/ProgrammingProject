@@ -8,43 +8,73 @@ public class SecondaryUpgradePanel : MonoBehaviour
 {
     public List<Button> upgradeButtons = new List<Button>();
 
-    public TextMeshProUGUI damageText;
-    public TextMeshProUGUI cooldownText;
-    public TextMeshProUGUI areaSizeText;
-    public TextMeshProUGUI durationText;
-    public TextMeshProUGUI hitsText;
+    [Header("LEVEL ELEMENTS")]
+    public TextMeshProUGUI damageLevelText;
+    public TextMeshProUGUI cooldownLevelText;
+    public TextMeshProUGUI areaLevelText;
+    public TextMeshProUGUI durationLevelText;
+    public TextMeshProUGUI hitsLevelText;
+
+    public Image damageBar;
+    public Image cooldownBar;
+    public Image areaBar;
+    public Image durationBar;
+    public Image hitsBar;
+
+    [Space]
+    [Header("INCREMENT TEXTS")]
+    public TextMeshProUGUI damageIncrementText;
+    public TextMeshProUGUI cooldownIncrementText;
+    public TextMeshProUGUI areaSizeIncrementText;
+    public TextMeshProUGUI durationIncrementText;
+    public TextMeshProUGUI hitsIncrementText;
 
     public Image secondaryImage;
 
-    public SecondaryData currentSecondaryData;
+    public SecondaryData currentData;
 
     public void Set(Element element, SecondaryData data)
     {
-        this.currentSecondaryData = data;
+        this.currentData = data;
 
         secondaryImage.sprite = GameData.Instance.GetElementSprite(element);
+
+        SetIncrementTexts();
 
         UpdateValues();
 
     }
     public void UpdateValues()
     {
-        damageText.text = currentSecondaryData.damageStat.currentValue.ToString();
-        cooldownText.text = currentSecondaryData.cooldownStat.currentValue.ToString();
-        areaSizeText.text = currentSecondaryData.areaSizeStat.currentValue.ToString();
-        durationText.text = currentSecondaryData.durationStat.currentValue.ToString();
-        hitsText.text = currentSecondaryData.hitsXSecondStat.currentValue.ToString();
+        damageLevelText.text = currentData.damageStat.level.ToString();
+        cooldownLevelText.text = currentData.cooldownStat.level.ToString();
+        areaLevelText.text = currentData.areaSizeStat.level.ToString();
+        durationLevelText.text = currentData.durationStat.level.ToString();
+        hitsLevelText.text = currentData.hitsXSecondStat.level.ToString();
+
+        SetStatBarFill(damageBar, currentData.damageStat.level);
+        SetStatBarFill(cooldownBar, currentData.cooldownStat.level);
+        SetStatBarFill(areaBar, currentData.areaSizeStat.level);
+        SetStatBarFill(durationBar, currentData.durationStat.level);
+        SetStatBarFill(hitsBar, currentData.hitsXSecondStat.level);
 
         CheckIfEnoughPoints();
     }
 
-
+    private void SetIncrementTexts()
+    {
+        damageIncrementText.text = "+ " + currentData.damageStat.incrementAmount.ToString();
+        cooldownIncrementText.text = "- " + currentData.cooldownStat.incrementAmount.ToString() + "%";
+        areaSizeIncrementText.text = "+ " + currentData.areaSizeStat.incrementAmount.ToString() + "%";
+        durationIncrementText.text = "+ " + currentData.durationStat.incrementAmount.ToString() + "%";
+        hitsIncrementText.text = "+ " + currentData.hitsXSecondStat.incrementAmount.ToString();
+    }
     public void UpgradeDamage()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentSecondaryData.damageStat.currentValue += currentSecondaryData.damageStat.incrementAmount;
-            currentSecondaryData.damageStat.timesIncremented++;
+            currentData.damageStat.currentValue += currentData.damageStat.incrementAmount;
+            currentData.damageStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -52,10 +82,10 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeCooldown()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentSecondaryData.cooldownStat.currentValue -= currentSecondaryData.cooldownStat.currentValue * currentSecondaryData.cooldownStat.incrementPercentaje;
-            currentSecondaryData.cooldownStat.timesIncremented++;
+            currentData.cooldownStat.currentValue -= currentData.cooldownStat.currentValue * (currentData.cooldownStat.incrementAmount / 100);
+            currentData.cooldownStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -63,10 +93,10 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeAreaSize()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentSecondaryData.areaSizeStat.currentValue += currentSecondaryData.areaSizeStat.currentValue * currentSecondaryData.areaSizeStat.incrementPercentaje;
-            currentSecondaryData.areaSizeStat.timesIncremented++;
+            currentData.areaSizeStat.currentValue += currentData.areaSizeStat.currentValue * (currentData.areaSizeStat.incrementAmount / 100);
+            currentData.areaSizeStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -74,10 +104,10 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeDuration()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentSecondaryData.durationStat.currentValue += currentSecondaryData.durationStat.currentValue * currentSecondaryData.durationStat.incrementPercentaje;
-            currentSecondaryData.durationStat.timesIncremented++;
+            currentData.durationStat.currentValue += currentData.durationStat.currentValue * (currentData.durationStat.incrementAmount / 100);
+            currentData.durationStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -85,30 +115,33 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeHitsXSecond()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentSecondaryData.hitsXSecondStat.currentValue += currentSecondaryData.hitsXSecondStat.incrementAmount;
-            currentSecondaryData.hitsXSecondStat.timesIncremented++;
+            currentData.hitsXSecondStat.currentValue += currentData.hitsXSecondStat.incrementAmount;
+            currentData.hitsXSecondStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
 
     }
-
+    private void SetStatBarFill(Image image, int currentLevel)
+    {
+        image.fillAmount = (float)currentLevel / 10;
+    }
     private void CheckIfEnoughPoints()
     {
         if (PlayerController.Instance.Core.Experience.currentPoints > 0)
         {
             foreach (Button button in upgradeButtons)
             {
-                button.enabled = true;
+                button.interactable = true;
             }
         }
         else
         {
             foreach (Button button in upgradeButtons)
             {
-                button.enabled = false;
+                button.interactable = false;
             }
         }
     }

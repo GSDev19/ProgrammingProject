@@ -12,5 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbbe7e04559b4af41a6c59f65b3ff015, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  playerHealth: 100
+  enemySize: 1.5
+  movementSpeedStat:
+    initialValue: 6
+    currentValue: 5
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0
+  healthStat:
+    initialValue: 100
+    currentValue: 5
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0
+  entityExp: 10
+  damage: 5
+  damageRadious: 1.4
+  damageCooldown: 0.5
+  armorStat:
+    initialValue: 2
+    currentValue: 2
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0
+  recoveryStat:
+    initialValue: 2
+    currentValue: 2
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0
+  luckStat:
+    initialValue: 2
+    currentValue: 2
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0

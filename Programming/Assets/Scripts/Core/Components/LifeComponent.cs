@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LifeComponent : CoreComponent
 {
-    [SerializeField] private int currentHealth;
+    [SerializeField] private float currentHealth;
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private float displayTime = 0.2f;
 
@@ -13,7 +13,7 @@ public class LifeComponent : CoreComponent
     {
         damageText.gameObject.SetActive(false);
     }
-    public void SetInitialEntityHealth(int health)
+    public void SetInitialEntityHealth(float health)
     {
         currentHealth = health;
         damageText.gameObject.SetActive(false);

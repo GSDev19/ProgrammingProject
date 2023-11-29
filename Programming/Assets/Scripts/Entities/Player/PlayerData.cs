@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerData : EntityData
 {
     [Header("SPECIFIC")]
-    [Header("EXP")]
-    public int exp = 0;
+    [Header("STATS")]
+    public Stat armorStat = new Stat(2f);
+    public Stat recoveryStat = new Stat(2f);
+    public Stat luckStat = new Stat(2f);
 }

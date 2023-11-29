@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SecondaryAttackData", menuName = "Data/Attack Base Data/ New Secondary Attack Data")]
 public class SecondaryData : AttackData
 {
-    public AttackStat areaSizeStat = new AttackStat(1f);
-    public AttackStat durationStat = new AttackStat(2f);
-    public AttackStat hitsXSecondStat = new AttackStat(2f);
+    public Stat areaSizeStat = new Stat(1f);
+    public Stat durationStat = new Stat(2f);
+    public Stat hitsXSecondStat = new Stat(2f);
 }

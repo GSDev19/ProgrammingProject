@@ -24,7 +24,7 @@ public class EnemyAttackComponent : AttackComponent
         {
             if(CheckPlayerDistance(Core.Entity.EntityData))
             {
-                HandleDamagePlayer(Core.Entity.EntityData);
+                HandleDamageToPlayer(Core.Entity.EntityData);
             }
         }        
     }
@@ -46,7 +46,7 @@ public class EnemyAttackComponent : AttackComponent
             return false;
         }
     }
-    private void HandleDamagePlayer(EntityData data)
+    private void HandleDamageToPlayer(EntityData data)
     {
         if(Core.Entity.currentElement != PlayerController.Instance.currentElement)
         {

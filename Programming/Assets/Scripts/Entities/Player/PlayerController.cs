@@ -6,7 +6,7 @@ public class PlayerController : Entity
 {
     public static PlayerController Instance { get; private set; }
 
-    public EntityData data;
+    public PlayerData data;
 
     public string stateName;
 
@@ -24,6 +24,9 @@ public class PlayerController : Entity
         }
 
         EntityData = data;
+
+        ResetStats();
+
     }
     private void Start()
     {
@@ -34,7 +37,7 @@ public class PlayerController : Entity
 
         StateMachine.Initialize(idleState);
 
-        Core.Life.SetInitialEntityHealth(data.entityHealth);
+        Core.Life.SetInitialEntityHealth(data.healthStat.currentValue);
     }
     private void Update()
     {
@@ -49,5 +52,13 @@ public class PlayerController : Entity
     {
         currentElement = element;
         spriteRenderer.color = GameData.Instance.GetColor(element);
+    }
+    private void ResetStats()
+    {
+        data.healthStat.Reset();
+        data.recoveryStat.Reset();
+        data.armorStat.Reset();
+        data.movementSpeedStat.Reset();
+        data.luckStat.Reset();
     }
 }

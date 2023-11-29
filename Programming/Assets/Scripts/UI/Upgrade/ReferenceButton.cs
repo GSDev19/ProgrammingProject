@@ -9,7 +9,6 @@ public class ReferenceButton : MonoBehaviour
     private Image image;
     [SerializeField] private Element buttonElement;
     public AttackActionType actionType;
-    AttackComponent AttackComponent;
     PrimaryData primaryData;
     SecondaryData secondaryData;
 
@@ -17,11 +16,8 @@ public class ReferenceButton : MonoBehaviour
     {
         image = GetComponent<Image>();
     }
-    private void Start()
-    {
-        AttackComponent = PlayerController.Instance.Core.Attack;
-    }
-    public void Initialize(Element element, AttackActionType actionType)
+
+    public void InitializeForAttack(Element element, AttackActionType actionType)
     {
         this.buttonElement = element;
         this.image.sprite = GameData.Instance.GetElementSprite(element);

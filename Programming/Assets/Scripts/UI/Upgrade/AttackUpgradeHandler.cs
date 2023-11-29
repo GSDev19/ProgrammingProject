@@ -31,10 +31,10 @@ public class AttackUpgradeHandler : MonoBehaviour
             if (GameManager.Instance.unlockedElements[element] == true)
             {
                 GameObject primaryButton = Instantiate(buttonPrefab, primaryButtonsParent);
-                primaryButton.GetComponent<ReferenceButton>().Initialize(element, AttackActionType.Primary);
+                primaryButton.GetComponent<ReferenceButton>().InitializeForAttack(element, AttackActionType.Primary);
 
                 GameObject secondaryButton = Instantiate(buttonPrefab, secondaryButtonsParent);
-                secondaryButton.GetComponent<ReferenceButton>().Initialize(element, AttackActionType.Secondary);
+                secondaryButton.GetComponent<ReferenceButton>().InitializeForAttack(element, AttackActionType.Secondary);
             }
         }
     }
@@ -59,6 +59,11 @@ public class AttackUpgradeHandler : MonoBehaviour
         UIHelpers.SetCanvasGroup(secondaryCanvasGroup, true);
 
         secondaryUpgradePanel.Set(element, data);
+    }
+    public void SetNoneUpgradeData()
+    {
+        UIHelpers.SetCanvasGroup(primaryCanvasGroup, false);
+        UIHelpers.SetCanvasGroup(secondaryCanvasGroup, false);
     }
 
 }

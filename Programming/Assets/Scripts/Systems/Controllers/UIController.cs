@@ -79,6 +79,10 @@ public class UIController : MonoBehaviour
         if (isAttackUpgradeOpen == true)
         {
             upgradeHandler.CreateButtons();
+
+            upgradeHandler.SetNoneUpgradeData();
+
+
             Time.timeScale = 0f;
 
         }

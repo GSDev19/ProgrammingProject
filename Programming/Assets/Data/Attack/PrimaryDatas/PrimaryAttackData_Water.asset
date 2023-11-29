@@ -17,30 +17,25 @@ MonoBehaviour:
   damageStat:
     initialValue: 20
     currentValue: 20
-    incrementPercentaje: 0
     incrementAmount: 5
     timesIncremented: 0
   cooldownStat:
     initialValue: 1
     currentValue: 1
-    incrementPercentaje: 0.15
-    incrementAmount: 0
+    incrementAmount: 10
     timesIncremented: 0
   speedStat:
     initialValue: 12
     currentValue: 12
-    incrementPercentaje: 0.5
-    incrementAmount: 0
+    incrementAmount: 10
     timesIncremented: 0
   enemyHitsStat:
     initialValue: 1
     currentValue: 1
-    incrementPercentaje: 0
     incrementAmount: 1
     timesIncremented: 0
   projectileAmountStat:
     initialValue: 1
     currentValue: 1
-    incrementPercentaje: 0
     incrementAmount: 1
     timesIncremented: 0

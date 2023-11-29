@@ -28,7 +28,7 @@ public class PlayerMoveState : MoveState
         base.LogicUpdate();
 
 
-        core.Movement.SetInputVelocity(InputHandler.Instance.NormX, InputHandler.Instance.NormY, data.movementSpeed);
+        core.Movement.SetInputVelocity(InputHandler.Instance.NormX, InputHandler.Instance.NormY, data.movementSpeedStat.currentValue);
 
         if(InputHandler.Instance.PrimaryAttackInput)
         {

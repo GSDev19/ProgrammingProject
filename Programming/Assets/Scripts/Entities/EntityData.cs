@@ -9,9 +9,12 @@ public class EntityData : ScriptableObject
     public float enemySize = 1.5f;
     [Space]
     [Header("MOVEMENT")]
-    public float movementSpeed = 5f;
+    //public float movementSpeed = 5f;
+    public Stat movementSpeedStat = new Stat(5f);
     [Header("HEALTH")]
-    public int entityHealth = 100;
+    //public int entityHealth = 100;
+    public Stat healthStat = new Stat(100f);
+
     [Header("EXP")]
     public int entityExp = 10;
     [Header("DAMAGE")]

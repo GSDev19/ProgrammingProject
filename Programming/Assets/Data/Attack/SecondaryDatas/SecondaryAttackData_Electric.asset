@@ -17,30 +17,25 @@ MonoBehaviour:
   damageStat:
     initialValue: 20
     currentValue: 20
-    incrementPercentaje: 0
     incrementAmount: 5
     timesIncremented: 0
   cooldownStat:
     initialValue: 1
     currentValue: 1
-    incrementPercentaje: 0.15
-    incrementAmount: 1
+    incrementAmount: 10
     timesIncremented: 0
   areaSizeStat:
     initialValue: 1
     currentValue: 1
-    incrementPercentaje: 0.25
-    incrementAmount: 0
+    incrementAmount: 20
     timesIncremented: 0
   durationStat:
     initialValue: 2
     currentValue: 2
-    incrementPercentaje: 0.25
-    incrementAmount: 0
+    incrementAmount: 15
     timesIncremented: 0
   hitsXSecondStat:
     initialValue: 2
     currentValue: 2
-    incrementPercentaje: 0
-    incrementAmount: 2
+    incrementAmount: 1
     timesIncremented: 0

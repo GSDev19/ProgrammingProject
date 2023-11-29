@@ -63,30 +63,53 @@ public class InputHandler : MonoBehaviour
     }
     public void OnAttackSelectionInput(InputAction.CallbackContext context)
     {
+        if(UIController.Instance.isAttackUpgradeOpen)
+        {
+            return;
+        }
         if(context.started)
         {
             AttackSelectionInput = true;
-            UIController.Instance.ShowAttackSelectionPanel(true);
+            if(UIController.Instance.isAttackSelectionOpen)
+            {
+                UIController.Instance.ShowAttackSelectionPanel(false);
+            }
+            else
+            {
+                UIController.Instance.ShowAttackSelectionPanel(true);
+            }
+
         }
 
         if(context.canceled)
         {
             AttackSelectionInput = false;
-            UIController.Instance.ShowAttackSelectionPanel(false);
+            //UIController.Instance.ShowAttackSelectionPanel(false);
         }
     }
     public void OnAttackUpgradeInput(InputAction.CallbackContext context)
     {
+        if (UIController.Instance.isAttackSelectionOpen)
+        {
+            return;
+        }
         if (context.started)
         {
             AttackUpgradeInput = true;
-            UIController.Instance.ShowAttackUpgradePanel(true);
+            if(UIController.Instance.isAttackUpgradeOpen)
+            {
+                UIController.Instance.ShowAttackUpgradePanel(false);
+            }
+            else
+            {
+                UIController.Instance.ShowAttackUpgradePanel(true);
+            }
         }
 
         if (context.canceled)
         {
             AttackUpgradeInput = false;
-            UIController.Instance.ShowAttackUpgradePanel(false);
+            //UIController.Instance.ShowAttackUpgradePanel(false);
         }
     }
     private bool IsPointerOverUI()

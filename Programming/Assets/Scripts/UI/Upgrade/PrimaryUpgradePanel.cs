@@ -8,51 +8,81 @@ public class PrimaryUpgradePanel : MonoBehaviour
 {
     public List<Button> upgradeButtons = new List<Button>();
 
-    public TextMeshProUGUI damageText;
-    public TextMeshProUGUI cooldownText;
-    public TextMeshProUGUI speedText;
-    public TextMeshProUGUI hitsText;
-    public TextMeshProUGUI projetileAmount;
+    [Header("LEVEL ELEMENTS")]
+    public TextMeshProUGUI damageLevelText;
+    public TextMeshProUGUI cooldownLevelText;
+    public TextMeshProUGUI speedLevelText;
+    public TextMeshProUGUI hitsLevelText;
+    public TextMeshProUGUI projectileAmountLevelText;
+
+    public Image damageBar;
+    public Image cooldownBar;
+    public Image speedBar;
+    public Image hitsBar;
+    public Image projectilesBar;
+
+    [Space]
+    [Header("INCREMENT TEXTS")]
+    public TextMeshProUGUI damageIncrementText;
+    public TextMeshProUGUI cooldownIncrementText;
+    public TextMeshProUGUI speedIncrementText;
+    public TextMeshProUGUI hitsIncrementText;
+    public TextMeshProUGUI projectileAmountIncrementText;
 
     public Image primaryImage;
-    public PrimaryData currentPrimaryData;
+    public PrimaryData currentData;
     public void Set(Element element, PrimaryData data)
     {
-        this.currentPrimaryData = data;
+        this.currentData = data;
 
         primaryImage.sprite = GameData.Instance.GetElementSprite(element);
+
+        SetIncrementTexts();
 
         UpdateValues();
     }
 
     public void UpdateValues()
     {
-        damageText.text = currentPrimaryData.damageStat.currentValue.ToString();
-        cooldownText.text = currentPrimaryData.cooldownStat.currentValue.ToString();
-        speedText.text = currentPrimaryData.speedStat.currentValue.ToString();
-        hitsText.text = currentPrimaryData.enemyHitsStat.currentValue.ToString();
-        projetileAmount.text = currentPrimaryData.projectileAmountStat.currentValue.ToString();
+        damageLevelText.text = currentData.damageStat.level.ToString();
+        cooldownLevelText.text = currentData.cooldownStat.level.ToString();
+        speedLevelText.text = currentData.speedStat.level.ToString();
+        hitsLevelText.text = currentData.speedStat.level.ToString();
+        projectileAmountLevelText.text = currentData.projectileAmountStat.level.ToString();
+
+        SetStatBarFill(damageBar, currentData.damageStat.level);
+        SetStatBarFill(cooldownBar, currentData.cooldownStat.level);
+        SetStatBarFill(speedBar, currentData.speedStat.level);
+        SetStatBarFill(hitsBar, currentData.enemyHitsStat.level);
+        SetStatBarFill(projectilesBar, currentData.projectileAmountStat.level);
 
         CheckIfEnoughPoints();
     }
-
+    private void SetIncrementTexts()
+    {
+        damageIncrementText.text = "+ " + currentData.damageStat.incrementAmount.ToString();
+        cooldownIncrementText.text = "- " + currentData.cooldownStat.incrementAmount.ToString() + "%";
+        speedIncrementText.text = "+ " + currentData.speedStat.incrementAmount.ToString() + "%";
+        hitsIncrementText.text = "+ " + currentData.enemyHitsStat.incrementAmount.ToString();
+        projectileAmountIncrementText.text = "+ " + currentData.projectileAmountStat.incrementAmount.ToString();
+    }
 
     public void UpgradeDamage()
     {
-        if(PlayerController.Instance.Core.Experience)
+        if(PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentPrimaryData.damageStat.currentValue += currentPrimaryData.damageStat.incrementAmount;
-            currentPrimaryData.damageStat.timesIncremented++;
+            currentData.damageStat.currentValue += currentData.damageStat.incrementAmount;
+            currentData.damageStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
     }
     public void UpgradeCooldown()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentPrimaryData.cooldownStat.currentValue -= currentPrimaryData.cooldownStat.currentValue * currentPrimaryData.cooldownStat.incrementPercentaje;
-            currentPrimaryData.cooldownStat.timesIncremented++;
+            currentData.cooldownStat.currentValue -= currentData.cooldownStat.currentValue * (currentData.cooldownStat.incrementAmount / 100);
+            currentData.cooldownStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -60,10 +90,10 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeSpeed()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentPrimaryData.speedStat.currentValue += currentPrimaryData.speedStat.currentValue * currentPrimaryData.speedStat.incrementPercentaje;
-            currentPrimaryData.speedStat.timesIncremented++;
+            currentData.speedStat.currentValue += currentData.speedStat.currentValue * (currentData.speedStat.incrementAmount / 100);
+            currentData.speedStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -71,10 +101,10 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeEnemyHits()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentPrimaryData.enemyHitsStat.currentValue += currentPrimaryData.enemyHitsStat.incrementAmount;
-            currentPrimaryData.enemyHitsStat.timesIncremented++;
+            currentData.enemyHitsStat.currentValue += currentData.enemyHitsStat.incrementAmount;
+            currentData.enemyHitsStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
@@ -82,30 +112,34 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeProjectileAmount()
     {
-        if (PlayerController.Instance.Core.Experience)
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
         {
-            currentPrimaryData.projectileAmountStat.currentValue += currentPrimaryData.projectileAmountStat.incrementAmount;
-            currentPrimaryData.projectileAmountStat.timesIncremented++;
+            currentData.projectileAmountStat.currentValue += currentData.projectileAmountStat.incrementAmount;
+            currentData.projectileAmountStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
         }
 
     }
 
+    private void SetStatBarFill(Image image, int currentLevel)
+    {
+        image.fillAmount = (float)currentLevel / 10;
+    }
     private void CheckIfEnoughPoints()
     {
         if(PlayerController.Instance.Core.Experience.currentPoints > 0)
         {
             foreach(Button button in upgradeButtons)
             {
-                button.enabled = true;
+                button.interactable = true;
             }
         }
         else
         {
             foreach (Button button in upgradeButtons)
             {
-                button.enabled = false;
+                button.interactable = false;
             }
         }
     }

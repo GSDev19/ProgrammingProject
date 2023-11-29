@@ -29,7 +29,7 @@ public class Entity : MonoBehaviour
         this.spriteRenderer.color = GameData.Instance.GetColor(element);
         spriteRenderer.transform.localScale = Vector3.one * data.enemySize;
 
-        this.Core.Life.SetInitialEntityHealth(EntityData.entityHealth);
+        this.Core.Life.SetInitialEntityHealth(EntityData.healthStat.currentValue);
     }
 
 }

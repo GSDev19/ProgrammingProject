@@ -11,6 +11,8 @@ public class Enemy1 : Entity
     public override void Awake()
     {
         base.Awake();
+
+        ResetStats();
     }
 
     private void Start()
@@ -36,5 +38,10 @@ public class Enemy1 : Entity
         Gizmos.DrawWireSphere(transform.position, data.minDistanceToPlayer);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, data.damageRadious);
+    }
+    private void ResetStats()
+    {
+        data.healthStat.Reset();
+        data.movementSpeedStat.Reset();
     }
 }

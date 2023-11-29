@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AttackComponent : CoreComponent
 {
-    protected Element currentPrimaryElement;
-    protected Element currentSecondaryElement;
+    public Element currentPrimaryElement;
+    public Element currentSecondaryElement;
 
     protected PrimaryData primaryAttackData;
     protected SecondaryData secondaryAttackData;
@@ -74,22 +74,16 @@ public class AttackComponent : CoreComponent
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // Calculate the direction from the player to the mouse position
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
-
 
         Vector2 perpendicularVector = new Vector2(-direction.y, direction.x).normalized;
 
-        // Calculate the angle in degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Loop to instantiate and shoot multiple projectiles
         for (int i = 0; i < data.projectileAmountStat.currentValue; i++)
         {
-            // Create a projectile
             Vector2 normalizedDirection = direction.normalized;
-            Debug.Log(normalizedDirection);
-            //GameObject projectile = Instantiate(data.prefab, transform.position, Quaternion.Euler(0f, 0f, angle));
+
             Vector2 spawnPosition = (Vector2)transform.position + perpendicularVector * (i - (data.projectileAmountStat.currentValue - 1) / 2f) * 0.5f;
 
             GameObject projectile = SpawnController.Instance.projectilePool.Spawn(spawnPosition, Quaternion.Euler(0f, 0f, angle));

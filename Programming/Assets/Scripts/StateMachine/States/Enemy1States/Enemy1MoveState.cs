@@ -31,7 +31,7 @@ public class Enemy1MoveState : MoveState
     {
         base.LogicUpdate();
 
-        core.Movement.GoToPlayer(PlayerController.Instance.transform, entity.transform, enemyData.movementSpeed, enemyData.rotationSpeed, spriteRenderer);
+        core.Movement.GoToPlayer(PlayerController.Instance.transform, entity.transform, enemyData.movementSpeedStat.currentValue, enemyData.rotationSpeed, spriteRenderer);
 
         if (core.Collision.CheckDistanceToPlayer(PlayerController.Instance.transform, entity.transform, enemyData.minDistanceToPlayer))
         {

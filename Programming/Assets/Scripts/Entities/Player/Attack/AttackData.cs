@@ -8,8 +8,8 @@ public class AttackData : ScriptableObject
 
     public GameObject prefab;
 
-    public AttackStat damageStat = new AttackStat(20f);
-    public AttackStat cooldownStat = new AttackStat(1f);
+    public Stat damageStat = new Stat(20f);
+    public Stat cooldownStat = new Stat(1f);
 }
 public enum AttackActionType
 {

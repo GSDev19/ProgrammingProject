@@ -27,7 +27,7 @@ public class AttackState : State
     {
         base.LogicUpdate();
 
-        core.Movement.SetInputVelocity(InputHandler.Instance.NormX, InputHandler.Instance.NormY, data.movementSpeed);
+        core.Movement.SetInputVelocity(InputHandler.Instance.NormX, InputHandler.Instance.NormY, data.movementSpeedStat.currentValue);
     }
 
     public override void PhysicsUpdate()

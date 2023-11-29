@@ -1,27 +1,26 @@
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
-public class AttackStat 
+public class Stat
 {
     public float initialValue = 0;
     public float currentValue = 0;
-    public float incrementPercentaje = 0.1f;
-    public int incrementAmount = 1;
-    public int timesIncremented = 0;
+    public int incrementAmount = 10;
+    public int level = 0;
 
-    public AttackStat(float initialValue)
+    public Stat(float initialValue)
     {
         this.initialValue = initialValue;
         this.currentValue = initialValue;
-        this.incrementPercentaje = 0.1f;
         this.incrementAmount = 1;
-        this.timesIncremented = 0;
+        this.level = 0;
     }
 
     public void Reset()
     {
         currentValue = initialValue;
-        timesIncremented = 0;
+        level = 0;
     }
-
 }

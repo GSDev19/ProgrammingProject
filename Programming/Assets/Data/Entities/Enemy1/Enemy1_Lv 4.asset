@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: Enemy1_Lv 4
   m_EditorClassIdentifier: 
   enemySize: 3.1
-  movementSpeed: 3
-  entityHealth: 120
-  entityExp: 10
+  movementSpeedStat:
+    initialValue: 5
+    currentValue: 5
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0
+  healthStat:
+    initialValue: 160
+    currentValue: 5
+    incrementPercentaje: 0.1
+    incrementAmount: 1
+    timesIncremented: 0
+  entityExp: 20
+  damage: 13
+  damageRadious: 1.8
+  damageCooldown: 0.5
   minDistanceToPlayer: 2.1
   rotationSpeed: 10
