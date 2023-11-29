@@ -12,19 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de90d14ce3189047b7af21f5763f04b, type: 3}
   m_Name: Enemy1_Lv 4
   m_EditorClassIdentifier: 
-  enemySize: 3.1
+  entitySize: 2.7
   movementSpeedStat:
     initialValue: 5
     currentValue: 5
-    incrementPercentaje: 0.1
     incrementAmount: 1
-    timesIncremented: 0
+    level: 0
   healthStat:
     initialValue: 160
     currentValue: 5
-    incrementPercentaje: 0.1
     incrementAmount: 1
-    timesIncremented: 0
+    level: 0
   entityExp: 20
   damage: 13
   damageRadious: 1.8

@@ -40,7 +40,8 @@ public class LifeComponent : CoreComponent
 
                     if(entity != PlayerController.Instance)
                     {
-                        PlayerController.Instance.Core.Experience.AddExperience(entity.EntityData.entityExp);
+                        
+                        PlayerController.Instance.Core.Experience.AddExperience(Core.Enemy1.data.entityExp);
                     }
                     else
                     {

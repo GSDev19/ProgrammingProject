@@ -16,8 +16,8 @@ public class UIController : MonoBehaviour
     public CanvasGroup attackSelectionCanvasGroup;
     public bool isAttackSelectionOpen = false;
     [Space]
-    [Header("Attack Upgrade")]
-    public AttackUpgradeHandler upgradeHandler;
+    [Header("Upgrade Handler")]
+    public UpgradesHandler upgradeHandler;
     public CanvasGroup attackUpgradeCanvasGroup;
     public bool isAttackUpgradeOpen = false;
     [Space]
@@ -37,6 +37,8 @@ public class UIController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        upgradeHandler = GetComponentInChildren<UpgradesHandler>();
     }
     private void Start()
     {

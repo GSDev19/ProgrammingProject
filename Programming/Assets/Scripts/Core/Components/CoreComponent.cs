@@ -10,4 +10,5 @@ public class CoreComponent : MonoBehaviour
     {
         Core = GetComponentInParent<Core>();
     }
+    
 }

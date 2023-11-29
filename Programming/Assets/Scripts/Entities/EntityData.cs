@@ -6,7 +6,7 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [Header("GENERAL")]
-    public float enemySize = 1.5f;
+    public float entitySize = 1.5f;
     [Space]
     [Header("MOVEMENT")]
     //public float movementSpeed = 5f;
@@ -14,12 +14,5 @@ public class EntityData : ScriptableObject
     [Header("HEALTH")]
     //public int entityHealth = 100;
     public Stat healthStat = new Stat(100f);
-
-    [Header("EXP")]
-    public int entityExp = 10;
-    [Header("DAMAGE")]
-    public int damage = 5;
-    public float damageRadious = 1.4f;
-    public float damageCooldown = 0.5f;
 
 }

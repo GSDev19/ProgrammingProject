@@ -16,15 +16,15 @@ public class EnemyAttackComponent : AttackComponent
     private void Start()
     {
         canDamage = true;
-        damageCooldown = Core.Entity.EntityData.damageCooldown;
+        damageCooldown = Core.Enemy1.data.damageCooldown;
     }
     private void Update()
     {
         if(canDamage)
         {
-            if(CheckPlayerDistance(Core.Entity.EntityData))
+            if(CheckPlayerDistance(Core.Enemy1.data))
             {
-                HandleDamageToPlayer(Core.Entity.EntityData);
+                HandleDamageToPlayer(Core.Enemy1.data);
             }
         }        
     }
@@ -33,7 +33,7 @@ public class EnemyAttackComponent : AttackComponent
         yield return new WaitForSeconds(damageCooldown);
         canDamage = true;
     }
-    private bool CheckPlayerDistance(EntityData data)
+    private bool CheckPlayerDistance(Enemy1Data data)
     {
         float distance = Vector3.Distance(PlayerController.Instance.transform.position, transform.position);
 
@@ -46,7 +46,7 @@ public class EnemyAttackComponent : AttackComponent
             return false;
         }
     }
-    private void HandleDamageToPlayer(EntityData data)
+    private void HandleDamageToPlayer(Enemy1Data data)
     {
         if(Core.Entity.currentElement != PlayerController.Instance.currentElement)
         {

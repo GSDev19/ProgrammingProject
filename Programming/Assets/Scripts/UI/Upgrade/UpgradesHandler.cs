@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class AttackUpgradeHandler : MonoBehaviour
+public class UpgradesHandler : MonoBehaviour
 {
     [Header("LEFT PANEL")]
     public GameObject buttonPrefab;
@@ -17,6 +16,10 @@ public class AttackUpgradeHandler : MonoBehaviour
     [Header("Secondary")]
     public CanvasGroup secondaryCanvasGroup;
     [SerializeField] private SecondaryUpgradePanel secondaryUpgradePanel;
+
+    [Header("Player")]
+    public CanvasGroup playerCanvasGroup;
+    [SerializeField] private PlayerUpgradePanel playerUpgradePanel;
 
     private void Start()
     {
@@ -50,6 +53,7 @@ public class AttackUpgradeHandler : MonoBehaviour
     {
         UIHelpers.SetCanvasGroup(primaryCanvasGroup, true);
         UIHelpers.SetCanvasGroup(secondaryCanvasGroup, false);
+        UIHelpers.SetCanvasGroup(playerCanvasGroup, false);
 
         primaryUpgradePanel.Set(element, primaryData);
     }
@@ -57,13 +61,22 @@ public class AttackUpgradeHandler : MonoBehaviour
     {
         UIHelpers.SetCanvasGroup(primaryCanvasGroup, false);
         UIHelpers.SetCanvasGroup(secondaryCanvasGroup, true);
+        UIHelpers.SetCanvasGroup(playerCanvasGroup, false);
 
         secondaryUpgradePanel.Set(element, data);
+    }
+    public void SetPlayerUpgradeData(PlayerStats stat)
+    {
+        UIHelpers.SetCanvasGroup(primaryCanvasGroup, false);
+        UIHelpers.SetCanvasGroup(secondaryCanvasGroup, false);
+        UIHelpers.SetCanvasGroup(playerCanvasGroup, true);
+
+        playerUpgradePanel.Set(stat);
     }
     public void SetNoneUpgradeData()
     {
         UIHelpers.SetCanvasGroup(primaryCanvasGroup, false);
         UIHelpers.SetCanvasGroup(secondaryCanvasGroup, false);
+        UIHelpers.SetCanvasGroup(playerCanvasGroup, false);
     }
-
 }
