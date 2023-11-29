@@ -6,16 +6,11 @@ using static UnityEditor.Rendering.FilterWindow;
 
 public class ReferenceButton : MonoBehaviour
 {
-    private Image image;
+    public Image image;
     [SerializeField] private Element buttonElement;
     public AttackActionType actionType;
     PrimaryData primaryData;
     SecondaryData secondaryData;
-
-    private void Awake()
-    {
-        image = GetComponent<Image>();
-    }
 
     public void InitializeForAttack(Element element, AttackActionType actionType)
     {

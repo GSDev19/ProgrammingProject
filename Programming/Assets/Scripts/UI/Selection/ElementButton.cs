@@ -5,15 +5,11 @@ using UnityEngine.UI;
 
 public class ElementButton : MonoBehaviour
 {
-    private Image image;
+    public Image image;
     [SerializeField] private Element buttonElement;
     public AttackActionType actionType;
     AttackComponent AttackComponent;
 
-    private void Awake()
-    {
-        image = GetComponent<Image>();
-    }
     private void Start()
     {
         AttackComponent = PlayerController.Instance.Core.Attack;

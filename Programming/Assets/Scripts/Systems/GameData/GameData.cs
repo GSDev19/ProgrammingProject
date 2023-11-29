@@ -131,7 +131,7 @@ public class GameData : MonoBehaviour
         {
             mod = GetModifierFromDictionary(electricDamage, targetElement);
         }
-        else if(attackElement == Element.Earth)
+        else if(attackElement == Element.Ground)
         {
             mod = GetModifierFromDictionary(earthDamage, targetElement);
         }
@@ -195,6 +195,6 @@ public enum Element
     Water,
     Plant,
     Electric,
-    Earth,
+    Ground,
     None
 }
