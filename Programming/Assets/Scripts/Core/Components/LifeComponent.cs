@@ -34,6 +34,7 @@ public class LifeComponent : CoreComponent
 
                 if (currentHealth <= 0)
                 {
+                    currentHealth = 0;
                     StopAllCoroutines();
                     entity.gameObject.SetActive(false);
 

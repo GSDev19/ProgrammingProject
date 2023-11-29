@@ -17,7 +17,7 @@ public class PlayerSecondaryAttackState : AttackState
     {
         base.Enter();
 
-        core.Attack.HandleSecondaryAttack();
+        
     }
 
     public override void Exit()
@@ -29,7 +29,9 @@ public class PlayerSecondaryAttackState : AttackState
     {
         base.LogicUpdate();
 
-        if(!InputHandler.Instance.SecondaryAttackInput)
+        core.Attack.HandleSecondaryAttack();
+
+        if (!InputHandler.Instance.SecondaryAttackInput)
         {
             if (InputHandler.Instance.PrimaryAttackInput)
             {

@@ -13,8 +13,8 @@ public class AttackComponent : CoreComponent
     protected float currentPrimaryReloadTime;
     protected float currentSecondaryReloadTime;
 
-    protected bool canPrimaryAttack;
-    protected bool canSecondaryAttack;
+    public bool canPrimaryAttack;
+    public bool canSecondaryAttack;
 
     private void Start()
     {

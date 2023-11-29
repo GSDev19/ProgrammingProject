@@ -65,7 +65,7 @@ public class InputHandler : MonoBehaviour
     {
         if(UIController.Instance.isAttackUpgradeOpen)
         {
-            return;
+            UIController.Instance.ShowAttackUpgradePanel(false);
         }
         if(context.started)
         {
@@ -91,7 +91,7 @@ public class InputHandler : MonoBehaviour
     {
         if (UIController.Instance.isAttackSelectionOpen)
         {
-            return;
+            UIController.Instance.ShowAttackSelectionPanel(false);
         }
         if (context.started)
         {

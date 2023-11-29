@@ -18,7 +18,7 @@ public class PlayerPrimaryAttackState : AttackState
     {
         base.Enter();
 
-        core.Attack.HandlePrimaryAttack();
+        
     }
 
     public override void Exit()
@@ -29,6 +29,8 @@ public class PlayerPrimaryAttackState : AttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        core.Attack.HandlePrimaryAttack();
 
         if (!InputHandler.Instance.PrimaryAttackInput)
         {
