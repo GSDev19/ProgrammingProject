@@ -2722,7 +2722,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6491126481025532444}
   m_Father: {fileID: 7249372325203977260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3886915477610961048
@@ -2742,7 +2743,7 @@ MonoBehaviour:
   attacksHandler: {fileID: 3899766345921870507}
   attackSelectionCanvasGroup: {fileID: 363066029395338528}
   isAttackSelectionOpen: 0
-  upgradeHandler: {fileID: 7714198591379453227}
+  upgradeHandler: {fileID: 463299674330345292}
   attackUpgradeCanvasGroup: {fileID: 2479172676599453423}
   isAttackUpgradeOpen: 0
   primaryCooldownSprite: {fileID: 9084320457603532597}
@@ -3092,7 +3093,6 @@ GameObject:
   - component: {fileID: 5428600795636168717}
   - component: {fileID: 7192551945775964899}
   - component: {fileID: 2479172676599453423}
-  - component: {fileID: 7714198591379453227}
   m_Layer: 5
   m_Name: AttacksUpgrade
   m_TagString: Untagged
@@ -3141,25 +3141,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7714198591379453227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499934882851538078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95652a0cf57cd854b80eff5aae7d7786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 7824283623521031053, guid: 55729b51e709ef84da5e6ea81038ee1b, type: 3}
-  primaryButtonsParent: {fileID: 3673840160535240951}
-  secondaryButtonsParent: {fileID: 6349638795739396846}
-  primaryCanvasGroup: {fileID: 7426058925570407668}
-  primaryUpgradePanel: {fileID: 2782292996201401813}
-  secondaryCanvasGroup: {fileID: 7686266274075749341}
-  secondaryUpgradePanel: {fileID: 1168134360002810239}
 --- !u!1 &3660687312914938999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4039,57 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4565778294952660454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6491126481025532444}
+  - component: {fileID: 463299674330345292}
+  m_Layer: 0
+  m_Name: AttackUpgradePanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6491126481025532444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565778294952660454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3218108594160090660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463299674330345292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565778294952660454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95652a0cf57cd854b80eff5aae7d7786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 7824283623521031053, guid: 55729b51e709ef84da5e6ea81038ee1b, type: 3}
+  primaryButtonsParent: {fileID: 3673840160535240951}
+  secondaryButtonsParent: {fileID: 6349638795739396846}
+  primaryCanvasGroup: {fileID: 7426058925570407668}
+  primaryUpgradePanel: {fileID: 2782292996201401813}
+  secondaryCanvasGroup: {fileID: 7686266274075749341}
+  secondaryUpgradePanel: {fileID: 1168134360002810239}
 --- !u!1 &4630515459464820584
 GameObject:
   m_ObjectHideFlags: 0

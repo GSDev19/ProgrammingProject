@@ -20,8 +20,11 @@ public class SecondaryUpgradePanel : MonoBehaviour
 
     public Image secondaryImage;
 
+    public SecondaryData secondaryData;
+
     public void Set(Element element, SecondaryData data)
     {
+        this.secondaryData = data;
         this.damage = data.damage;
         this.cooldown = data.cooldown;
         this.areaSize = data.areaSize;
