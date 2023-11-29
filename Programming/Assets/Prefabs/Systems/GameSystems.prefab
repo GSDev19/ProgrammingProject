@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 5952760771977680639}
   - component: {fileID: 8299663048533338028}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5952760771977680639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1168134360002810239}
+        m_TargetAssemblyTypeName: SecondaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &624995128557783747
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +548,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980853737675920556}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -557,12 +569,8 @@ MonoBehaviour:
   areaSizeText: {fileID: 2311775341551570164}
   durationText: {fileID: 6380288561550182704}
   hitsText: {fileID: 6082317155312719941}
-  damage: 0
-  cooldown: 0
-  areaSize: 0
-  duration: 0
-  hitsXSecond: 0
   secondaryImage: {fileID: 2206098969793504628}
+  currentSecondaryData: {fileID: 0}
 --- !u!1 &1092890041487800817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,13 +1138,9 @@ MonoBehaviour:
   cooldownText: {fileID: 5494376193170522063}
   speedText: {fileID: 1983101498071410656}
   hitsText: {fileID: 2613537176894795007}
-  amountText: {fileID: 6951494791231797974}
-  damage: 0
-  cooldown: 0
-  speed: 0
-  enemyHits: 0
-  projectileAmount: 0
+  projetileAmount: {fileID: 0}
   primaryImage: {fileID: 1350451824336327421}
+  currentPrimaryData: {fileID: 0}
 --- !u!1 &1368398682384244294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1839,7 @@ GameObject:
   - component: {fileID: 4838514955944840456}
   - component: {fileID: 3923022952131511550}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1944,7 +1948,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4838514955944840456}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2782292996201401813}
+        m_TargetAssemblyTypeName: PrimaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2357690934813211658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4103,7 +4119,7 @@ GameObject:
   - component: {fileID: 1044126547707967486}
   - component: {fileID: 8808608276040721855}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Hits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4212,7 +4228,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1044126547707967486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1168134360002810239}
+        m_TargetAssemblyTypeName: SecondaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeHitsXSecond
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4647211973195795556
 GameObject:
   m_ObjectHideFlags: 0
@@ -4391,7 +4419,7 @@ GameObject:
   - component: {fileID: 1745245931398404140}
   - component: {fileID: 8313915683051213726}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4500,7 +4528,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1745245931398404140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1168134360002810239}
+        m_TargetAssemblyTypeName: SecondaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5092205051185085485
 GameObject:
   m_ObjectHideFlags: 0
@@ -7359,7 +7399,7 @@ GameObject:
   - component: {fileID: 1456718827591407816}
   - component: {fileID: 2985359348363896202}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Hits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7468,7 +7508,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1456718827591407816}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2782292996201401813}
+        m_TargetAssemblyTypeName: PrimaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeEnemyHits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7349870925734692611
 GameObject:
   m_ObjectHideFlags: 0
@@ -7660,7 +7712,7 @@ GameObject:
   - component: {fileID: 7214915911830339885}
   - component: {fileID: 2594402817046838717}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7769,7 +7821,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7214915911830339885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2782292996201401813}
+        m_TargetAssemblyTypeName: PrimaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeProjectileAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7625192787063518705
 GameObject:
   m_ObjectHideFlags: 0
@@ -7783,7 +7847,7 @@ GameObject:
   - component: {fileID: 9046694764759019092}
   - component: {fileID: 1211001869474097123}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7892,7 +7956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9046694764759019092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2782292996201401813}
+        m_TargetAssemblyTypeName: PrimaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7824035528653829503
 GameObject:
   m_ObjectHideFlags: 0
@@ -8040,7 +8116,7 @@ GameObject:
   - component: {fileID: 818352218548856160}
   - component: {fileID: 8907783629582117531}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8149,7 +8225,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 818352218548856160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2782292996201401813}
+        m_TargetAssemblyTypeName: PrimaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8155051121648782485
 GameObject:
   m_ObjectHideFlags: 0
@@ -8372,7 +8460,7 @@ GameObject:
   - component: {fileID: 5629508391621127000}
   - component: {fileID: 235508811503650197}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Duration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8481,7 +8569,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5629508391621127000}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1168134360002810239}
+        m_TargetAssemblyTypeName: SecondaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeDuration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8448944499710512981
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,7 +8595,7 @@ GameObject:
   - component: {fileID: 4686233247715596042}
   - component: {fileID: 8897320178700372619}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: AreaSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8604,7 +8704,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4686233247715596042}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1168134360002810239}
+        m_TargetAssemblyTypeName: SecondaryUpgradePanel, Assembly-CSharp
+        m_MethodName: UpgradeAreaSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8499580931217971331
 GameObject:
   m_ObjectHideFlags: 0
