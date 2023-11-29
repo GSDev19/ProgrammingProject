@@ -14,8 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: 3
   prefab: {fileID: 1295922524261553595, guid: b7ff2fef4a6fd504ab54f303aab8cba5, type: 3}
-  damage: 20
-  cooldown: 3
-  areaSize: 1
-  duration: 3
-  hitsXSecond: 2
+  damageStat:
+    initialValue: 20
+    currentValue: 20
+    incrementPercentaje: 0
+    incrementAmount: 5
+    timesIncremented: 0
+  cooldownStat:
+    initialValue: 1
+    currentValue: 1
+    incrementPercentaje: 0.15
+    incrementAmount: 1
+    timesIncremented: 0
+  areaSizeStat:
+    initialValue: 1
+    currentValue: 1
+    incrementPercentaje: 0.25
+    incrementAmount: 0
+    timesIncremented: 0
+  durationStat:
+    initialValue: 2
+    currentValue: 2
+    incrementPercentaje: 0.25
+    incrementAmount: 0
+    timesIncremented: 0
+  hitsXSecondStat:
+    initialValue: 2
+    currentValue: 2
+    incrementPercentaje: 0
+    incrementAmount: 2
+    timesIncremented: 0

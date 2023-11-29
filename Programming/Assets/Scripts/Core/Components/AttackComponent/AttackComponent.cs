@@ -72,12 +72,13 @@ public class AttackComponent : CoreComponent
 
     protected void FireProjetiles(PrimaryData data)
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Calculate the direction from the player to the mouse position
-        Vector3 direction = (mousePosition - transform.position).normalized;
+        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
 
-        Vector3 perpendicularVector = new Vector3(-direction.y, direction.x, 0f).normalized;
+
+        Vector2 perpendicularVector = new Vector2(-direction.y, direction.x).normalized;
 
         // Calculate the angle in degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -86,12 +87,14 @@ public class AttackComponent : CoreComponent
         for (int i = 0; i < data.projectileAmountStat.currentValue; i++)
         {
             // Create a projectile
+            Vector2 normalizedDirection = direction.normalized;
+            Debug.Log(normalizedDirection);
             //GameObject projectile = Instantiate(data.prefab, transform.position, Quaternion.Euler(0f, 0f, angle));
-            Vector3 spawnPosition = transform.position + perpendicularVector * (i - (data.projectileAmountStat.currentValue - 1) / 2f) * 0.5f;
+            Vector2 spawnPosition = (Vector2)transform.position + perpendicularVector * (i - (data.projectileAmountStat.currentValue - 1) / 2f) * 0.5f;
 
             GameObject projectile = SpawnController.Instance.projectilePool.Spawn(spawnPosition, Quaternion.Euler(0f, 0f, angle));
 
-            projectile.GetComponent<Projectile>().SetProjectile(data.element, direction, data.speedStat.currentValue, data.damageStat.currentValue, data.enemyHitsStat.currentValue);
+            projectile.GetComponent<Projectile>().SetProjectile(data.element, normalizedDirection, data.speedStat.currentValue, data.damageStat.currentValue, data.enemyHitsStat.currentValue);
         }
     }
     protected void CreateAttackArea(SecondaryData data)
