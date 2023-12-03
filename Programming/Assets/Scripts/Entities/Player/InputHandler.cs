@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-//using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
@@ -32,86 +32,86 @@ public class InputHandler : MonoBehaviour
     {
         isPointerOnUi = IsPointerOverUI();
     }
-    //public void OnMoveInput(InputAction.CallbackContext context)
-    //{
-    //    MovementInput = context.ReadValue<Vector2>();
-    //    NormX = (int)(MovementInput * Vector2.right).normalized.x;
-    //    NormY = (int)(MovementInput * Vector2.up).normalized.y;
-    //}
+    public void OnMoveInput(InputAction.CallbackContext context)
+    {
+        MovementInput = context.ReadValue<Vector2>();
+        NormX = (int)(MovementInput * Vector2.right).normalized.x;
+        NormY = (int)(MovementInput * Vector2.up).normalized.y;
+    }
 
-    //public void OnPrimaryAttackInput(InputAction.CallbackContext context)
-    //{
-    //    if (context.started && !isPointerOnUi)
-    //    {
-    //        PrimaryAttackInput = true;
-    //    }
-    //    if (context.canceled)
-    //    {
-    //        PrimaryAttackInput = false;
-    //    }
-    //}
-    //public void OnSecondaryAttackInput(InputAction.CallbackContext context)
-    //{
-    //    if(context.started && !isPointerOnUi)
-    //    {
-    //        SecondaryAttackInput = true;
-    //    }
-    //    if(context.canceled)
-    //    {
-    //        SecondaryAttackInput = false;
-    //    }
-    //}
-    //public void OnAttackSelectionInput(InputAction.CallbackContext context)
-    //{
-    //    if(UIController.Instance.isAttackUpgradeOpen)
-    //    {
-    //        UIController.Instance.ShowAttackUpgradePanel(false);
-    //    }
-    //    if(context.started)
-    //    {
-    //        AttackSelectionInput = true;
-    //        if(UIController.Instance.isAttackSelectionOpen)
-    //        {
-    //            UIController.Instance.ShowAttackSelectionPanel(false);
-    //        }
-    //        else
-    //        {
-    //            UIController.Instance.ShowAttackSelectionPanel(true);
-    //        }
+    public void OnPrimaryAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.started && !isPointerOnUi)
+        {
+            PrimaryAttackInput = true;
+        }
+        if (context.canceled)
+        {
+            PrimaryAttackInput = false;
+        }
+    }
+    public void OnSecondaryAttackInput(InputAction.CallbackContext context)
+    {
+        if(context.started && !isPointerOnUi)
+        {
+            SecondaryAttackInput = true;
+        }
+        if(context.canceled)
+        {
+            SecondaryAttackInput = false;
+        }
+    }
+    public void OnAttackSelectionInput(InputAction.CallbackContext context)
+    {
+        if(UIController.Instance.isAttackUpgradeOpen)
+        {
+            UIController.Instance.ShowAttackUpgradePanel(false);
+        }
+        if(context.started)
+        {
+            AttackSelectionInput = true;
+            if(UIController.Instance.isAttackSelectionOpen)
+            {
+                UIController.Instance.ShowAttackSelectionPanel(false);
+            }
+            else
+            {
+                UIController.Instance.ShowAttackSelectionPanel(true);
+            }
 
-    //    }
+        }
 
-    //    if(context.canceled)
-    //    {
-    //        AttackSelectionInput = false;
-    //        //UIController.Instance.ShowAttackSelectionPanel(false);
-    //    }
-    //}
-    //public void OnAttackUpgradeInput(InputAction.CallbackContext context)
-    //{
-    //    if (UIController.Instance.isAttackSelectionOpen)
-    //    {
-    //        UIController.Instance.ShowAttackSelectionPanel(false);
-    //    }
-    //    if (context.started)
-    //    {
-    //        AttackUpgradeInput = true;
-    //        if(UIController.Instance.isAttackUpgradeOpen)
-    //        {
-    //            UIController.Instance.ShowAttackUpgradePanel(false);
-    //        }
-    //        else
-    //        {
-    //            UIController.Instance.ShowAttackUpgradePanel(true);
-    //        }
-    //    }
+        if(context.canceled)
+        {
+            AttackSelectionInput = false;
+            //UIController.Instance.ShowAttackSelectionPanel(false);
+        }
+    }
+    public void OnAttackUpgradeInput(InputAction.CallbackContext context)
+    {
+        if (UIController.Instance.isAttackSelectionOpen)
+        {
+            UIController.Instance.ShowAttackSelectionPanel(false);
+        }
+        if (context.started)
+        {
+            AttackUpgradeInput = true;
+            if(UIController.Instance.isAttackUpgradeOpen)
+            {
+                UIController.Instance.ShowAttackUpgradePanel(false);
+            }
+            else
+            {
+                UIController.Instance.ShowAttackUpgradePanel(true);
+            }
+        }
 
-    //    if (context.canceled)
-    //    {
-    //        AttackUpgradeInput = false;
-    //        //UIController.Instance.ShowAttackUpgradePanel(false);
-    //    }
-    //}
+        if (context.canceled)
+        {
+            AttackUpgradeInput = false;
+            //UIController.Instance.ShowAttackUpgradePanel(false);
+        }
+    }
     private bool IsPointerOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
