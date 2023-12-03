@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Enemy1Data", menuName = "Data/Entity Base Data/ New Enemy1 Data")]
