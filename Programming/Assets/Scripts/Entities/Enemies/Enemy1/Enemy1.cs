@@ -25,12 +25,25 @@ public class Enemy1 : Entity
     {
         StateMachine.CurrentState.LogicUpdate();
         stateName = StateMachine.CurrentState.StateName();
+
+        CheckIfShouldRelocate();
     }
     private void FixedUpdate()
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    private void CheckIfShouldRelocate()
+    {
+        float distance = Vector3.Distance(PlayerController.Instance.transform.position, transform.position);
+
+        if (EnemySpawnController.Instance.MaxEnemyRadius < distance)
+        {
+            Vector3 directionToPlayer = (PlayerController.Instance.transform.position - transform.position).normalized;
+            Vector3 newPosition = PlayerController.Instance.transform.position + directionToPlayer * EnemySpawnController.Instance.SpawnRadius;
+            transform.position = newPosition;
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;

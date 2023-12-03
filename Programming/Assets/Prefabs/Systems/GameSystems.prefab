@@ -6649,7 +6649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2274365128271322092}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.0000009536743, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2274365128781504726}
@@ -6718,7 +6718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2274365128271675993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.0000009536743, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2274365128345025458}
@@ -16399,8 +16399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d70f1f6e6885074682dc7ba5a4f1eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadius: 20
+  <SpawnRadius>k__BackingField: 20
   spawnRate: 10
+  <MaxEnemyRadius>k__BackingField: 25
   levelSpawnData: {fileID: 11400000, guid: b2063cc4279457946a379035455ba9f6, type: 2}
   currentSpawnData:
     amountOfEnemies: 0

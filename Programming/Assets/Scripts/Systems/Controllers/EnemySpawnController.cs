@@ -7,8 +7,9 @@ public class EnemySpawnController : MonoBehaviour
     public static EnemySpawnController Instance;
 
     //public Entity enemy1Prefab;
-    [SerializeField] private float spawnRadius = 20f;
+    [field: SerializeField] public float  SpawnRadius {get; private set;}
     [SerializeField] private float spawnRate = 10f;
+    [field: SerializeField] public float MaxEnemyRadius {get; private set;}
 
     public LevelSpawnData levelSpawnData;
     public SpawnData currentSpawnData;
@@ -65,7 +66,7 @@ public class EnemySpawnController : MonoBehaviour
         Vector3 spawnDirection = Quaternion.Euler(0f, 0f, randomAngle) * Vector3.right;
 
         // Calculate the spawn position just outside the camera view
-        Vector3 spawnPosition = PlayerController.Instance.transform.position + spawnDirection * spawnRadius;
+        Vector3 spawnPosition = PlayerController.Instance.transform.position + spawnDirection * SpawnRadius;
 
         Entity newEntity = SpawnController.Instance.enemy1Pool.Spawn(spawnPosition, Quaternion.identity).GetComponent<Entity>();
         Element randomElement = GameData.Instance.GetRandomElement(currentSpawnData.elements);
@@ -97,7 +98,8 @@ public class EnemySpawnController : MonoBehaviour
         Gizmos.color = Color.cyan;
         if(PlayerController.Instance != null)
         {
-            Gizmos.DrawWireSphere(PlayerController.Instance.transform.position, spawnRadius);
+            Gizmos.DrawWireSphere(PlayerController.Instance.transform.position, SpawnRadius);
+            Gizmos.DrawWireSphere(PlayerController.Instance.transform.position, MaxEnemyRadius);
         }
 
     }
