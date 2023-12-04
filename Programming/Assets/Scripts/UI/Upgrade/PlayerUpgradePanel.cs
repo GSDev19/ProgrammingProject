@@ -38,29 +38,29 @@ public class PlayerUpgradePanel : MonoBehaviour
     {
         currentData = PlayerController.Instance.data;
     }
-    public void Set(PlayerStats stat)
+    public void Set(/*PlayerStats stat*/)
     {
-        SelectStat(stat);
+        //SelectStat(stat);
 
         SetIncrementTexts();
 
         UpdateValues();
     }
-    private void SelectStat(PlayerStats selectedStat)
-    {
-        Debug.Log(selectedStat);
-        foreach (PlayerStats key in statsGameObjects.Keys)
-        {
-            if (key == selectedStat)
-            {
-                statsGameObjects[key].SetActive(true);
-            }
-            else
-            {
-                statsGameObjects[key].SetActive(false);
-            }
-        }
-    }
+    //private void SelectStat(PlayerStats selectedStat)
+    //{
+    //    Debug.Log(selectedStat);
+    //    foreach (PlayerStats key in statsGameObjects.Keys)
+    //    {
+    //        if (key == selectedStat)
+    //        {
+    //            statsGameObjects[key].SetActive(true);
+    //        }
+    //        else
+    //        {
+    //            statsGameObjects[key].SetActive(false);
+    //        }
+    //    }
+    //}
 
     private void UpdateValues()
     {

@@ -65,13 +65,13 @@ public class UpgradesHandler : MonoBehaviour
 
         secondaryUpgradePanel.Set(element, data);
     }
-    public void SetPlayerUpgradeData(PlayerStats stat)
+    public void SetPlayerUpgradeData()
     {
         UIHelpers.SetCanvasGroup(primaryCanvasGroup, false);
         UIHelpers.SetCanvasGroup(secondaryCanvasGroup, false);
         UIHelpers.SetCanvasGroup(playerCanvasGroup, true);
 
-        playerUpgradePanel.Set(stat);
+        playerUpgradePanel.Set();
     }
     public void SetNoneUpgradeData()
     {
