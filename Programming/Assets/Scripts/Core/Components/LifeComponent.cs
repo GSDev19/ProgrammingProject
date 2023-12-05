@@ -15,12 +15,18 @@ public class LifeComponent : CoreComponent
     {
         damageText.gameObject.SetActive(false);
         damageImage.gameObject.SetActive(false);
+
     }
     public void SetInitialEntityHealth(float health)
     {
         currentHealth = health;
         damageText.gameObject.SetActive(false);
         damageImage.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        
     }
     public void HandleDamage(float damage, Element attackElement)
     {
@@ -54,7 +60,7 @@ public class LifeComponent : CoreComponent
                     }
                     else
                     {
-                        Debug.Log("DEAD PLAYER");
+                       UIController.Instance.ShowDeadPanel(true);
                     }
                 }
             }
@@ -62,6 +68,14 @@ public class LifeComponent : CoreComponent
 
 
     }
+
+    //private void HandleRecovery()
+    //{
+    //    if(Core.Entity == PlayerController.Instance)
+    //    {
+
+    //    }
+    //}
     private void DisplayDamage(int damage)
     {
         damageImage.gameObject.SetActive(true);

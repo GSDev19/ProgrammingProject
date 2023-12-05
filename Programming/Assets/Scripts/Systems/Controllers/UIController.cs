@@ -32,7 +32,10 @@ public class UIController : MonoBehaviour
 
     [Header("Pause")]
     public CanvasGroup pauseCanvasGroup;
-    public bool pauseMenuOpen = false;
+    public bool pauseMenuOpen = false;  
+    [Header("Dead")]
+    public CanvasGroup deadCanvasGroup;
+    public bool deadMenuOpen = false;
     private void Awake()
     {
         if (!Instance)
@@ -52,6 +55,7 @@ public class UIController : MonoBehaviour
         ShowAttackSelectionPanel(false);
         ShowAttackUpgradePanel(false);
         ShowPausePanel(false);
+        ShowDeadPanel(false);
     }
 
     #region Experience
@@ -80,6 +84,21 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1f;
         }
         UIHelpers.SetCanvasGroup(pauseCanvasGroup, pauseMenuOpen);
+    }
+    public void ShowDeadPanel(bool value)
+    {
+        deadMenuOpen = value;
+
+        if (deadMenuOpen == true)
+        {
+            Time.timeScale = 0f;
+
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        UIHelpers.SetCanvasGroup(deadCanvasGroup, deadMenuOpen);
     }
 
     #region Attack Selection 
@@ -124,6 +143,10 @@ public class UIController : MonoBehaviour
     public void OnMainMenuButton()
     {
         ChangeSceneController.Instance.OnMainMenuButton();
+    }
+    public void OnRetryButton()
+    {
+        ChangeSceneController.Instance.LoadLevel(1);
     }
     #endregion
 
