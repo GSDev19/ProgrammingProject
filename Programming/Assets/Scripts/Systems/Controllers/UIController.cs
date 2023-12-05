@@ -10,6 +10,8 @@ public class UIController : MonoBehaviour
     [Header("Experience")]
     public Image experienceBar;
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI pointsText;
+
     [Space]
     [Header("Attack Selection")]
     public AttackSelectionHandler attacksHandler;
@@ -53,6 +55,10 @@ public class UIController : MonoBehaviour
         float fill = (float)current / target;
         experienceBar.fillAmount = fill;
         levelText.text = level.ToString();
+    }
+    public void SetCurrentPoints(int points)
+    {
+        pointsText.text = points.ToString();
     }
     #endregion
 

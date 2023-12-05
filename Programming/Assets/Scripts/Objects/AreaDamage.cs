@@ -15,7 +15,7 @@ public class AreaDamage : MonoBehaviour
 
     public void SetAreaDamage(Element element, float size, float totalDuration, float rate, float dmg)
     {
-        spriteRenderer.color = GameData.Instance.GetColor(element);
+        spriteRenderer.sprite = GameData.Instance.GetAreaDamageSprite(element);
         areaElement = element;
         transform.localScale = Vector3.one * (initalSize + initalSize * size);
         duration = totalDuration;

@@ -19,6 +19,7 @@ public class ExperienceComponent : CoreComponent
         currentLevel = 0;
         targetExperience = initialTargetExperience;
         UIController.Instance.SetBarFillAmount(currentExperience, targetExperience, 0);
+        UIController.Instance.SetCurrentPoints(currentPoints);
     }
     public void AddExperience(int experience)
     {
@@ -31,7 +32,7 @@ public class ExperienceComponent : CoreComponent
             initialTargetExperience += targetExperience + targetExperience * (targerIncreasePercentaje / 100);
             currentPoints += pointsXLevel;
         }
-
+        UIController.Instance.SetCurrentPoints(currentPoints);
         UIController.Instance.SetBarFillAmount(currentExperience, targetExperience, currentLevel);
     }
     public bool CheckIfHasEnoughPoints()
@@ -49,6 +50,7 @@ public class ExperienceComponent : CoreComponent
     {
         if(CheckIfHasEnoughPoints())
         {
+            UIController.Instance.SetCurrentPoints(currentPoints);
             currentPoints--;
         }
     }

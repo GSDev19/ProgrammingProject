@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeComponent : CoreComponent
 {
     [SerializeField] private float currentHealth;
+    [SerializeField] private Image damageImage;
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private float displayTime = 0.2f;
 
     private void Start()
     {
         damageText.gameObject.SetActive(false);
+        damageImage.gameObject.SetActive(false);
     }
     public void SetInitialEntityHealth(float health)
     {
         currentHealth = health;
         damageText.gameObject.SetActive(false);
+        damageImage.gameObject.SetActive(false);
     }
     public void HandleDamage(float damage, Element attackElement)
     {
@@ -55,13 +59,16 @@ public class LifeComponent : CoreComponent
     }
     private void DisplayDamage(int damage)
     {
+        damageImage.gameObject.SetActive(true);
         damageText.text = damage.ToString();
         StartCoroutine(ShowDamage());
     }
     private IEnumerator ShowDamage()
     {
         damageText.gameObject.SetActive(true);
+        damageImage.gameObject.SetActive(true);
         yield return new WaitForSeconds(displayTime);
         damageText.gameObject.SetActive(false);
+        damageImage.gameObject.SetActive(false);
     }
 }

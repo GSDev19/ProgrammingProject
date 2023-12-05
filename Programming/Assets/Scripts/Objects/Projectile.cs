@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
     }
     public void SetProjectile(Element element, Vector3 direction, float projectileSpeed, float dmg, float hits)
     {
-        spriteRenderer.color = GameData.Instance.GetColor(element);
+        spriteRenderer.sprite = GameData.Instance.GetProjectileSprite(element);
         projectileElement = element;
         RB.velocity = direction * projectileSpeed;
         damage = dmg;

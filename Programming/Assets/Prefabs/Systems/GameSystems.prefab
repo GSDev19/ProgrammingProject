@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.2
+  m_fontSize: 53.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2643,6 +2643,22 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8799f30872e4e924a980773d2e19b09e, type: 2}
     - {fileID: 11400000, guid: 3d571fcb9fe9692429d103ebbeb39fa7, type: 2}
     - {fileID: 11400000, guid: 513b6b2c26c348242a23042461ffd5f3, type: 2}
+  areaDamageSprites:
+    keys: 0000000001000000020000000300000004000000
+    values:
+    - {fileID: 21300000, guid: de169391173151a4890e87e9983a314a, type: 3}
+    - {fileID: 21300000, guid: b450396754f030f4bbd95ed039a6cf7a, type: 3}
+    - {fileID: 21300000, guid: 80e24fd58bf2da840a64d0b4b8bb9ed1, type: 3}
+    - {fileID: 21300000, guid: b1cb02e9d3baf4348bc392293055b68a, type: 3}
+    - {fileID: 21300000, guid: 9d312df30c5da9f45b4f2a1222bb6200, type: 3}
+  projectileSprites:
+    keys: 0000000001000000020000000300000004000000
+    values:
+    - {fileID: 21300000, guid: 7ca9e749dd218e04aadea60a8d2aef3f, type: 3}
+    - {fileID: 21300000, guid: 3dd62db6cc393a24a9b2111cd2b1496d, type: 3}
+    - {fileID: 21300000, guid: ad35c3b76bd6f69458a9b8ba3e397b9c, type: 3}
+    - {fileID: 21300000, guid: 44e595df98d01d8469d1668de9e53c5f, type: 3}
+    - {fileID: 21300000, guid: c03f5f627c3e4d04fb5041adafd2d02e, type: 3}
   fireDamage:
     keys: 000000000100000002000000030000000400000005000000
     values:
@@ -2688,6 +2704,36 @@ MonoBehaviour:
     - 1
     - 0
     - 0.5
+  fireEnemies:
+    keys: 000000000100000002000000
+    values:
+    - {fileID: 21300000, guid: 9a460b31e2ce5e64aa49cbdcb407ee74, type: 3}
+    - {fileID: 21300000, guid: e75f0e9fedc86eb4ba4016e2a7ce7ffc, type: 3}
+    - {fileID: 21300000, guid: f7480233a232c9248b375e0d95a4a94a, type: 3}
+  waterEnemies:
+    keys: 000000000100000002000000
+    values:
+    - {fileID: 21300000, guid: 0cce4d8e367044546b7106520e7059ea, type: 3}
+    - {fileID: 21300000, guid: 2ed03e0a8dd919c49984522362304430, type: 3}
+    - {fileID: 21300000, guid: 2b6f43d3bfdf5f140ac6af7711146978, type: 3}
+  plantEnemies:
+    keys: 000000000100000002000000
+    values:
+    - {fileID: 21300000, guid: ab52a9c0bed12cf45ab670e2873b4789, type: 3}
+    - {fileID: 21300000, guid: c85a80e5fc169cf43895122d63955130, type: 3}
+    - {fileID: 21300000, guid: 168d91f61d9c869478438e8960f03e30, type: 3}
+  electricEnemies:
+    keys: 000000000100000002000000
+    values:
+    - {fileID: 21300000, guid: 026e10af5834eb542899eba8760a2821, type: 3}
+    - {fileID: 21300000, guid: c035e5249da0cc44286b7d0dcb5f2fb3, type: 3}
+    - {fileID: 21300000, guid: 721b9348c6627784a82215b7afd45b38, type: 3}
+  rockEnemies:
+    keys: 000000000100000002000000
+    values:
+    - {fileID: 21300000, guid: 72c88554abe2e4f4a842125be1148fa4, type: 3}
+    - {fileID: 21300000, guid: cc14e5855bc8318429036fba41c78f33, type: 3}
+    - {fileID: 21300000, guid: f1dddddcf699f8f4fb71ceedc64b238b, type: 3}
 --- !u!1 &995643669745497402
 GameObject:
   m_ObjectHideFlags: 0
@@ -11363,7 +11409,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.15
+  m_fontSize: 53.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25424,6 +25470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 4318500015246676677}
   levelText: {fileID: 4751797825121237971}
+  pointsText: {fileID: 6540426548471355577}
   attacksHandler: {fileID: 7195502177584924533}
   attackSelectionCanvasGroup: {fileID: 5822188321271650558}
   isAttackSelectionOpen: 0

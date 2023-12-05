@@ -17,6 +17,9 @@ public class GameData : MonoBehaviour
     public UDictionary<Element, PrimaryData> primaryDatas = new UDictionary<Element, PrimaryData>();
     public UDictionary<Element, SecondaryData> secondaryDatas = new UDictionary<Element, SecondaryData>();
     [Space]
+    [Header("ATTACK SPRITES")]
+    public UDictionary<Element, Sprite> areaDamageSprites = new UDictionary<Element, Sprite>();
+    public UDictionary<Element, Sprite> projectileSprites = new UDictionary<Element, Sprite>();
     [Space]
     [Header("ATTACKS MODIFIER")]
     public UDictionary<Element, float> fireDamage = new UDictionary<Element, float>();
@@ -24,7 +27,14 @@ public class GameData : MonoBehaviour
     public UDictionary<Element, float> plantDamage = new UDictionary<Element, float>();
     public UDictionary<Element, float> electricDamage = new UDictionary<Element, float>();
     public UDictionary<Element, float> earthDamage = new UDictionary<Element, float>();
-
+    [Space]
+    [Space]
+    [Header("ENEMY SPRITES")]
+    public UDictionary<int, Sprite> fireEnemies = new UDictionary<int, Sprite>();
+    public UDictionary<int, Sprite> waterEnemies = new UDictionary<int, Sprite>();
+    public UDictionary<int, Sprite> plantEnemies = new UDictionary<int, Sprite>();
+    public UDictionary<int, Sprite> electricEnemies = new UDictionary<int, Sprite>();
+    public UDictionary<int, Sprite> rockEnemies = new UDictionary<int, Sprite>();
 
     private void Awake()
     {
@@ -99,6 +109,90 @@ public class GameData : MonoBehaviour
         }
         return selected;
     }
+
+    public Sprite GetAreaDamageSprite(Element element)
+    {
+        Sprite selected = null;
+        foreach (Element key in areaDamageSprites.Keys)
+        {
+            if (key == element)
+            {
+                selected = areaDamageSprites[key];
+            }
+        }
+        return selected;
+    }
+
+    public Sprite GetProjectileSprite(Element element)
+    {
+        Sprite selected = null;
+        foreach (Element key in projectileSprites.Keys)
+        {
+            if (key == element)
+            {
+                selected = projectileSprites[key];
+            }
+        }
+        return selected;
+    }
+
+    public Sprite GetEnemySprite(Element element, int level)
+    {
+        Sprite selectedSprite = null;
+
+        if(element == Element.Fire)
+        {
+            foreach (int key in fireEnemies.Keys)
+            {
+                if(key == level)
+                {
+                    selectedSprite = fireEnemies[key];
+                }
+            }
+        }
+        else if(element == Element.Water)
+        {
+            foreach (int key in waterEnemies.Keys)
+            {
+                if (key == level)
+                {
+                    selectedSprite = waterEnemies[key];
+                }
+            }
+        }
+        else if (element == Element.Plant)
+        {
+            foreach (int key in plantEnemies.Keys)
+            {
+                if (key == level)
+                {
+                    selectedSprite = plantEnemies[key];
+                }
+            }
+        }
+        else if (element == Element.Electric)
+        {
+            foreach (int key in electricEnemies.Keys)
+            {
+                if (key == level)
+                {
+                    selectedSprite = electricEnemies[key];
+                }
+            }
+        }
+        else if (element == Element.Rock)
+        {
+            foreach (int key in rockEnemies.Keys)
+            {
+                if (key == level)
+                {
+                    selectedSprite = rockEnemies[key];
+                }
+            }
+        }
+
+        return selectedSprite;
+    }
     public Color GetColor(Element element)
     {
         Color selected = Color.white;
@@ -131,7 +225,7 @@ public class GameData : MonoBehaviour
         {
             mod = GetModifierFromDictionary(electricDamage, targetElement);
         }
-        else if(attackElement == Element.Ground)
+        else if(attackElement == Element.Rock)
         {
             mod = GetModifierFromDictionary(earthDamage, targetElement);
         }
@@ -195,6 +289,6 @@ public enum Element
     Water,
     Plant,
     Electric,
-    Ground,
+    Rock,
     None
 }

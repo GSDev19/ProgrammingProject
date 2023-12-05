@@ -6,6 +6,8 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [Header("GENERAL")]
+    [Range(0, 2)]
+    public int entityLevel = 0;
     public float entitySize = 1.5f;
     [Space]
     [Header("MOVEMENT")]
