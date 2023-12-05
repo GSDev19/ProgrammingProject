@@ -29,8 +29,6 @@ public class AudioController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()

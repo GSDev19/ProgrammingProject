@@ -17,8 +17,6 @@ public class ChangeSceneController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void LoadLevel(int index)

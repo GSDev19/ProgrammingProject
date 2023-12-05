@@ -24,7 +24,10 @@ public class AreaDamage : MonoBehaviour
         StartCoroutine(Damage());
         StartCoroutine(DestoryAreaDamage());
 
-        AudioController.Instance.PlaySound(AudioController.Instance.createArea);
+        if (AudioController.Instance != null)
+        {
+            AudioController.Instance.PlaySound(AudioController.Instance.createArea);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

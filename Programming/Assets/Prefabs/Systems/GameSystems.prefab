@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.3
+  m_fontSize: 53.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11707,7 +11707,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.2
+  m_fontSize: 53.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25856,7 +25856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockedElements:
     keys: 0000000001000000020000000300000004000000
-    values: 0101010101
+    values: 0100000000
 --- !u!1 &9055632931382243945
 GameObject:
   m_ObjectHideFlags: 0

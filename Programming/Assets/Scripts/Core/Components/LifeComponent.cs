@@ -42,7 +42,10 @@ public class LifeComponent : CoreComponent
                     StopAllCoroutines();
                     entity.gameObject.SetActive(false);
 
-                    AudioController.Instance.PlaySound(AudioController.Instance.killEnemy);
+                    if (AudioController.Instance != null)
+                    {
+                        AudioController.Instance.PlaySound(AudioController.Instance.killEnemy);
+                    }
 
                     if (entity != PlayerController.Instance)
                     {

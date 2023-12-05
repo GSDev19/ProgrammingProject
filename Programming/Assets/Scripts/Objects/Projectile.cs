@@ -53,7 +53,10 @@ public class Projectile : MonoBehaviour
         maxHits = hits;
         hitted = new List<GameObject>();
 
-        AudioController.Instance.PlaySound(AudioController.Instance.fireProjectile);
+        if (AudioController.Instance != null)
+        {
+            AudioController.Instance.PlaySound(AudioController.Instance.fireProjectile);
+        }
     }
 
     private void HandleHit(LifeComponent life)
