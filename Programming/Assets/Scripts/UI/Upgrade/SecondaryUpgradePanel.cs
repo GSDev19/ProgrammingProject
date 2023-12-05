@@ -71,7 +71,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeDamage()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.damageStat.level < 10)
         {
             currentData.damageStat.currentValue += currentData.damageStat.incrementAmount;
             currentData.damageStat.level++;
@@ -82,7 +82,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeCooldown()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.cooldownStat.level < 10)
         {
             currentData.cooldownStat.currentValue -= currentData.cooldownStat.incrementAmount / 100;
             currentData.cooldownStat.level++;
@@ -93,7 +93,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeAreaSize()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.areaSizeStat.level < 10)
         {
             currentData.areaSizeStat.currentValue += currentData.areaSizeStat.incrementAmount / 100;
             currentData.areaSizeStat.level++;
@@ -104,7 +104,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeDuration()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.durationStat.level < 10)
         {
             currentData.durationStat.currentValue += currentData.durationStat.incrementAmount / 100;
             currentData.durationStat.level++;
@@ -115,7 +115,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeHitsXSecond()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.hitsXSecondStat.level < 10)
         {
             currentData.hitsXSecondStat.currentValue += currentData.hitsXSecondStat.incrementAmount;
             currentData.hitsXSecondStat.level++;

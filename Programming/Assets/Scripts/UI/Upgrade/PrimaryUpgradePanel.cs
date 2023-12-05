@@ -69,7 +69,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        if(PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if(PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.damageStat.level < 10)
         {
             currentData.damageStat.currentValue += currentData.damageStat.incrementAmount;
             currentData.damageStat.level++;
@@ -79,7 +79,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeCooldown()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.cooldownStat.level < 10)
         {
             currentData.cooldownStat.currentValue -= currentData.cooldownStat.incrementAmount / 100;
             currentData.cooldownStat.level++;
@@ -90,7 +90,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeSpeed()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.speedStat.level < 10)
         {
             currentData.speedStat.currentValue += currentData.speedStat.incrementAmount / 100;
             currentData.speedStat.level++;
@@ -101,7 +101,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeEnemyHits()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.enemyHitsStat.level < 10)
         {
             currentData.enemyHitsStat.currentValue += currentData.enemyHitsStat.incrementAmount;
             currentData.enemyHitsStat.level++;
@@ -112,7 +112,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     }
     public void UpgradeProjectileAmount()
     {
-        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints())
+        if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.projectileAmountStat.level < 10)
         {
             currentData.projectileAmountStat.currentValue += currentData.projectileAmountStat.incrementAmount;
             currentData.projectileAmountStat.level++;
