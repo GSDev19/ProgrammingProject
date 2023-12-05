@@ -23,6 +23,8 @@ public class AreaDamage : MonoBehaviour
         damage = dmg;
         StartCoroutine(Damage());
         StartCoroutine(DestoryAreaDamage());
+
+        AudioController.Instance.PlaySound(AudioController.Instance.createArea);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

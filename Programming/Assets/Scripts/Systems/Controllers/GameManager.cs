@@ -19,6 +19,13 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Start()
+    {
+        if(AudioController.Instance != null)
+        {
+            AudioController.Instance.PlayMusic(AudioController.Instance.gameMusic);
+        }
+    }
 
     public void HandleUnlockedElements(Element element, bool newValue)
     {

@@ -31,6 +31,8 @@ public class ExperienceComponent : CoreComponent
             currentLevel++;
             initialTargetExperience += targetExperience + targetExperience * (targerIncreasePercentaje / 100);
             currentPoints += pointsXLevel;
+
+            AudioController.Instance.PlaySound(AudioController.Instance.levelUp);
         }
         UIController.Instance.SetCurrentPoints(currentPoints);
         UIController.Instance.SetBarFillAmount(currentExperience, targetExperience, currentLevel);

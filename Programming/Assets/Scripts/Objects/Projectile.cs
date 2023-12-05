@@ -52,6 +52,8 @@ public class Projectile : MonoBehaviour
         currentHits = 0;
         maxHits = hits;
         hitted = new List<GameObject>();
+
+        AudioController.Instance.PlaySound(AudioController.Instance.fireProjectile);
     }
 
     private void HandleHit(LifeComponent life)

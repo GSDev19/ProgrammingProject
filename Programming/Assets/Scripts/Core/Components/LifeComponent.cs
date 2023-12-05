@@ -42,7 +42,9 @@ public class LifeComponent : CoreComponent
                     StopAllCoroutines();
                     entity.gameObject.SetActive(false);
 
-                    if(entity != PlayerController.Instance)
+                    AudioController.Instance.PlaySound(AudioController.Instance.killEnemy);
+
+                    if (entity != PlayerController.Instance)
                     {
                         
                         PlayerController.Instance.Core.Experience.AddExperience(Core.Enemy1.data.entityExp);
