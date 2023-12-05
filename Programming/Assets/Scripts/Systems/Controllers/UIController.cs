@@ -29,6 +29,10 @@ public class UIController : MonoBehaviour
     [Space]
     public Image secondaryCooldownSprite;
     public Image secondaryBlocker;
+
+    [Header("Pause")]
+    public CanvasGroup pauseCanvasGroup;
+    public bool pauseMenuOpen = false;
     private void Awake()
     {
         if (!Instance)
@@ -47,6 +51,7 @@ public class UIController : MonoBehaviour
         isAttackSelectionOpen = false;
         ShowAttackSelectionPanel(false);
         ShowAttackUpgradePanel(false);
+        ShowPausePanel(false);
     }
 
     #region Experience
@@ -61,6 +66,21 @@ public class UIController : MonoBehaviour
         pointsText.text = points.ToString();
     }
     #endregion
+    public void ShowPausePanel(bool value)
+    {
+        pauseMenuOpen = value;
+
+        if (pauseMenuOpen == true)
+        {
+            Time.timeScale = 0f;
+
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        UIHelpers.SetCanvasGroup(pauseCanvasGroup, pauseMenuOpen);
+    }
 
     #region Attack Selection 
 
@@ -99,6 +119,11 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1f;
         }
         UIHelpers.SetCanvasGroup(attackUpgradeCanvasGroup, isAttackUpgradeOpen);
+    }
+
+    public void OnMainMenuButton()
+    {
+        ChangeSceneController.Instance.OnMainMenuButton();
     }
     #endregion
 

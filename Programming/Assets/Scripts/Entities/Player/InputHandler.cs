@@ -16,6 +16,7 @@ public class InputHandler : MonoBehaviour
     public bool AttackSelectionInput { get; private set; }
     public bool AttackUpgradeInput { get; private set; }
     public bool isPointerOnUi { get; private set; }
+    public bool PauseInput { get; private set; }
 
     private void Awake()
     {
@@ -59,6 +60,28 @@ public class InputHandler : MonoBehaviour
         if(context.canceled)
         {
             SecondaryAttackInput = false;
+        }
+    }   
+    public void OnPauseInput(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            PauseInput = true;
+
+            if (UIController.Instance.pauseMenuOpen)
+            {
+                UIController.Instance.ShowPausePanel(false);
+            }
+            else
+            {
+                UIController.Instance.ShowPausePanel(true);
+            }
+
+
+        }
+        if(context.canceled)
+        {
+            PauseInput = false;
         }
     }
     public void OnAttackSelectionInput(InputAction.CallbackContext context)
