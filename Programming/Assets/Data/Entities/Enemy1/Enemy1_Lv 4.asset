@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de90d14ce3189047b7af21f5763f04b, type: 3}
   m_Name: Enemy1_Lv 4
   m_EditorClassIdentifier: 
-  entityLevel: 0
+  entityLevel: 2
   entitySize: 0.9
   movementSpeedStat:
     initialValue: 5

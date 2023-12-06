@@ -13,31 +13,63 @@ MonoBehaviour:
   m_Name: SpawnData
   m_EditorClassIdentifier: 
   spawnDatas:
-  - amountOfEnemies: 20
+  - description: Easy Plant
+    amountOfEnemies: 10
     enemydatas:
     - {fileID: 11400000, guid: 723129b54d5f7164793099064886e91b, type: 2}
-    elements: 000000000100000002000000
-  - amountOfEnemies: 20
+    elements: 02000000
+  - description: Easy Plant
+    amountOfEnemies: 10
     enemydatas:
     - {fileID: 11400000, guid: 723129b54d5f7164793099064886e91b, type: 2}
-    - {fileID: 11400000, guid: 50ceaec5750fcea4a83adb8243c1a2cf, type: 2}
-    elements: 010000000200000003000000
-  - amountOfEnemies: 20
+    elements: 0200000001000000
+  - description: Easy Water
+    amountOfEnemies: 10
+    enemydatas:
+    - {fileID: 11400000, guid: 723129b54d5f7164793099064886e91b, type: 2}
+    elements: 0100000004000000
+  - description: Level1 Mix
+    amountOfEnemies: 15
     enemydatas:
     - {fileID: 11400000, guid: 50ceaec5750fcea4a83adb8243c1a2cf, type: 2}
-    - {fileID: 11400000, guid: d0c40e47a8b5e3948888be4b9fc8fcd3, type: 2}
-    elements: 020000000300000004000000
-  - amountOfEnemies: 20
+    elements: 0000000003000000
+  - description: Level1  Fire
+    amountOfEnemies: 15
+    enemydatas:
+    - {fileID: 11400000, guid: 50ceaec5750fcea4a83adb8243c1a2cf, type: 2}
+    elements: 000000000100000003000000
+  - description: Level 2 Mix
+    amountOfEnemies: 20
     enemydatas:
     - {fileID: 11400000, guid: d0c40e47a8b5e3948888be4b9fc8fcd3, type: 2}
-    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
-    elements: 030000000400000000000000
-  - amountOfEnemies: 20
-    enemydatas:
-    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
-    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
-    elements: 040000000000000001000000
-  - amountOfEnemies: 20
-    enemydatas:
-    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
     elements: 000000000100000002000000
+  - description: Level2  Mix
+    amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: d0c40e47a8b5e3948888be4b9fc8fcd3, type: 2}
+    elements: 000000000100000002000000
+  - description: Level3  Mix
+    amountOfEnemies: 25
+    enemydatas:
+    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
+    elements: 000000000100000002000000
+  - description: Level3  Mix
+    amountOfEnemies: 25
+    enemydatas:
+    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
+    elements: 030000000400000002000000
+  - description: Level3  Mix
+    amountOfEnemies: 25
+    enemydatas:
+    - {fileID: 11400000, guid: 88b2da34b54b3c94585bb7901075b228, type: 2}
+    elements: 040000000100000002000000
+  - description: Level4  Mix
+    amountOfEnemies: 25
+    enemydatas:
+    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
+    elements: 040000000100000002000000
+  - description: Level4  Mix
+    amountOfEnemies: 20
+    enemydatas:
+    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
+    elements: 000000000300000004000000

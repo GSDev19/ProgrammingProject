@@ -93,21 +93,23 @@ public class InputHandler : MonoBehaviour
         if(context.started)
         {
             AttackSelectionInput = true;
-            if(UIController.Instance.isAttackSelectionOpen)
-            {
-                UIController.Instance.ShowAttackSelectionPanel(false);
-            }
-            else
-            {
-                UIController.Instance.ShowAttackSelectionPanel(true);
-            }
+            UIController.Instance.ShowAttackSelectionPanel(true);
+
+            //if (UIController.Instance.isAttackSelectionOpen)
+            //{
+            //    UIController.Instance.ShowAttackSelectionPanel(false);
+            //}
+            //else
+            //{
+            //    UIController.Instance.ShowAttackSelectionPanel(true);
+            //}
 
         }
 
         if(context.canceled)
         {
             AttackSelectionInput = false;
-            //UIController.Instance.ShowAttackSelectionPanel(false);
+            UIController.Instance.ShowAttackSelectionPanel(false);
         }
     }
     public void OnAttackUpgradeInput(InputAction.CallbackContext context)

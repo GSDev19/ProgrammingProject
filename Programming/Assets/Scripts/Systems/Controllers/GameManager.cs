@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public UDictionary<Element, bool> unlockedElements = new UDictionary<Element, bool>();
 
+    public int targetDiamonds = 0;
+    public int currentDiamonds = 0;
+
+    public bool gameWon = false;
+
+
     private void Awake()
     {
         if(Instance == null)
@@ -18,6 +24,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        targetDiamonds = 0;
+        currentDiamonds = 0;
+        UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
+        gameWon = true;
     }
     private void Start()
     {
@@ -27,6 +38,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddTargetDiamond()
+    {
+        targetDiamonds++;
+        UIController.Instance.SetTargetDiamonds(targetDiamonds);
+    }
+
+    public void AddCurrentDiamond()
+    {
+        currentDiamonds++;
+        UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
+        CheckIfGameWon();
+    }
+
+    public void CheckIfGameWon()
+    {
+        if(currentDiamonds == targetDiamonds)
+        {
+            gameWon = true;
+            UIController.Instance.ShowWinPanel(true);
+        }
+    }
     public void HandleUnlockedElements(Element element, bool newValue)
     {
         foreach(Element key in unlockedElements.Keys)

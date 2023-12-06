@@ -11,7 +11,10 @@ public class UIController : MonoBehaviour
     public Image experienceBar;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI pointsText;
-
+    [Space]
+    [Header("Diamonds")]
+    public TextMeshProUGUI currentDiamonds;
+    public TextMeshProUGUI targetDiamonds;
     [Space]
     [Header("Attack Selection")]
     public AttackSelectionHandler attacksHandler;
@@ -36,6 +39,9 @@ public class UIController : MonoBehaviour
     [Header("Dead")]
     public CanvasGroup deadCanvasGroup;
     public bool deadMenuOpen = false;
+    [Header("Dead")]
+    public CanvasGroup winCanvasGroup;
+    public bool winMenuOpen = false;
     private void Awake()
     {
         if (!Instance)
@@ -56,6 +62,7 @@ public class UIController : MonoBehaviour
         ShowAttackUpgradePanel(false);
         ShowPausePanel(false);
         ShowDeadPanel(false);
+        ShowWinPanel(false);
     }
 
     #region Experience
@@ -70,6 +77,15 @@ public class UIController : MonoBehaviour
         pointsText.text = points.ToString();
     }
     #endregion
+
+    public void SetTargetDiamonds(int target)
+    {
+        targetDiamonds.text = target.ToString();
+    }
+    public void UpdateDiamondsAmount(int current)
+    {
+        currentDiamonds.text = current.ToString();
+    }
     public void ShowPausePanel(bool value)
     {
         pauseMenuOpen = value;
@@ -100,7 +116,21 @@ public class UIController : MonoBehaviour
         }
         UIHelpers.SetCanvasGroup(deadCanvasGroup, deadMenuOpen);
     }
+    public void ShowWinPanel(bool value)
+    {
+        winMenuOpen = value;
 
+        if (winMenuOpen == true)
+        {
+            Time.timeScale = 0f;
+
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        UIHelpers.SetCanvasGroup(winCanvasGroup, winMenuOpen);
+    }
     #region Attack Selection 
 
     public void ShowAttackSelectionPanel(bool value)
@@ -110,7 +140,7 @@ public class UIController : MonoBehaviour
         if (isAttackSelectionOpen == true)
         {
             attacksHandler.CreateButtons();
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             
         }
         else
