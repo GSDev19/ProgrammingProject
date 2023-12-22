@@ -4,18 +4,53 @@ using UnityEngine;
 
 public class PointToMouse : MonoBehaviour
 {
+    private Animator animator;
+    private float angle;
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
-        // Get the mouse position in world coordinates
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // Calculate the direction from the player to the mouse position
         Vector3 direction = (mousePosition - transform.position).normalized;
 
-        // Calculate the angle in degrees
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Set the rotation of the player to face the mouse position
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        SetAnimationState();
+    }
+
+    void SetAnimationState()
+    {
+        angle = (angle + 360) % 360;
+
+        if (angle >= 315 || angle < 45)
+        {
+            SetAnimatorState("Right");
+        }
+        else if (angle >= 45 && angle < 135)
+        {
+            SetAnimatorState("Up");
+        }
+        else if (angle >= 135 && angle < 225)
+        {
+            SetAnimatorState("Left");
+        }
+        else if (angle >= 225 && angle < 315)
+        {
+            SetAnimatorState("Down");
+        }
+    }
+
+    void SetAnimatorState(string state)
+    {
+        if (animator != null)
+        {
+            animator.Play(state);
+        }
     }
 }

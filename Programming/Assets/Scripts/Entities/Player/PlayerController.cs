@@ -30,6 +30,8 @@ public class PlayerController : Entity
     }
     private void Start()
     {
+        ChangeElement(Element.None);
+
         moveState = new PlayerMoveState(this, data, StateMachine, Core, stateName);
         idleState = new PlayerIdleState(this, data, StateMachine, Core, stateName);
         primaryAttackState = new PlayerPrimaryAttackState(this, data, StateMachine, Core, stateName);

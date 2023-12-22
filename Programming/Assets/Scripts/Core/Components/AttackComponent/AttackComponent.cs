@@ -18,6 +18,7 @@ public class AttackComponent : CoreComponent
 
     private void Start()
     {
+        
         canPrimaryAttack = true;
         canSecondaryAttack = true;
 
@@ -30,27 +31,27 @@ public class AttackComponent : CoreComponent
         currentPrimaryElement = element;
         primaryAttackData = GameData.Instance.GetPrimaryData(element);
         UIController.Instance.ChangePrimarySprite(GameData.Instance.GetElementSprite(element));
-        CheckIfSameElement();
+        //CheckIfSameElement();
     }
     public void SetSecondaryData(Element element)
     {
         currentSecondaryElement = element;
         secondaryAttackData = GameData.Instance.GetSecondaryData(element);
         UIController.Instance.ChangeSecondarySprite(GameData.Instance.GetElementSprite(element));
-        CheckIfSameElement();
+        //CheckIfSameElement();
     }
 
-    private void CheckIfSameElement()
-    {
-        if (currentPrimaryElement == currentSecondaryElement)
-        {
-            PlayerController.Instance.ChangeElement(currentPrimaryElement);
-        }
-        else
-        {
-            PlayerController.Instance.ChangeElement(Element.None);
-        }
-    }
+    //private void CheckIfSameElement()
+    //{
+    //    if (currentPrimaryElement == currentSecondaryElement)
+    //    {
+    //        PlayerController.Instance.ChangeElement(currentPrimaryElement);
+    //    }
+    //    else
+    //    {
+    //        PlayerController.Instance.ChangeElement(Element.None);
+    //    }
+    //}
     public void HandlePrimaryAttack()
     {
         if(canPrimaryAttack)
