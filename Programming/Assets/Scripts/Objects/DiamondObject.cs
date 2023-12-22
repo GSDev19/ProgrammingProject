@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
+
+using System;
 using UnityEngine;
 
 public class DiamondObject : MonoBehaviour
 {
+    public static Action OnDiamondStart;
+    public static Action OnDiamondPicked;
     private void Start()
     {
-        GameManager.Instance.AddTargetDiamond();
+        OnDiamondStart.Invoke();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameManager.Instance.AddCurrentDiamond();
+            OnDiamondPicked.Invoke();
             this.gameObject.SetActive(false);
         }
     }

@@ -11,15 +11,20 @@ public class GameManager : MonoBehaviour
     public int targetDiamonds = 0;
     public int currentDiamonds = 0;
 
-    public bool gameWon = false;
-
     private void OnEnable()
     {
+        DiamondObject.OnDiamondStart += HandleDiamondStart;
+        DiamondObject.OnDiamondPicked += HandleDiamondPicked;
+
         NewPowerObject.OnPickedNewPower += HandleUnlockedElements;
     }
 
     private void OnDisable()
     {
+
+        DiamondObject.OnDiamondStart -= HandleDiamondStart;
+        DiamondObject.OnDiamondPicked -= HandleDiamondPicked;
+
         NewPowerObject.OnPickedNewPower -= HandleUnlockedElements;
     }
 
@@ -36,7 +41,6 @@ public class GameManager : MonoBehaviour
 
         targetDiamonds = 0;
         currentDiamonds = 0;
-        gameWon = false;
     }
     private void Start()
     {
@@ -48,24 +52,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddTargetDiamond()
+    public void HandleDiamondStart()
     {
         targetDiamonds++;
         UIController.Instance.SetTargetDiamonds(targetDiamonds);
     }
 
-    public void AddCurrentDiamond()
+    public void HandleDiamondPicked()
     {
         currentDiamonds++;
         UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
         CheckIfGameWon();
     }
 
-    public void CheckIfGameWon()
+    private void CheckIfGameWon()
     {
         if(currentDiamonds == targetDiamonds)
         {
-            gameWon = true;
             UIController.Instance.ShowWinPanel(true);
         }
     }
