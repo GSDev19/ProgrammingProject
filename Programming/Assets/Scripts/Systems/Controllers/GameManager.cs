@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour
 
     public bool gameWon = false;
 
+    private void OnEnable()
+    {
+        NewPowerObject.OnPickedNewPower += HandleUnlockedElements;
+    }
+
+    private void OnDisable()
+    {
+        NewPowerObject.OnPickedNewPower -= HandleUnlockedElements;
+    }
 
     private void Awake()
     {
@@ -27,11 +36,12 @@ public class GameManager : MonoBehaviour
 
         targetDiamonds = 0;
         currentDiamonds = 0;
-        UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
-        gameWon = true;
+        gameWon = false;
     }
     private void Start()
     {
+        UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
+
         if(AudioController.Instance != null)
         {
             AudioController.Instance.PlayMusic(AudioController.Instance.gameMusic);
@@ -59,13 +69,13 @@ public class GameManager : MonoBehaviour
             UIController.Instance.ShowWinPanel(true);
         }
     }
-    public void HandleUnlockedElements(Element element, bool newValue)
+    public void HandleUnlockedElements(Element element)
     {
         foreach(Element key in unlockedElements.Keys)
         {
             if(key == element)
             {
-                unlockedElements[key] = newValue;
+                unlockedElements[key] = true;
             }
         }
     }
