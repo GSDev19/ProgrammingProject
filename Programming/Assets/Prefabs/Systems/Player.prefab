@@ -704,6 +704,10 @@ PrefabInstance:
       propertyPath: pointsXLevel
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6395813392506220264, guid: a572822e20199964899a658af6f58372, type: 3}
+      propertyPath: targetIncreasePercentage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7496346456023175746, guid: a572822e20199964899a658af6f58372, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.8

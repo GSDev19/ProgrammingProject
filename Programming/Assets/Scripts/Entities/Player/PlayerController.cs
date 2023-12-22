@@ -23,14 +23,11 @@ public class PlayerController : Entity
         {
             Destroy(this.gameObject);
         }
-
-        //EntityData = data;
-
-        ResetStats();
-
     }
     private void Start()
     {
+        ResetStats();
+
         currentElement = Element.None;
 
         moveState = new PlayerMoveState(this, data, StateMachine, Core, stateName);
@@ -56,12 +53,17 @@ public class PlayerController : Entity
     //    currentElement = element;
     //    spriteRenderer.color = GameData.Instance.GetColor(element);
     //}
-    private void ResetStats()
+    public override void ResetStats()
     {
-        data.healthStat.Reset();
-        data.recoveryStat.Reset();
-        data.armorStat.Reset();
-        data.movementSpeedStat.Reset();
-        data.luckStat.Reset();
+        base.ResetStats();
+
+        if(data != null)
+        {
+            data.healthStat.Reset();
+            data.recoveryStat.Reset();
+            data.armorStat.Reset();
+            data.movementSpeedStat.Reset();
+            data.luckStat.Reset();
+        }
     }
 }

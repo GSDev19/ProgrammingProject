@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AreaDamage : MonoBehaviour
 {
-    public static Action<SFX> OnCreateArea;
+    public static Action<SFX> OnCreateAreaSound;
 
     public Element areaElement;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -27,7 +27,7 @@ public class AreaDamage : MonoBehaviour
         StartCoroutine(Damage());
         StartCoroutine(DestoryAreaDamage());
 
-        OnCreateArea?.Invoke(SFX.CreateArea);
+        OnCreateAreaSound?.Invoke(SFX.CreateArea);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

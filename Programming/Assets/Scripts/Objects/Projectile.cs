@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public static Action<SFX> OnFireProjectile;
+    public static Action<SFX> OnFireProjectileSound;
 
     public Element projectileElement;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -56,7 +56,7 @@ public class Projectile : MonoBehaviour
         maxHits = hits;
         hitted = new List<GameObject>();
 
-        OnFireProjectile?.Invoke(SFX.FireProjectile);
+        OnFireProjectileSound?.Invoke(SFX.FireProjectile);
     }
 
     private void HandleHit(LifeComponent life)

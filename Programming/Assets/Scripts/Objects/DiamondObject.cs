@@ -5,7 +5,10 @@ using UnityEngine;
 public class DiamondObject : MonoBehaviour
 {
     public static Action OnDiamondStart;
-    public static Action OnDiamondPicked;
+    public static Action<int> OnDiamondPicked;
+    public static Action<SFX> OnDiamondPickedSound;
+
+    [SerializeField] private int diamondExperience = 2000;
     private void Start()
     {
         OnDiamondStart?.Invoke();
@@ -14,7 +17,8 @@ public class DiamondObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            OnDiamondPicked?.Invoke();
+            OnDiamondPicked?.Invoke(diamondExperience);
+            OnDiamondPickedSound?.Invoke(SFX.PickDiamond);
             this.gameObject.SetActive(false);
         }
     }

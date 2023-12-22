@@ -7,6 +7,7 @@ using Utilities;
 public class GameManager : MonoBehaviour
 {
     public static Action<Music> OnGameStarted;
+    public static Action<SFX> OnGameWinSound;
 
     public static GameManager Instance;
     public UDictionary<Element, bool> unlockedElements = new UDictionary<Element, bool>();
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         UIController.Instance.SetTargetDiamonds(targetDiamonds);
     }
 
-    public void HandleDiamondPicked()
+    public void HandleDiamondPicked( int diamond)
     {
         currentDiamonds++;
         UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour
         if(currentDiamonds == targetDiamonds)
         {
             UIController.Instance.ShowWinPanel(true);
+
+            OnGameWinSound?.Invoke(SFX.WinGame);
         }
     }
     public void HandleUnlockedElements(Element element)

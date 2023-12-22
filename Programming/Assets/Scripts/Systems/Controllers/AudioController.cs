@@ -29,21 +29,30 @@ public class AudioController : MonoBehaviour
 
     private void OnEnable()
     {
-        AreaDamage.OnCreateArea += PlaySXF;
-        ExperienceComponent.OnLevelUp += PlaySXF;
+        AreaDamage.OnCreateAreaSound += PlaySXF;
+        ExperienceComponent.OnLevelUpSound += PlaySXF;
         LifeComponent.OnEntityDeathSound += PlaySXF;
-        Projectile.OnFireProjectile += PlaySXF;   
-        
+        Projectile.OnFireProjectileSound += PlaySXF;   
+        DiamondObject.OnDiamondPickedSound += PlaySXF;
+
+        LifeComponent.OnPlayerDeathSound += PlaySXF;
+        GameManager.OnGameWinSound += PlaySXF;
+
+
         MainMenuController.OnMainMenuStart += PlayMusic;
         GameManager.OnGameStarted += PlayMusic;
     }
 
     private void OnDisable()
     {
-        AreaDamage.OnCreateArea -= PlaySXF;
-        ExperienceComponent.OnLevelUp -= PlaySXF;
+        AreaDamage.OnCreateAreaSound -= PlaySXF;
+        ExperienceComponent.OnLevelUpSound -= PlaySXF;
         LifeComponent.OnEntityDeathSound -= PlaySXF;
-        Projectile.OnFireProjectile -= PlaySXF;
+        Projectile.OnFireProjectileSound -= PlaySXF;
+        DiamondObject.OnDiamondPickedSound -= PlaySXF;
+
+        LifeComponent.OnPlayerDeathSound -= PlaySXF;
+        GameManager.OnGameWinSound -= PlaySXF;
 
         MainMenuController.OnMainMenuStart -= PlayMusic;
         GameManager.OnGameStarted -= PlayMusic;
@@ -80,7 +89,10 @@ public enum SFX
     CreateArea,
     FireProjectile,
     KillEnemy,
-    LevelUp
+    LevelUp,
+    PickDiamond,
+    WinGame,
+    LooseGame
 }
 
 public enum Music

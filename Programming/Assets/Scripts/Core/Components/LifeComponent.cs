@@ -10,6 +10,7 @@ public class LifeComponent : CoreComponent
     public static Action OnPlayerDeath;
     public static Action<int> OnEntityDeath;
     public static Action<SFX> OnEntityDeathSound;
+    public static Action<SFX> OnPlayerDeathSound;
 
     [SerializeField] private float currentHealth;
     [SerializeField] private Image damageImage;
@@ -62,6 +63,7 @@ public class LifeComponent : CoreComponent
                     else
                     {
                         OnPlayerDeath?.Invoke();
+                        OnPlayerDeathSound?.Invoke(SFX.LooseGame);
 
                         UIController.Instance.ShowDeadPanel(true);
                     }
