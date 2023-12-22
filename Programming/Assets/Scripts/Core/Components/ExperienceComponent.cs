@@ -29,6 +29,7 @@ public class ExperienceComponent : CoreComponent
     }
     private void Start()
     {
+        currentPoints = 0;
         currentLevel = 0;
         targetExperience = initialTargetExperience;
 
