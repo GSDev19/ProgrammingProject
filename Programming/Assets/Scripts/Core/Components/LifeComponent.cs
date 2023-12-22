@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,10 @@ using UnityEngine.UI;
 
 public class LifeComponent : CoreComponent
 {
+    public static Action OnPlayerDeath;
+    public static Action<int> OnEntityDeath;
+    public static Action<SFX> OnEntityDeathSound;
+
     [SerializeField] private float currentHealth;
     [SerializeField] private Image damageImage;
     [SerializeField] private TextMeshProUGUI damageText;
@@ -22,11 +27,6 @@ public class LifeComponent : CoreComponent
         currentHealth = health;
         damageText.gameObject.SetActive(false);
         damageImage.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        
     }
     public void HandleDamage(float damage, Element attackElement)
     {
@@ -48,19 +48,16 @@ public class LifeComponent : CoreComponent
                     StopAllCoroutines();
                     entity.gameObject.SetActive(false);
 
-                    if (AudioController.Instance != null)
-                    {
-                        AudioController.Instance.PlaySound(AudioController.Instance.killEnemy);
-                    }
-
                     if (entity != PlayerController.Instance)
                     {
-                        
-                        PlayerController.Instance.Core.Experience.AddExperience(Core.Enemy1.data.entityExp);
+                        OnEntityDeath?.Invoke(Core.Enemy1.data.entityExp);
+                        OnEntityDeathSound?.Invoke(SFX.KillEnemy);
                     }
                     else
                     {
-                       UIController.Instance.ShowDeadPanel(true);
+                        OnPlayerDeath?.Invoke();
+
+                        UIController.Instance.ShowDeadPanel(true);
                     }
                 }
             }

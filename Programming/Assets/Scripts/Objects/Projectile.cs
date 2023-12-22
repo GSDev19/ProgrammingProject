@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public static Action<SFX> OnFireProjectile;
+
     public Element projectileElement;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<GameObject> hitted;
@@ -53,10 +56,7 @@ public class Projectile : MonoBehaviour
         maxHits = hits;
         hitted = new List<GameObject>();
 
-        if (AudioController.Instance != null)
-        {
-            AudioController.Instance.PlaySound(AudioController.Instance.fireProjectile);
-        }
+        OnFireProjectile?.Invoke(SFX.FireProjectile);
     }
 
     private void HandleHit(LifeComponent life)

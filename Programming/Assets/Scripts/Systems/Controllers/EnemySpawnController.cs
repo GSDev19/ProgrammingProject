@@ -51,12 +51,15 @@ public class EnemySpawnController : MonoBehaviour
 
         if(currentIndex  >= levelSpawnData.spawnDatas.Count)
         {
-            return 0;
+            Debug.Log("RETURN ZERO");
+            spawnDataIndex = levelSpawnData.spawnDatas.Count;
         }
         else
         {
-            return currentIndex + 1;
+            spawnDataIndex = currentIndex + 1;
+            Debug.Log("RETURN" + spawnDataIndex);
         }
+        return spawnDataIndex;
     }
     public void CreateEnemy()
     {

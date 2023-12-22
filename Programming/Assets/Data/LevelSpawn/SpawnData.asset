@@ -73,3 +73,13 @@ MonoBehaviour:
     enemydatas:
     - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
     elements: 000000000300000004000000
+  - description: Level4  Mix
+    amountOfEnemies: 25
+    enemydatas:
+    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
+    elements: 0000000001000000020000000300000004000000
+  - description: Level4  Mix
+    amountOfEnemies: 30
+    enemydatas:
+    - {fileID: 11400000, guid: 75bf75b15520ca24e8a78b8adf5ec79a, type: 2}
+    elements: 0000000001000000020000000300000004000000

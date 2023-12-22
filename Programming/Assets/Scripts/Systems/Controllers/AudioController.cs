@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class AudioController : MonoBehaviour
 {
@@ -9,18 +10,13 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioSource SFXAudioSource;
 
-    [Header("Music")]
-    public AudioClip gameMusic;
-    public AudioClip menuMusic;
-
-    [Header("SFX")]
-    public AudioClip createArea;
-    public AudioClip fireProjectile;
-    public AudioClip killEnemy;
-    public AudioClip levelUp;
+    public UDictionary <SFX, AudioClip> sfxClipDic;
+    public UDictionary <Music, AudioClip> musicClipDic;
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
+
         if (!Instance)
         {
             Instance = this;
@@ -31,21 +27,64 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        PlayMusic(menuMusic);
+        AreaDamage.OnCreateArea += PlaySXF;
+        ExperienceComponent.OnLevelUp += PlaySXF;
+        LifeComponent.OnEntityDeathSound += PlaySXF;
+        Projectile.OnFireProjectile += PlaySXF;   
+        
+        MainMenuController.OnMainMenuStart += PlayMusic;
+        GameManager.OnGameStarted += PlayMusic;
     }
 
-    public void PlayMusic(AudioClip clip)
+    private void OnDisable()
     {
-        musicAudioSource.clip = clip;
-        musicAudioSource.Play();
+        AreaDamage.OnCreateArea -= PlaySXF;
+        ExperienceComponent.OnLevelUp -= PlaySXF;
+        LifeComponent.OnEntityDeathSound -= PlaySXF;
+        Projectile.OnFireProjectile -= PlaySXF;
+
+        MainMenuController.OnMainMenuStart -= PlayMusic;
+        GameManager.OnGameStarted -= PlayMusic;
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySXF(SFX sfx)
     {
-        SFXAudioSource.PlayOneShot(clip);
+        foreach (SFX item in sfxClipDic.Keys)
+        {
+            if(item == sfx)
+            {
+                SFXAudioSource.PlayOneShot(sfxClipDic[item]);
+            }
+        }
+    }
+
+    public void PlayMusic(Music music)
+    {
+        foreach (Music item in sfxClipDic.Keys)
+        {
+            if (item == music)
+            {
+                musicAudioSource.clip = musicClipDic[item];
+                musicAudioSource.Play();
+            }
+        }
     }
 
 
+}
+
+public enum SFX
+{
+    CreateArea,
+    FireProjectile,
+    KillEnemy,
+    LevelUp
+}
+
+public enum Music
+{
+    MenuMusic,
+    GameMusic
 }

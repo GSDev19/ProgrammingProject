@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -58,6 +59,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         isAttackSelectionOpen = false;
+
         ShowAttackSelectionPanel(false);
         ShowAttackUpgradePanel(false);
         ShowPausePanel(false);
@@ -78,6 +80,7 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
+    #region Diamonds
     public void SetTargetDiamonds(int target)
     {
         targetDiamonds.text = target.ToString();
@@ -86,6 +89,7 @@ public class UIController : MonoBehaviour
     {
         currentDiamonds.text = current.ToString();
     }
+    #endregion
     public void ShowPausePanel(bool value)
     {
         pauseMenuOpen = value;
@@ -172,11 +176,26 @@ public class UIController : MonoBehaviour
 
     public void OnMainMenuButton()
     {
-        ChangeSceneController.Instance.OnMainMenuButton();
+        if(ChangeSceneController.Instance)
+        {
+            ChangeSceneController.Instance.OnMainMenuButton();
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(0);
+        }
+
     }
     public void OnRetryButton()
     {
-        ChangeSceneController.Instance.LoadLevel(1);
+        if (ChangeSceneController.Instance)
+        {
+            ChangeSceneController.Instance.LoadLevel(1);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
     }
     #endregion
 

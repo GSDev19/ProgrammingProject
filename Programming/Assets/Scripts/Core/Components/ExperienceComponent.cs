@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ExperienceComponent : CoreComponent
 {
+    public static Action<SFX> OnLevelUp;
+
     [Header("EXPERIENCE")]
     public int currentLevel = 0;
     public int currentExperience = 0;
@@ -14,10 +17,21 @@ public class ExperienceComponent : CoreComponent
     [Header("POINTS")]
     public int currentPoints = 0;
     public int pointsXLevel = 2;
+
+    private void OnEnable()
+    {
+        LifeComponent.OnEntityDeath += AddExperience;
+    }
+
+    private void OnDisable()
+    {
+        LifeComponent.OnEntityDeath -= AddExperience;
+    }
     private void Start()
     {
         currentLevel = 0;
         targetExperience = initialTargetExperience;
+
         UIController.Instance.SetBarFillAmount(currentExperience, targetExperience, 0);
         UIController.Instance.SetCurrentPoints(currentPoints);
     }
@@ -31,11 +45,10 @@ public class ExperienceComponent : CoreComponent
             currentLevel++;
             initialTargetExperience += targetExperience + targetExperience * (targerIncreasePercentaje / 100);
             currentPoints += pointsXLevel;
-            if(AudioController.Instance != null)
-            {
-                 AudioController.Instance.PlaySound(AudioController.Instance.levelUp);
-            }
+
+            OnLevelUp?.Invoke(SFX.LevelUp);
         }
+
         UIController.Instance.SetCurrentPoints(currentPoints);
         UIController.Instance.SetBarFillAmount(currentExperience, targetExperience, currentLevel);
     }

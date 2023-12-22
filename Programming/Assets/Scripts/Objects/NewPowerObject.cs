@@ -11,7 +11,7 @@ public class NewPowerObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            OnPickedNewPower.Invoke(element);
+            OnPickedNewPower?.Invoke(element);
             this.gameObject.SetActive(false);
         }
     }

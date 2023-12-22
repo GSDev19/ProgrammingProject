@@ -28,10 +28,4 @@ public class SpawnController : MonoBehaviour
         areaDamagePool.Initialize();
         projectilePool.Initialize();
     }
-
-    //public GameObject CreateObject(ObjectPool pool, Vector3 pos, Quaternion quaternion)
-    //{
-    //    GameObject newObject = pool.Spawn(pos, quaternion);
-    //    return newObject;
-    //}
 }

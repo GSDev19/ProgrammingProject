@@ -7,8 +7,8 @@ public class AttackComponent : CoreComponent
     public Element currentPrimaryElement;
     public Element currentSecondaryElement;
 
-    protected PrimaryData primaryAttackData;
-    protected SecondaryData secondaryAttackData;
+    [SerializeField] protected PrimaryData primaryAttackData;
+    [SerializeField] protected SecondaryData secondaryAttackData;
 
     protected float currentPrimaryReloadTime;
     protected float currentSecondaryReloadTime;

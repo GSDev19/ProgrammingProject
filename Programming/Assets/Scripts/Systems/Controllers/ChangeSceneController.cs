@@ -9,6 +9,8 @@ public class ChangeSceneController : MonoBehaviour
     public static ChangeSceneController Instance;
     private void Awake()
     {
+        DontDestroyOnLoad(this);
+
         if (!Instance)
         {
             Instance = this;

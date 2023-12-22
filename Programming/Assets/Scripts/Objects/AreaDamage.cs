@@ -1,10 +1,13 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AreaDamage : MonoBehaviour
 {
+    public static Action<SFX> OnCreateArea;
+
     public Element areaElement;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<GameObject> enemiesInside = new List<GameObject>();
@@ -24,10 +27,12 @@ public class AreaDamage : MonoBehaviour
         StartCoroutine(Damage());
         StartCoroutine(DestoryAreaDamage());
 
-        if (AudioController.Instance != null)
-        {
-            AudioController.Instance.PlaySound(AudioController.Instance.createArea);
-        }
+        OnCreateArea?.Invoke(SFX.CreateArea);
+
+        //if (AudioController.Instance != null)
+        //{
+        //    AudioController.Instance.PlaySound(AudioController.Instance.createArea);
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -30,8 +30,8 @@ MonoBehaviour:
     incrementAmount: 20
     level: 0
   durationStat:
-    initialValue: 2
-    currentValue: 2
+    initialValue: 1
+    currentValue: 1
     incrementAmount: 15
     level: 0
   hitsXSecondStat:

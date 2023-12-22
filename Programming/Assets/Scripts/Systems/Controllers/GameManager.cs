@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using Utilities;
 
 public class GameManager : MonoBehaviour
 {
+    public static Action<Music> OnGameStarted;
+
     public static GameManager Instance;
     public UDictionary<Element, bool> unlockedElements = new UDictionary<Element, bool>();
 
@@ -46,10 +49,8 @@ public class GameManager : MonoBehaviour
     {
         UIController.Instance.UpdateDiamondsAmount(currentDiamonds);
 
-        if(AudioController.Instance != null)
-        {
-            AudioController.Instance.PlayMusic(AudioController.Instance.gameMusic);
-        }
+        OnGameStarted?.Invoke(Music.GameMusic);
+
     }
 
     public void HandleDiamondStart()

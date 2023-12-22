@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
+    public static Action<Music> OnMainMenuStart;
+
     public GameObject mainMenu;
     public GameObject helpMenu;
     private void Start()
     {
-        AudioController.Instance.PlayMusic(AudioController.Instance.menuMusic);
+        OnMainMenuStart?.Invoke(Music.MenuMusic);
 
         mainMenu.SetActive(true);
         helpMenu.SetActive(false);
