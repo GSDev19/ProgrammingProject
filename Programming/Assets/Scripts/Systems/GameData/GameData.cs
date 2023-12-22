@@ -8,8 +8,8 @@ using Utilities;
 public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
-    [Header("GENERAL")]
-    public UDictionary<Element, Color> elementColors = new UDictionary<Element, Color>();
+    //[Header("GENERAL")]
+    //public UDictionary<Element, Color> elementColors = new UDictionary<Element, Color>();
 
     [Space]
     [Header("ATTACKS")]
@@ -193,18 +193,18 @@ public class GameData : MonoBehaviour
 
         return selectedSprite;
     }
-    public Color GetColor(Element element)
-    {
-        Color selected = Color.white;
-        foreach (Element key in elementColors.Keys)
-        {
-            if (key == element)
-            {
-                selected = elementColors[key];
-            }
-        }
-        return selected;
-    }    
+    //public Color GetColor(Element element)
+    //{
+    //    Color selected = Color.white;
+    //    foreach (Element key in elementColors.Keys)
+    //    {
+    //        if (key == element)
+    //        {
+    //            selected = elementColors[key];
+    //        }
+    //    }
+    //    return selected;
+    //}    
 
     public float GetDamageModifier(Element attackElement, Element targetElement)
     {

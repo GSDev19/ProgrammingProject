@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class PlayerController : Entity
@@ -30,7 +31,7 @@ public class PlayerController : Entity
     }
     private void Start()
     {
-        ChangeElement(Element.None);
+        currentElement = Element.None;
 
         moveState = new PlayerMoveState(this, data, StateMachine, Core, stateName);
         idleState = new PlayerIdleState(this, data, StateMachine, Core, stateName);
@@ -50,11 +51,11 @@ public class PlayerController : Entity
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
-    public void ChangeElement(Element element)
-    {
-        currentElement = element;
-        spriteRenderer.color = GameData.Instance.GetColor(element);
-    }
+    //public void ChangeElement(Element element)
+    //{
+    //    currentElement = element;
+    //    spriteRenderer.color = GameData.Instance.GetColor(element);
+    //}
     private void ResetStats()
     {
         data.healthStat.Reset();
