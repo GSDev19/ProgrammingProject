@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPrimaryElement: 0
   currentSecondaryElement: 0
+  primaryAttackData: {fileID: 0}
+  secondaryAttackData: {fileID: 0}
   canPrimaryAttack: 0
   canSecondaryAttack: 0
 --- !u!1 &4268162399199106838
@@ -353,7 +355,7 @@ MonoBehaviour:
   initialTargetExperience: 50
   targerIncreasePercentaje: 5
   currentPoints: 0
-  pointsXLevel: 4
+  pointsXLevel: 8
 --- !u!1 &7114436712406182677
 GameObject:
   m_ObjectHideFlags: 0

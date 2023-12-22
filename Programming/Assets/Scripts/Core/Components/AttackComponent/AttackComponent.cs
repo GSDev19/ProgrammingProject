@@ -40,18 +40,6 @@ public class AttackComponent : CoreComponent
         UIController.Instance.ChangeSecondarySprite(GameData.Instance.GetElementSprite(element));
         //CheckIfSameElement();
     }
-
-    //private void CheckIfSameElement()
-    //{
-    //    if (currentPrimaryElement == currentSecondaryElement)
-    //    {
-    //        PlayerController.Instance.ChangeElement(currentPrimaryElement);
-    //    }
-    //    else
-    //    {
-    //        PlayerController.Instance.ChangeElement(Element.None);
-    //    }
-    //}
     public void HandlePrimaryAttack()
     {
         if(canPrimaryAttack)
@@ -67,6 +55,9 @@ public class AttackComponent : CoreComponent
         {
             canSecondaryAttack = false;
             CreateAttackArea(secondaryAttackData);
+            Debug.Log(secondaryAttackData);
+            Debug.Log(secondaryAttackData.cooldownStat.currentValue);
+
             StartCoroutine(SecondaryCooldown(secondaryAttackData.cooldownStat.currentValue));
         }
     }

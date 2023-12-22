@@ -50,7 +50,7 @@ public class LifeComponent : CoreComponent
 
                     if (entity != PlayerController.Instance)
                     {
-                        OnEntityDeath?.Invoke(Core.Enemy1.data.entityExp);
+                        OnEntityDeath?.Invoke(Core.Entity.EntityData.entityExp);
                         OnEntityDeathSound?.Invoke(SFX.KillEnemy);
                     }
                     else

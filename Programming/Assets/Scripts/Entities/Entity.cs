@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     public Element currentElement;
     public SpriteRenderer spriteRenderer;
     public Core Core { get; private set; }
-    [HideInInspector] public EntityData EntityData;
+    public EntityData EntityData;
 
     public MoveState moveState;
     public IdleState idleState;
@@ -27,10 +27,11 @@ public class Entity : MonoBehaviour
         this.currentElement = element;
         this.EntityData = data;
         this.spriteRenderer.sprite = GameData.Instance.GetEnemySprite(element, EntityData.entityLevel);
-        //this.spriteRenderer.color = GameData.Instance.GetColor(element);      //get element and level sprite
-        spriteRenderer.transform.localScale = Vector3.one * data.entitySize;
+        transform.localScale = Vector3.one * data.entitySize;
 
         this.Core.Life.SetInitialEntityHealth(EntityData.healthStat.currentValue);
     }
+
+
 
 }

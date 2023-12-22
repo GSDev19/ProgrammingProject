@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Enemy1IdleState : IdleState
 {
-    Enemy1Data enemyData;
-    public Enemy1IdleState(Entity entity, Enemy1Data data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
+    public Enemy1IdleState(Entity entity, EntityData data, StateMachine stateMachine, Core core, string stateName) : base(entity, data, stateMachine, core, stateName)
     {
-        this.enemyData = data;
     }
 
     public override void DoChecks()
@@ -31,7 +29,7 @@ public class Enemy1IdleState : IdleState
     {
         base.LogicUpdate();
 
-        if (!core.Collision.CheckDistanceToPlayer(PlayerController.Instance.transform, entity.transform, enemyData.minDistanceToPlayer))
+        if (!core.Collision.CheckDistanceToPlayer(PlayerController.Instance.transform, entity.transform, data.minDistanceToPlayer))
         {
             stateMachine.ChangeState(entity.moveState);
         }

@@ -84,7 +84,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     {
         if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.cooldownStat.level < 10)
         {
-            currentData.cooldownStat.currentValue -= currentData.cooldownStat.incrementAmount / 100;
+            currentData.cooldownStat.currentValue -= (float)currentData.cooldownStat.incrementAmount / 100f;
             currentData.cooldownStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
@@ -95,7 +95,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     {
         if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.areaSizeStat.level < 10)
         {
-            currentData.areaSizeStat.currentValue += currentData.areaSizeStat.incrementAmount / 100;
+            currentData.areaSizeStat.currentValue += (float)currentData.areaSizeStat.incrementAmount / 100f;
             currentData.areaSizeStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
@@ -106,7 +106,7 @@ public class SecondaryUpgradePanel : MonoBehaviour
     {
         if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.durationStat.level < 10)
         {
-            currentData.durationStat.currentValue += currentData.durationStat.incrementAmount / 100;
+            currentData.durationStat.currentValue += (float)currentData.durationStat.incrementAmount / 100f;
             currentData.durationStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();

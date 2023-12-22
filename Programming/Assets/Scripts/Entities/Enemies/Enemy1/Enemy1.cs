@@ -5,8 +5,6 @@ using UnityEngine;
 public class Enemy1 : Entity
 {
     public string stateName;
-    public Enemy1Data data;
-
     public override void Awake()
     {
         base.Awake();
@@ -16,8 +14,8 @@ public class Enemy1 : Entity
 
     private void Start()
     {
-        moveState = new Enemy1MoveState(this, data, StateMachine, Core, stateName, spriteRenderer);
-        idleState = new Enemy1IdleState(this, data, StateMachine, Core, stateName);
+        moveState = new Enemy1MoveState(this, EntityData, StateMachine, Core, stateName, spriteRenderer);
+        idleState = new Enemy1IdleState(this, EntityData, StateMachine, Core, stateName);
 
         StateMachine.Initialize(idleState);
     }
@@ -44,16 +42,21 @@ public class Enemy1 : Entity
             transform.position = newPosition;
         }
     }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, data.minDistanceToPlayer);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, data.damageRadious);
+        if(EntityData != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, EntityData.minDistanceToPlayer);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, EntityData.damageRadious);
+        }
+
     }
     private void ResetStats()
     {
-        data.healthStat.Reset();
-        data.movementSpeedStat.Reset();
+        EntityData.healthStat.Reset();
+        EntityData.movementSpeedStat.Reset();
     }
 }

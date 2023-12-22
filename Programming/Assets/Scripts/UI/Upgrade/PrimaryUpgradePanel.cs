@@ -81,7 +81,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     {
         if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.cooldownStat.level < 10)
         {
-            currentData.cooldownStat.currentValue -= currentData.cooldownStat.incrementAmount / 100;
+            currentData.cooldownStat.currentValue -= (float)currentData.cooldownStat.incrementAmount / 100f;
             currentData.cooldownStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();
@@ -92,7 +92,7 @@ public class PrimaryUpgradePanel : MonoBehaviour
     {
         if (PlayerController.Instance.Core.Experience.CheckIfHasEnoughPoints() && currentData.speedStat.level < 10)
         {
-            currentData.speedStat.currentValue += currentData.speedStat.incrementAmount / 100;
+            currentData.speedStat.currentValue += (float)currentData.speedStat.incrementAmount / 100f;
             currentData.speedStat.level++;
             PlayerController.Instance.Core.Experience.ExpendPoint();
             UpdateValues();

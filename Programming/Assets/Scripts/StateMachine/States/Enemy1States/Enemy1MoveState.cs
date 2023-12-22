@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Enemy1MoveState : MoveState
 {
-    Enemy1Data enemyData;
     SpriteRenderer spriteRenderer;
-    public Enemy1MoveState(Entity entity, Enemy1Data data, StateMachine stateMachine, Core core, string stateName, SpriteRenderer spriteRenderer) : base(entity, data, stateMachine, core, stateName)
+    public Enemy1MoveState(Entity entity, EntityData data, StateMachine stateMachine, Core core, string stateName, SpriteRenderer spriteRenderer) : base(entity, data, stateMachine, core, stateName)
     {
-        this.enemyData = data;
         this.spriteRenderer = spriteRenderer;
     }
 
@@ -31,9 +29,9 @@ public class Enemy1MoveState : MoveState
     {
         base.LogicUpdate();
 
-        core.Movement.GoToPlayer(PlayerController.Instance.transform, entity.transform, enemyData.movementSpeedStat.currentValue, enemyData.rotationSpeed, spriteRenderer);
+        core.Movement.GoToPlayer(PlayerController.Instance.transform, entity.transform, data.movementSpeedStat.currentValue, data.rotationSpeed, spriteRenderer);
 
-        if (core.Collision.CheckDistanceToPlayer(PlayerController.Instance.transform, entity.transform, enemyData.minDistanceToPlayer))
+        if (core.Collision.CheckDistanceToPlayer(PlayerController.Instance.transform, entity.transform, data.minDistanceToPlayer))
         {
             stateMachine.ChangeState(entity.idleState);
         }

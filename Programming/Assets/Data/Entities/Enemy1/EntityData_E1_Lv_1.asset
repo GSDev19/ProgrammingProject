@@ -9,24 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de90d14ce3189047b7af21f5763f04b, type: 3}
-  m_Name: Enemy1_Lv 3
+  m_Script: {fileID: 11500000, guid: 7a9aaba92142b504d8bc6fda1d7a60a4, type: 3}
+  m_Name: EntityData_E1_Lv_1
   m_EditorClassIdentifier: 
-  entityLevel: 1
-  entitySize: 0.7
+  entityLevel: 0
+  entitySize: 0.9
   movementSpeedStat:
-    initialValue: 4.5
+    initialValue: 3.5
     currentValue: 5
     incrementAmount: 1
     level: 0
   healthStat:
-    initialValue: 130
-    currentValue: 5
+    initialValue: 70
+    currentValue: 70
     incrementAmount: 1
     level: 0
-  entityExp: 15
-  damage: 11
-  damageRadious: 1.7
+  entityExp: 10
+  damage: 7
+  damageRadious: 1
   damageCooldown: 0.5
-  minDistanceToPlayer: 1.9
+  minDistanceToPlayer: 0.9
   rotationSpeed: 10

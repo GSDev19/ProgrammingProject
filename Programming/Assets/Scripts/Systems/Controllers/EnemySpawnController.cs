@@ -37,7 +37,7 @@ public class EnemySpawnController : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            CreateEnemy();
+            CreateEnemy1();
         }
 
         StartCoroutine(HandleEnemyCreation());
@@ -51,17 +51,17 @@ public class EnemySpawnController : MonoBehaviour
 
         if(currentIndex  >= levelSpawnData.spawnDatas.Count)
         {
-            Debug.Log("RETURN ZERO");
+            Debug.Log("RETURN COUNT");
             spawnDataIndex = levelSpawnData.spawnDatas.Count;
         }
         else
         {
             spawnDataIndex = currentIndex + 1;
-            Debug.Log("RETURN" + spawnDataIndex);
+            Debug.Log("INDEX " + spawnDataIndex);
         }
         return spawnDataIndex;
     }
-    public void CreateEnemy()
+    public void CreateEnemy1()
     {
         float randomAngle = Random.Range(0f, 360f);
 
@@ -74,6 +74,7 @@ public class EnemySpawnController : MonoBehaviour
         Entity newEntity = SpawnController.Instance.enemy1Pool.Spawn(spawnPosition, Quaternion.identity).GetComponent<Entity>();
         Element randomElement = GameData.Instance.GetRandomElement(currentSpawnData.elements);
         EntityData randomEntityData = GetRandomData(currentSpawnData.enemydatas);
+
         newEntity.SetEntity(randomElement, randomEntityData);
     }
     private EntityData GetRandomData(List<EntityData> entities)
