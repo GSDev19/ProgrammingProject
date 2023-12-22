@@ -28,11 +28,6 @@ public class AreaDamage : MonoBehaviour
         StartCoroutine(DestoryAreaDamage());
 
         OnCreateArea?.Invoke(SFX.CreateArea);
-
-        //if (AudioController.Instance != null)
-        //{
-        //    AudioController.Instance.PlaySound(AudioController.Instance.createArea);
-        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)

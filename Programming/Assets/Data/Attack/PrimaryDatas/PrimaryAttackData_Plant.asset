@@ -13,29 +13,28 @@ MonoBehaviour:
   m_Name: PrimaryAttackData_Plant
   m_EditorClassIdentifier: 
   element: 2
-  prefab: {fileID: 2974109457776455093, guid: cca069b6cd03dfa4998c2b2df985b681, type: 3}
   damageStat:
     initialValue: 20
     currentValue: 20
     incrementAmount: 5
-    timesIncremented: 0
+    level: 0
   cooldownStat:
     initialValue: 1
     currentValue: 1
-    incrementAmount: 10
-    timesIncremented: 0
+    incrementAmount: 5
+    level: 0
   speedStat:
     initialValue: 12
     currentValue: 12
-    incrementAmount: 10
-    timesIncremented: 0
+    incrementAmount: 5
+    level: 0
   enemyHitsStat:
     initialValue: 1
     currentValue: 1
     incrementAmount: 1
-    timesIncremented: 0
+    level: 0
   projectileAmountStat:
     initialValue: 1
     currentValue: 1
     incrementAmount: 1
-    timesIncremented: 0
+    level: 0

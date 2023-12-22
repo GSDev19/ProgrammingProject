@@ -249,7 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentElement: 5
   spriteRenderer: {fileID: 6425708920864178958}
-  EntityData: {fileID: 0}
   data: {fileID: 11400000, guid: ea3790072f20af24fa798bd7cba1bd2e, type: 2}
   stateName: 
 --- !u!58 &13253682404264451
@@ -505,6 +504,10 @@ PrefabInstance:
     - target: {fileID: 1917106315583235750, guid: a572822e20199964899a658af6f58372, type: 3}
       propertyPath: m_Name
       value: PlayerCore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395813392506220264, guid: a572822e20199964899a658af6f58372, type: 3}
+      propertyPath: pointsXLevel
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a572822e20199964899a658af6f58372, type: 3}

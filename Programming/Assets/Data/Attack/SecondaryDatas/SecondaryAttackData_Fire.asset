@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: SecondaryAttackData_Fire
   m_EditorClassIdentifier: 
   element: 0
-  prefab: {fileID: 1295922524261553595, guid: b7ff2fef4a6fd504ab54f303aab8cba5, type: 3}
   damageStat:
     initialValue: 20
     currentValue: 20
@@ -22,20 +21,20 @@ MonoBehaviour:
   cooldownStat:
     initialValue: 3
     currentValue: 3
-    incrementAmount: 10
+    incrementAmount: 20
     level: 0
   areaSizeStat:
     initialValue: 0.25
     currentValue: 0.25
-    incrementAmount: 20
+    incrementAmount: 15
     level: 0
   durationStat:
-    initialValue: 1
-    currentValue: 1
-    incrementAmount: 15
+    initialValue: 0.5
+    currentValue: 0.5
+    incrementAmount: 50
     level: 0
   hitsXSecondStat:
     initialValue: 2
-    currentValue: 2
+    currentValue: 12
     incrementAmount: 1
-    level: 0
+    level: 10

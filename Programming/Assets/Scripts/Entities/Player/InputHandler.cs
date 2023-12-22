@@ -35,6 +35,13 @@ public class InputHandler : MonoBehaviour
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
+        if (CheckIfCanPerformAttack() == false)
+        {
+            NormX = 0;
+            NormY = 0;
+            return;
+        }
+
         MovementInput = context.ReadValue<Vector2>();
         NormX = (int)(MovementInput * Vector2.right).normalized.x;
         NormY = (int)(MovementInput * Vector2.up).normalized.y;
@@ -42,7 +49,11 @@ public class InputHandler : MonoBehaviour
 
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)
     {
-        if (context.started && !isPointerOnUi)
+        if(CheckIfCanPerformAttack() == false)
+        {
+            return;
+        }
+        if (context.started && isPointerOnUi == false)
         {
             PrimaryAttackInput = true;
         }
@@ -53,7 +64,12 @@ public class InputHandler : MonoBehaviour
     }
     public void OnSecondaryAttackInput(InputAction.CallbackContext context)
     {
-        if(context.started && !isPointerOnUi)
+        if (CheckIfCanPerformAttack() == false)
+        {
+            return;
+        }
+
+        if (context.started && isPointerOnUi == false)
         {
             SecondaryAttackInput = true;
         }
@@ -94,16 +110,6 @@ public class InputHandler : MonoBehaviour
         {
             AttackSelectionInput = true;
             UIController.Instance.ShowAttackSelectionPanel(true);
-
-            //if (UIController.Instance.isAttackSelectionOpen)
-            //{
-            //    UIController.Instance.ShowAttackSelectionPanel(false);
-            //}
-            //else
-            //{
-            //    UIController.Instance.ShowAttackSelectionPanel(true);
-            //}
-
         }
 
         if(context.canceled)
@@ -135,6 +141,19 @@ public class InputHandler : MonoBehaviour
         {
             AttackUpgradeInput = false;
             //UIController.Instance.ShowAttackUpgradePanel(false);
+        }
+    }
+    private bool CheckIfCanPerformAttack()
+    {
+        if( UIController.Instance.isAttackSelectionOpen == true 
+            || UIController.Instance.isAttackUpgradeOpen == true
+            || UIController.Instance.pauseMenuOpen == true)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
     private bool IsPointerOverUI()

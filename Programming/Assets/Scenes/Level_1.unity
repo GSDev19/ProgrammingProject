@@ -1672,10 +1672,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3319793438321953948, guid: cff272998e02937409313b16eea30204, type: 3}
-      propertyPath: levelSpawnData
-      value: 
-      objectReference: {fileID: 11400000, guid: 6aa7e05667b9d0f4fad9fc7d279b924d, type: 2}
     - target: {fileID: 3722059373574277346, guid: cff272998e02937409313b16eea30204, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1927,6 +1923,10 @@ PrefabInstance:
     - target: {fileID: 7433865647053244686, guid: cff272998e02937409313b16eea30204, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988676396736827044, guid: cff272998e02937409313b16eea30204, type: 3}
+      propertyPath: currentPoints
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cff272998e02937409313b16eea30204, type: 3}
