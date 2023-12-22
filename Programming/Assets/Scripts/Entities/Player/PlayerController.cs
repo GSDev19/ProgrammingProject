@@ -24,7 +24,7 @@ public class PlayerController : Entity
             Destroy(this.gameObject);
         }
 
-        EntityData = data;
+        //EntityData = data;
 
         ResetStats();
 

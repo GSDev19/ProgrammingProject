@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     public Element currentElement;
     public SpriteRenderer spriteRenderer;
     public Core Core { get; private set; }
-    public EntityData EntityData;
+    public EntityData EntityData { get; private set; }
 
     public MoveState moveState;
     public IdleState idleState;
@@ -20,6 +20,8 @@ public class Entity : MonoBehaviour
         Core = GetComponentInChildren<Core>();
 
         StateMachine = new StateMachine();
+
+        ResetStats();
     }
 
     public void SetEntity(Element element, EntityData data)
@@ -31,7 +33,14 @@ public class Entity : MonoBehaviour
 
         this.Core.Life.SetInitialEntityHealth(EntityData.healthStat.currentValue);
     }
-
+    public virtual void ResetStats()
+    {
+        if(EntityData != null)
+        {
+            EntityData.healthStat.Reset();
+            EntityData.movementSpeedStat.Reset();
+        }
+    }
 
 
 }

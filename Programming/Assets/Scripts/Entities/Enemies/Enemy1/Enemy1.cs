@@ -8,8 +8,6 @@ public class Enemy1 : Entity
     public override void Awake()
     {
         base.Awake();
-
-        ResetStats();
     }
 
     private void Start()
@@ -54,9 +52,9 @@ public class Enemy1 : Entity
         }
 
     }
-    private void ResetStats()
+
+    public override void ResetStats()
     {
-        EntityData.healthStat.Reset();
-        EntityData.movementSpeedStat.Reset();
+        base.ResetStats();
     }
 }
