@@ -546,7 +546,9 @@ MonoBehaviour:
   currentHealth: 0
   damageImage: {fileID: 3649660678738882584}
   damageText: {fileID: 7632173033156622330}
-  displayTime: 0.2
+  displayTime: 0.4
+  maxHealth: 0
+  lifeBar: {fileID: 0}
 --- !u!1 &8098833326693067126
 GameObject:
   m_ObjectHideFlags: 0

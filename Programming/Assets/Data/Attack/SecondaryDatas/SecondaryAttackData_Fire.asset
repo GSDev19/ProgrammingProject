@@ -21,20 +21,20 @@ MonoBehaviour:
   cooldownStat:
     initialValue: 3
     currentValue: 3
-    incrementAmount: 20
+    incrementAmount: 10
     level: 0
   areaSizeStat:
     initialValue: 0.25
     currentValue: 0.25
-    incrementAmount: 15
+    incrementAmount: 20
     level: 0
   durationStat:
     initialValue: 0.5
     currentValue: 0.5
-    incrementAmount: 50
+    incrementAmount: 25
     level: 0
   hitsXSecondStat:
     initialValue: 2
-    currentValue: 12
+    currentValue: 2
     incrementAmount: 1
-    level: 10
+    level: 0

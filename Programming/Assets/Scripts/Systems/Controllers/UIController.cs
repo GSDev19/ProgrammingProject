@@ -144,7 +144,7 @@ public class UIController : MonoBehaviour
         if (isAttackSelectionOpen == true)
         {
             attacksHandler.CreateButtons();
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
             
         }
         else

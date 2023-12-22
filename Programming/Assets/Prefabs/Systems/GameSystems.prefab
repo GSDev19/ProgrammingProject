@@ -28845,6 +28845,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3129776789704783097, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6425708920864178958, guid: e813c821a7f99054eb1ca22c3625460a, type: 3}
       propertyPath: m_FlipX
       value: 0

@@ -16,6 +16,10 @@ public class LifeComponent : CoreComponent
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private float displayTime = 0.2f;
 
+
+    [SerializeField] private float maxHealth;
+    [SerializeField] private Image lifeBar;
+
     private void Start()
     {
         damageText.gameObject.SetActive(false);
@@ -24,7 +28,9 @@ public class LifeComponent : CoreComponent
     }
     public void SetInitialEntityHealth(float health)
     {
-        currentHealth = health;
+        maxHealth = health;
+        currentHealth = maxHealth;
+        SetLifeBar();
         damageText.gameObject.SetActive(false);
         damageImage.gameObject.SetActive(false);
     }
@@ -33,7 +39,6 @@ public class LifeComponent : CoreComponent
         int dmg = (int)damage * (int)GameData.Instance.GetDamageModifier(attackElement, Core.Entity.currentElement);
         currentHealth -= dmg;
 
-
         Entity entity = Core.Entity;
 
         if(entity != null)
@@ -41,6 +46,7 @@ public class LifeComponent : CoreComponent
             if (entity.gameObject.activeSelf)
             {                
                 DisplayDamage(dmg);
+                SetLifeBar();
 
                 if (currentHealth <= 0)
                 {
@@ -66,13 +72,29 @@ public class LifeComponent : CoreComponent
 
     }
 
-    //private void HandleRecovery()
-    //{
-    //    if(Core.Entity == PlayerController.Instance)
-    //    {
+    private void SetLifeBar()
+    {
+        if(lifeBar != null)
+        {
+            lifeBar.gameObject.SetActive(true);
+            float value = (float)currentHealth / (float)maxHealth;
 
-    //    }
-    //}
+            if(currentHealth >= maxHealth * 0.5f)
+            {
+                lifeBar.color = Color.green;
+            }
+            else if(currentHealth < maxHealth * 0.5f && currentHealth >= maxHealth * 0.3f)
+            {
+                lifeBar.color = Color.yellow;
+            }
+            else
+            {
+                lifeBar.color = Color.red;
+            }
+
+            lifeBar.fillAmount = value;
+        }
+    }
     private void DisplayDamage(int damage)
     {
         damageImage.gameObject.SetActive(true);
